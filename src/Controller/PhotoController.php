@@ -37,7 +37,7 @@ public function index(
     if ($tagId !== null) {
         $allPhotos = $photoRepository->findByTagId((int) $tagId);
     } else {
-        $allPhotos = $photoRepository->findBy([], ['id' => 'DESC']);
+        $allPhotos = $photoRepository->findBy([], ['createdAt' => 'DESC']);
     }
 
     $photos = array_slice($allPhotos, $offset, $limit);
@@ -88,6 +88,7 @@ if ($tagId !== null) {
         }
     }
 
+    $photo->setCreatedAt(new \DateTimeImmutable());
     $entityManager->persist($photo);
     $entityManager->flush();
 

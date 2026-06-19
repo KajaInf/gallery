@@ -50,7 +50,7 @@ public function findByTagId(int $tagId): array
         ->join('p.tags', 't')
         ->andWhere('t.id = :tagId')
         ->setParameter('tagId', $tagId)
-        ->orderBy('p.id', 'DESC')
+        ->orderBy('p.createdAt', 'DESC')
         ->getQuery()
         ->getResult();
 }

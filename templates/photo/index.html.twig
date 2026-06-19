@@ -21,7 +21,9 @@
 
                 <div class="card-body">
                     <h5 class="card-title">{{ photo.title }}</h5>
-
+                     <p class="card-text">
+    {{ photo.description }}
+</p>
                   <p>
     {% for tag in photo.tags %}
         <a
