@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photo index{% endblock %}
+
+{% block body %}
+    <h1>Photo index</h1>
+
+<div class="row">
+
+    {% for photo in photos %}
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+
+                <img
+                    src="{{ asset('uploads/photos/' ~ photo.filename) }}"
+                    class="card-img-top"
+                    alt="{{ photo.title }}"
+                    style="height: 250px; object-fit: cover;"
+                >
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ photo.title }}</h5>
+
+                  <p>
+    {% for tag in photo.tags %}
+        <a
+            href="{{ path('app_photo_index', {'tag': tag.id}) }}"
+            class="badge bg-secondary text-decoration-none"
+        >
+            {{ tag.name }}
+        </a>
+    {% else %}
+        <span class="text-muted">brak tagów</span>
+    {% endfor %}
+</p>
+
+                    <a href="{{ path('app_photo_show', {'id': photo.id}) }}" class="btn btn-primary">
+                        Zobacz zdjęcie i komentarze
+                    </a>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_photo_edit', {'id': photo.id}) }}" class="btn btn-warning">
+                            Edytuj
+                        </a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+    {% else %}
+
+        <p>Brak zdjęć.</p>
+
+    {% endfor %}
+
+
+</div>    
+
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('app_photo_new') }}">Create new</a>
+{% endif %}
+
+{% if totalPages > 1 %}
+    <nav>
+        <ul class="pagination">
+            {% for page in 1..totalPages %}
+                <li class="page-item {% if page == currentPage %}active{% endif %}">
+                    <a class="page-link" href="{{ path('app_photo_index', {
+                        page: page,
+                        tag: selectedTag
+                    }) }}">
+                        {{ page }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endif %}
+
+{% if selectedTagEntity %}
+    <div class="alert alert-info">
+        Filtrowanie po tagu: <strong>{{ selectedTagEntity.name }}</strong>
+        <a href="{{ path('app_photo_index') }}" class="btn btn-sm btn-outline-primary ms-2">
+            Pokaż wszystkie zdjęcia
+        </a>
+    </div>
+{% endif %}
+
+{% endblock %}

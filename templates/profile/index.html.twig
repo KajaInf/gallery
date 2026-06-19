@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+<h1>Mój profil</h1>
+
+{{ form_start(profile_form) }}
+    {{ form_widget(profile_form) }}
+    <button type="submit">Zapisz zmiany</button>
+{{ form_end(profile_form) }}
+{% endblock %}
