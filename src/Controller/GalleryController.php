@@ -5,13 +5,13 @@ namespace App\Controller;
 use App\Entity\Gallery;
 use App\Form\GalleryType;
 use App\Repository\GalleryRepository;
+use App\Repository\PhotoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Repository\PhotoRepository;
 
 #[Route('/gallery')]
 final class GalleryController extends AbstractController
@@ -23,7 +23,8 @@ final class GalleryController extends AbstractController
             'galleries' => $galleryRepository->findAll(),
         ]);
     }
-     #[IsGranted('ROLE_ADMIN')]
+
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_gallery_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -33,11 +34,11 @@ final class GalleryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($gallery);
-$entityManager->flush();
+            $entityManager->flush();
 
-$this->addFlash('success', 'Galeria została dodana.');
+            $this->addFlash('success', 'Galeria została dodana.');
 
-return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('gallery/new.html.twig', [
@@ -48,19 +49,19 @@ return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER)
 
     #[Route('/{id}', name: 'app_gallery_show', methods: ['GET'])]
     public function show(Gallery $gallery, PhotoRepository $photoRepository): Response
-{
-    $photos = $photoRepository->findBy(
-        ['gallery' => $gallery],
-        ['id' => 'DESC']
-    );
+    {
+        $photos = $photoRepository->findBy(
+            ['gallery' => $gallery],
+            ['id' => 'DESC']
+        );
 
-    return $this->render('gallery/show.html.twig', [
-        'gallery' => $gallery,
-        'photos' => $photos,
-    ]);
-}     
+        return $this->render('gallery/show.html.twig', [
+            'gallery' => $gallery,
+            'photos' => $photos,
+        ]);
+    }
 
-#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_gallery_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Gallery $gallery, EntityManagerInterface $entityManager): Response
     {
@@ -70,9 +71,9 @@ return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER)
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-$this->addFlash('success', 'Galeria została zaktualizowana.');
+            $this->addFlash('success', 'Galeria została zaktualizowana.');
 
-return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('gallery/edit.html.twig', [
@@ -80,15 +81,15 @@ return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER)
             'form' => $form,
         ]);
     }
-#[IsGranted('ROLE_ADMIN')]
+
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_gallery_delete', methods: ['POST'])]
     public function delete(Request $request, Gallery $gallery, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $gallery->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($gallery);
             $entityManager->flush();
-$this->addFlash('success', 'Galeria została usunięta.');
-
+            $this->addFlash('success', 'Galeria została usunięta.');
         }
 
         return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);

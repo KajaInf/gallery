@@ -41,18 +41,17 @@ class PhotoRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-/**
- * @return Photo[]
- */
-public function findByTagId(int $tagId): array
-{
-    return $this->createQueryBuilder('p')
-        ->join('p.tags', 't')
-        ->andWhere('t.id = :tagId')
-        ->setParameter('tagId', $tagId)
-        ->orderBy('p.createdAt', 'DESC')
-        ->getQuery()
-        ->getResult();
-}
-
+    /**
+     * @return Photo[]
+     */
+    public function findByTagId(int $tagId): array
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.tags', 't')
+            ->andWhere('t.id = :tagId')
+            ->setParameter('tagId', $tagId)
+            ->orderBy('p.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

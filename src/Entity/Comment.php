@@ -7,7 +7,6 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {
@@ -16,21 +15,21 @@ class Comment
     #[ORM\Column]
     private ?int $id = null;
 
-   #[ORM\Column(length: 100)]
-#[Assert\NotBlank]
-#[Assert\Length(max: 100)]
-private ?string $nick = null;
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 100)]
+    private ?string $nick = null;
 
-#[ORM\Column(length: 180)]
-#[Assert\NotBlank]
-#[Assert\Email]
-#[Assert\Length(max: 180)]
-private ?string $email = null;
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank]
+    #[Assert\Email]
+    #[Assert\Length(max: 180)]
+    private ?string $email = null;
 
-#[ORM\Column(type: Types::TEXT)]
-#[Assert\NotBlank]
-#[Assert\Length(max: 2000)]
-private ?string $content = null;
+    #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 2000)]
+    private ?string $content = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -92,15 +91,15 @@ private ?string $content = null;
         return $this;
     }
 
-public function getPhoto(): ?Photo
-{
-    return $this->photo;
-}
+    public function getPhoto(): ?Photo
+    {
+        return $this->photo;
+    }
 
-public function setPhoto(?Photo $photo): static
-{
-    $this->photo = $photo;
+    public function setPhoto(?Photo $photo): static
+    {
+        $this->photo = $photo;
 
-    return $this;
-}
+        return $this;
+    }
 }

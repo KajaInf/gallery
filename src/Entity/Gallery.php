@@ -6,7 +6,6 @@ use App\Repository\GalleryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 #[ORM\Entity(repositoryClass: GalleryRepository::class)]
 class Gallery
 {
@@ -16,8 +15,8 @@ class Gallery
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-#[Assert\NotBlank]
-#[Assert\Length(max: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
     private ?string $title = null;
 
     public function getId(): ?int

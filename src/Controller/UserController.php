@@ -9,10 +9,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-
 
 #[IsGranted('ROLE_ADMIN')]
 #[Route('/user')]
@@ -61,15 +60,14 @@ final class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-$plainPassword = $form->get('plainPassword')->getData();
+            $plainPassword = $form->get('plainPassword')->getData();
 
-if ($plainPassword) {
-    $user->setPassword(
-        $passwordHasher->hashPassword($user, $plainPassword)
-    );
-}
+            if ($plainPassword) {
+                $user->setPassword(
+                    $passwordHasher->hashPassword($user, $plainPassword)
+                );
+            }
             $entityManager->flush();
-
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,13 +81,12 @@ if ($plainPassword) {
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->getPayload()->getString('_token'))) {
+            if ($user === $this->getUser()) {
+                $this->addFlash('danger', 'Nie możesz usunąć własnego konta administratora.');
 
-if ($user === $this->getUser()) {
-    $this->addFlash('danger', 'Nie możesz usunąć własnego konta administratora.');
-
-    return $this->redirectToRoute('app_user_index');
-}
+                return $this->redirectToRoute('app_user_index');
+            }
 
             $entityManager->remove($user);
             $entityManager->flush();

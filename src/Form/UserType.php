@@ -4,11 +4,11 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
@@ -17,25 +17,25 @@ class UserType extends AbstractType
         $builder
             ->add('email')
             ->add('roles', ChoiceType::class, [
-    'choices' => [
-        'Użytkownik' => 'ROLE_USER',
-        'Administrator' => 'ROLE_ADMIN',
-    ],
-    'multiple' => true,
-    'expanded' => true,
-])
+                'choices' => [
+                    'Użytkownik' => 'ROLE_USER',
+                    'Administrator' => 'ROLE_ADMIN',
+                ],
+                'multiple' => true,
+                'expanded' => true,
+            ])
 
-->add('plainPassword', RepeatedType::class, [
-    'type' => PasswordType::class,
-    'mapped' => false,
-    'required' => false,
-    'first_options' => [
+        ->add('plainPassword', RepeatedType::class, [
+        'type' => PasswordType::class,
+        'mapped' => false,
+        'required' => false,
+        'first_options' => [
         'label' => 'Nowe hasło',
-    ],
-    'second_options' => [
+        ],
+        'second_options' => [
         'label' => 'Powtórz nowe hasło',
-    ],
-])
+        ],
+        ])
             ->add('password')
         ;
     }

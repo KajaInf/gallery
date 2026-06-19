@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class CommentService
 {
     public function __construct(
-        private readonly EntityManagerInterface $entityManager
+        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 
