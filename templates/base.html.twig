@@ -24,29 +24,29 @@
     <div class="container">
 
         <a class="navbar-brand" href="{{ path('app_home') }}">
-            📸 Galeria
+            📸 {{ 'gallery'|trans }}
         </a>
 
         <div class="navbar-nav me-auto">
             <a class="nav-link" href="{{ path('app_gallery_index') }}">
-                Galerie
+                {{ 'galleries'|trans }}
             </a>
 
             <a class="nav-link" href="{{ path('app_photo_index') }}">
-                Zdjęcia
+                {{ 'photos'|trans }}
             </a>
 
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="nav-link" href="{{ path('app_user_index') }}">
-                    Użytkownicy
+                    {{ 'users'|trans }}
                 </a>
 
                 <a class="nav-link" href="{{ path('app_tag_index') }}">
-                    Tagi
+                    {{ 'tags'|trans }}
                 </a>
 
                 <a class="nav-link" href="{{ path('app_comment_index') }}">
-                    Komentarze
+                    {{ 'comments'|trans }}
                 </a>
             {% endif %}
         </div>
@@ -56,7 +56,7 @@
             {% if app.user %}
 
                 <a class="nav-link" href="{{ path('app_profile') }}">
-                    Mój profil
+                    {{ 'profile'|trans }}
                 </a>
 
                 <span class="navbar-text me-3">
@@ -64,17 +64,17 @@
                 </span>
 
                 <a class="nav-link" href="{{ path('app_logout') }}">
-                    Wyloguj
+                    {{ 'logout'|trans }}
                 </a>
 
             {% else %}
 
                 <a class="nav-link" href="{{ path('app_login') }}">
-                    Zaloguj
+                    {{ 'login'|trans }}
                 </a>
 
                 <a class="nav-link" href="{{ path('app_register') }}">
-                    Rejestracja
+                    {{ 'register'|trans }}
                 </a>
 
             {% endif %}
