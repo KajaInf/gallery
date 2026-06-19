@@ -33,9 +33,11 @@ final class GalleryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($gallery);
-            $entityManager->flush();
+$entityManager->flush();
 
-            return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
+$this->addFlash('success', 'Galeria została dodana.');
+
+return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('gallery/new.html.twig', [
@@ -68,7 +70,9 @@ final class GalleryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
+$this->addFlash('success', 'Galeria została zaktualizowana.');
+
+return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('gallery/edit.html.twig', [
@@ -83,6 +87,8 @@ final class GalleryController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($gallery);
             $entityManager->flush();
+$this->addFlash('success', 'Galeria została usunięta.');
+
         }
 
         return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
