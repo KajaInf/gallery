@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\TagRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
@@ -14,6 +16,8 @@ class Tag
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+#[Assert\NotBlank]
+#[Assert\Length(max: 100)]
     private ?string $name = null;
 
     public function getId(): ?int
