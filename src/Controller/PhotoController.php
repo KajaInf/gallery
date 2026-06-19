@@ -90,9 +90,11 @@ if ($tagId !== null) {
 
     $photo->setCreatedAt(new \DateTimeImmutable());
     $entityManager->persist($photo);
-    $entityManager->flush();
+$entityManager->flush();
 
-    return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
+$this->addFlash('success', 'Zdjęcie zostało dodane.');
+
+return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
 }
 
         return $this->render('photo/new.html.twig', [
@@ -118,6 +120,8 @@ CommentService $commentService
 
 if ($user !== null) {
     $commentService->createForPhoto($comment, $photo, $user);
+
+    $this->addFlash('success', 'Komentarz został dodany.');
 }
 
 
@@ -148,7 +152,9 @@ $comments = $commentRepository->findBy(
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
+$this->addFlash('success', 'Zdjęcie zostało zaktualizowane.');
+
+return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('photo/edit.html.twig', [
@@ -181,7 +187,9 @@ public function delete(Request $request, Photo $photo, EntityManagerInterface $e
         }
 
         $entityManager->remove($photo);
-        $entityManager->flush();
+$entityManager->flush();
+
+$this->addFlash('success', 'Zdjęcie zostało usunięte.');
     }
 
     return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
