@@ -3,9 +3,9 @@
 {% block title %}New Photo{% endblock %}
 
 {% block body %}
-    <h1>Create new Photo</h1>
+    <h1>{{ 'photo.new'|trans }}</h1>
 
     {{ include('photo/_form.html.twig') }}
 
-    <a href="{{ path('app_photo_index') }}">back to list</a>
+    <a href="{{ path('app_photo_index') }}">{{ 'action.back_to_list'|trans }}</a>
 {% endblock %}

@@ -13,7 +13,7 @@ class PhotoControllerTest extends WebTestCase
         $client->request('GET', '/photo');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Photo index');
+        $this->assertSelectorTextContains('h1', 'Lista zdjęć');
     }
 
     public function testPhotoIndexWithTagFilterIsSuccessful(): void

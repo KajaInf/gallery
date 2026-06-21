@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Photo index{% endblock %}
+{% block title %}{{ 'photo.index'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Photo index</h1>
+    <h1>{{ 'photo.index'|trans }}</h1>
 
 <div class="row">
 
@@ -61,7 +61,7 @@
 </div>    
 
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('app_photo_new') }}">Create new</a>
+    <a href="{{ path('app_photo_new') }}">{{ 'action.create_new'|trans }}</a>
 {% endif %}
 
 {% if totalPages > 1 %}

@@ -7,6 +7,6 @@
            value="{{ csrf_token('delete' ~ photo.id) }}">
 
     <button class="btn btn-danger">
-        Delete
+        {{ 'action.delete'|trans }}
     </button>
 </form>

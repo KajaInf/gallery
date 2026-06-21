@@ -2,50 +2,42 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="pl" datatype="plaintext" original="messages">
         <body>
-            <trans-unit id="home">
-                <source>home</source>
-                <target>Strona główna</target>
-            </trans-unit>
-            <trans-unit id="gallery">
-                <source>gallery</source>
-                <target>Galeria</target>
-            </trans-unit>
-            <trans-unit id="galleries">
-                <source>galleries</source>
-                <target>Galerie</target>
-            </trans-unit>
-            <trans-unit id="photos">
-                <source>photos</source>
-                <target>Zdjęcia</target>
-            </trans-unit>
-            <trans-unit id="users">
-                <source>users</source>
-                <target>Użytkownicy</target>
-            </trans-unit>
-            <trans-unit id="tags">
-                <source>tags</source>
-                <target>Tagi</target>
-            </trans-unit>
-            <trans-unit id="comments">
-                <source>comments</source>
-                <target>Komentarze</target>
-            </trans-unit>
-            <trans-unit id="profile">
-                <source>profile</source>
-                <target>Mój profil</target>
-            </trans-unit>
-            <trans-unit id="login">
-                <source>login</source>
-                <target>Zaloguj</target>
-            </trans-unit>
-            <trans-unit id="logout">
-                <source>logout</source>
-                <target>Wyloguj</target>
-            </trans-unit>
-            <trans-unit id="register">
-                <source>register</source>
-                <target>Rejestracja</target>
-            </trans-unit>
+            <trans-unit id="home"><source>home</source><target>Strona główna</target></trans-unit>
+            <trans-unit id="gallery"><source>gallery</source><target>Galeria</target></trans-unit>
+            <trans-unit id="galleries"><source>galleries</source><target>Galerie</target></trans-unit>
+            <trans-unit id="photos"><source>photos</source><target>Zdjęcia</target></trans-unit>
+            <trans-unit id="users"><source>users</source><target>Użytkownicy</target></trans-unit>
+            <trans-unit id="tags"><source>tags</source><target>Tagi</target></trans-unit>
+            <trans-unit id="comments"><source>comments</source><target>Komentarze</target></trans-unit>
+            <trans-unit id="profile"><source>profile</source><target>Mój profil</target></trans-unit>
+            <trans-unit id="login"><source>login</source><target>Zaloguj</target></trans-unit>
+            <trans-unit id="logout"><source>logout</source><target>Wyloguj</target></trans-unit>
+            <trans-unit id="register"><source>register</source><target>Rejestracja</target></trans-unit>
+
+            <trans-unit id="action.create_new"><source>action.create_new</source><target>Dodaj nowy</target></trans-unit>
+            <trans-unit id="action.edit"><source>action.edit</source><target>Edytuj</target></trans-unit>
+            <trans-unit id="action.delete"><source>action.delete</source><target>Usuń</target></trans-unit>
+            <trans-unit id="action.back_to_list"><source>action.back_to_list</source><target>Powrót do listy</target></trans-unit>
+
+            <trans-unit id="photo.index"><source>photo.index</source><target>Lista zdjęć</target></trans-unit>
+            <trans-unit id="photo.new"><source>photo.new</source><target>Dodaj nowe zdjęcie</target></trans-unit>
+            <trans-unit id="photo.edit"><source>photo.edit</source><target>Edytuj zdjęcie</target></trans-unit>
+
+            <trans-unit id="gallery.index"><source>gallery.index</source><target>Lista galerii</target></trans-unit>
+            <trans-unit id="gallery.new"><source>gallery.new</source><target>Dodaj nową galerię</target></trans-unit>
+            <trans-unit id="gallery.edit"><source>gallery.edit</source><target>Edytuj galerię</target></trans-unit>
+
+            <trans-unit id="user.index"><source>user.index</source><target>Lista użytkowników</target></trans-unit>
+            <trans-unit id="user.new"><source>user.new</source><target>Dodaj nowego użytkownika</target></trans-unit>
+            <trans-unit id="user.edit"><source>user.edit</source><target>Edytuj użytkownika</target></trans-unit>
+
+            <trans-unit id="tag.index"><source>tag.index</source><target>Lista tagów</target></trans-unit>
+            <trans-unit id="tag.new"><source>tag.new</source><target>Dodaj nowy tag</target></trans-unit>
+            <trans-unit id="tag.edit"><source>tag.edit</source><target>Edytuj tag</target></trans-unit>
+
+            <trans-unit id="comment.index"><source>comment.index</source><target>Lista komentarzy</target></trans-unit>
+            <trans-unit id="comment.new"><source>comment.new</source><target>Dodaj nowy komentarz</target></trans-unit>
+            <trans-unit id="comment.edit"><source>comment.edit</source><target>Edytuj komentarz</target></trans-unit>
         </body>
     </file>
 </xliff>
