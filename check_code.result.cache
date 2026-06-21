@@ -3,13 +3,14 @@
    3) src/Controller/ProfileController.php (trailing_comma_in_multiline)
    4) src/Controller/RegistrationController.php (trailing_comma_in_multiline)
    5) src/Controller/PhotoController.php (concat_space)
-   6) src/Controller/SecurityController.php (single_line_throw)
-   7) src/Controller/GalleryController.php (concat_space)
-   8) src/Controller/TagController.php (concat_space)
-   9) src/Controller/CommentController.php (concat_space)
-  10) src/Controller/UserController.php (concat_space, trailing_comma_in_multiline)
+   6) src/Security/Voter/CommentVoter.php (trailing_comma_in_multiline)
+   7) src/Controller/SecurityController.php (single_line_throw)
+   8) src/Controller/GalleryController.php (concat_space)
+   9) src/Controller/TagController.php (concat_space)
+  10) src/Controller/CommentController.php (concat_space, statement_indentation)
+  11) src/Controller/UserController.php (concat_space, trailing_comma_in_multiline)
 
-Found 10 of 30 files that can be fixed in 1.063 seconds, 72.00 MB memory used
+Found 11 of 31 files that can be fixed in 1.858 seconds, 72.00 MB memory used
    1) tests/bootstrap.php (concat_space)
    2) tests/Controller/PhotoControllerTest.php (concat_space)
    3) tests/Controller/UserControllerTest.php (concat_space)
@@ -17,7 +18,7 @@ Found 10 of 30 files that can be fixed in 1.063 seconds, 72.00 MB memory used
    5) tests/Controller/CommentControllerTest.php (concat_space)
    6) tests/Controller/TagControllerTest.php (class_attributes_separation, concat_space)
 
-Found 6 of 16 files that can be fixed in 0.592 seconds, 54.00 MB memory used
+Found 6 of 20 files that can be fixed in 0.639 seconds, 54.00 MB memory used
 
 FILE: /home/kaja/gallery/src/Form/ProfileType.php
 ------------------------------------------------------------------------
@@ -250,13 +251,13 @@ FOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES
 ----------------------------------------------------------------------------
   3 | WARNING | [ ] The license block has to be present at the top
     |         |                     of every PHP file, before the namespace
- 17 | ERROR   | [ ] Missing doc comment for class CommentController
- 20 | ERROR   | [ ] Missing doc comment for function index()
- 28 | ERROR   | [ ] Missing doc comment for function new()
- 48 | ERROR   | [ ] Missing doc comment for function show()
- 56 | ERROR   | [ ] Missing doc comment for function edit()
- 75 | ERROR   | [ ] Missing doc comment for function delete()
- 77 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 18 | ERROR   | [ ] Missing doc comment for class CommentController
+ 21 | ERROR   | [ ] Missing doc comment for function index()
+ 29 | ERROR   | [ ] Missing doc comment for function new()
+ 49 | ERROR   | [ ] Missing doc comment for function show()
+ 57 | ERROR   | [ ] Missing doc comment for function edit()
+ 76 | ERROR   | [ ] Missing doc comment for function delete()
+ 79 | ERROR   | [x] Concat operator must not be surrounded by spaces
 ----------------------------------------------------------------------------
 PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------------
@@ -384,6 +385,21 @@ FOUND 16 ERRORS AND 1 WARNING AFFECTING 17 LINES
 -------------------------------------------------------------------------
 
 
+FILE: /home/kaja/gallery/src/Security/Voter/CommentVoter.php
+-----------------------------------------------------------------------------------
+FOUND 5 ERRORS AND 1 WARNING AFFECTING 5 LINES
+-----------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 11 | ERROR   | Missing doc comment for class CommentVoter
+ 15 | ERROR   | Declare all the arguments on the same line as the method/function
+    |         | name, no matter how many arguments there are.
+ 15 | ERROR   | Missing doc comment for function __construct()
+ 20 | ERROR   | Missing doc comment for function supports()
+ 25 | ERROR   | Missing doc comment for function voteOnAttribute()
+-----------------------------------------------------------------------------------
+
+
 FILE: /home/kaja/gallery/src/Security/AppCustomAuthenticattorAuthenticator.php
 -----------------------------------------------------------------------------------
 FOUND 5 ERRORS AND 1 WARNING AFFECTING 6 LINES
@@ -474,6 +490,39 @@ FOUND 4 ERRORS AND 1 WARNING AFFECTING 4 LINES
  12 | ERROR   | Missing doc comment for function __construct()
  17 | ERROR   | Missing doc comment for function createForPhoto()
 -----------------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/tests/Form/GalleryTypeTest.php
+------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+  9 | ERROR   | Missing doc comment for class GalleryTypeTest
+ 11 | ERROR   | Missing doc comment for function testSubmitValidData()
+------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/tests/Form/ProfileTypeTest.php
+------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+  9 | ERROR   | Missing doc comment for class ProfileTypeTest
+ 11 | ERROR   | Missing doc comment for function testSubmitValidData()
+------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/tests/Form/CommentTypeTest.php
+------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+  9 | ERROR   | Missing doc comment for class CommentTypeTest
+ 11 | ERROR   | Missing doc comment for function testSubmitValidData()
+------------------------------------------------------------------------
 
 
 FILE: /home/kaja/gallery/tests/Form/TagTypeTest.php
@@ -710,6 +759,17 @@ FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
 -------------------------------------------------------------------------
 
 
+FILE: /home/kaja/gallery/tests/Security/Voter/CommentVoterTest.php
+-----------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+-----------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 12 | ERROR   | Missing doc comment for class CommentVoterTest
+ 14 | ERROR   | Missing doc comment for function testAdminCanDeleteComment()
+-----------------------------------------------------------------------------
+
+
 FILE: /home/kaja/gallery/tests/Service/CommentServiceTest.php
 ------------------------------------------------------------------------
 FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
@@ -740,7 +800,7 @@ FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
 
 [notice] Migrating up to DoctrineMigrations\Version20260619112255
 [warning] Migration DoctrineMigrations\Version20260618015025 was executed but did not result in any SQL statements.
-[notice] finished in 31774.6ms, used 14M memory, 10 migrations executed, 15 sql queries
+[notice] finished in 29725.3ms, used 14M memory, 10 migrations executed, 15 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20260619112255   
 
