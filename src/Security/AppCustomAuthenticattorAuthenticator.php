@@ -44,7 +44,7 @@ class AppCustomAuthenticattorAuthenticator extends AbstractLoginFormAuthenticato
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        return new RedirectResponse('/home');
+        return new RedirectResponse($this->urlGenerator->generate('app_home'));
     }
 
     protected function getLoginUrl(Request $request): string
