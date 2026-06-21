@@ -4,13 +4,14 @@
    4) src/Controller/RegistrationController.php (trailing_comma_in_multiline)
    5) src/Controller/PhotoController.php (concat_space)
    6) src/Security/Voter/CommentVoter.php (trailing_comma_in_multiline)
-   7) src/Controller/SecurityController.php (single_line_throw)
-   8) src/Controller/GalleryController.php (concat_space)
-   9) src/Controller/TagController.php (concat_space)
-  10) src/Controller/CommentController.php (concat_space, statement_indentation)
-  11) src/Controller/UserController.php (concat_space, trailing_comma_in_multiline)
+   7) src/DataFixtures/AppFixtures.php (concat_space, no_trailing_whitespace, trailing_comma_in_multiline, statement_indentation, no_whitespace_in_blank_line)
+   8) src/Controller/SecurityController.php (single_line_throw)
+   9) src/Controller/GalleryController.php (concat_space)
+  10) src/Controller/TagController.php (concat_space)
+  11) src/Controller/CommentController.php (concat_space, statement_indentation)
+  12) src/Controller/UserController.php (concat_space, trailing_comma_in_multiline)
 
-Found 11 of 31 files that can be fixed in 1.858 seconds, 72.00 MB memory used
+Found 12 of 31 files that can be fixed in 1.031 seconds, 72.00 MB memory used
    1) tests/bootstrap.php (concat_space)
    2) tests/Controller/PhotoControllerTest.php (concat_space)
    3) tests/Controller/UserControllerTest.php (concat_space)
@@ -18,7 +19,7 @@ Found 11 of 31 files that can be fixed in 1.858 seconds, 72.00 MB memory used
    5) tests/Controller/CommentControllerTest.php (concat_space)
    6) tests/Controller/TagControllerTest.php (class_attributes_separation, concat_space)
 
-Found 6 of 20 files that can be fixed in 0.639 seconds, 54.00 MB memory used
+Found 6 of 20 files that can be fixed in 0.693 seconds, 54.00 MB memory used
 
 FILE: /home/kaja/gallery/src/Form/ProfileType.php
 ------------------------------------------------------------------------
@@ -415,14 +416,48 @@ FOUND 5 ERRORS AND 1 WARNING AFFECTING 6 LINES
 
 
 FILE: /home/kaja/gallery/src/DataFixtures/AppFixtures.php
-------------------------------------------------------------------------
-FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
-------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
-  8 | ERROR   | Missing doc comment for class AppFixtures
- 10 | ERROR   | Missing doc comment for function load()
-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+FOUND 20 ERRORS AND 6 WARNINGS AFFECTING 21 LINES
+-----------------------------------------------------------------------------------
+   3 | WARNING | [ ] The license block has to be present at the top
+     |         |                     of every PHP file, before the namespace
+  15 | ERROR   | [ ] Missing doc comment for class AppFixtures
+  17 | ERROR   | [ ] Declare all the arguments on the same line as the
+     |         |     method/function name, no matter how many arguments there are.
+  17 | ERROR   | [ ] Missing doc comment for function __construct()
+  24 | ERROR   | [ ] Missing doc comment for function load()
+  62 | WARNING | [x] Please trim any trailing whitespace
+  64 | WARNING | [x] Please trim any trailing whitespace
+  66 | WARNING | [x] Please trim any trailing whitespace
+ 114 | WARNING | [x] Please trim any trailing whitespace
+ 114 | ERROR   | [x] Whitespace found at end of line
+ 121 | WARNING | [x] Please trim any trailing whitespace
+ 121 | ERROR   | [x] Whitespace found at end of line
+ 127 | ERROR   | [x] Blank line found at start of control structure
+ 129 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
+     |         |     4
+ 130 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
+     |         |     4
+ 131 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
+     |         |     4
+ 132 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
+     |         |     4
+ 133 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
+     |         |     4
+ 134 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
+     |         |     4
+ 134 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 134 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 136 | ERROR   | [x] Line indented incorrectly; expected 12 spaces, found 4
+ 137 | ERROR   | [x] Line indented incorrectly; expected at least 16 spaces, found
+     |         |     8
+ 138 | ERROR   | [x] Line indented incorrectly; expected 12 spaces, found 4
+ 140 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
+     |         |     4
+ 146 | ERROR   | [x] Concat operator must not be surrounded by spaces
+-----------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 21 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------
 
 
 FILE: /home/kaja/gallery/src/Repository/UserRepository.php
@@ -800,7 +835,7 @@ FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
 
 [notice] Migrating up to DoctrineMigrations\Version20260619112255
 [warning] Migration DoctrineMigrations\Version20260618015025 was executed but did not result in any SQL statements.
-[notice] finished in 29725.3ms, used 14M memory, 10 migrations executed, 15 sql queries
+[notice] finished in 27770.3ms, used 14M memory, 10 migrations executed, 15 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20260619112255   
 

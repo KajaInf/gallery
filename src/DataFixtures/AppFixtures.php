@@ -59,11 +59,11 @@ class AppFixtures extends Fixture
         $animalsGallery->setTitle('Galeria zwierząt');
         $manager->persist($animalsGallery);
 
-        
 
-       
 
-        
+
+
+
 
         $photosData = [
             [
@@ -111,33 +111,32 @@ class AppFixtures extends Fixture
             [
                 'title' => 'Sowa',
                 'description' => 'Sowa jako przykład zdjęcia ze zwierzętami i naturą.',
-                'filename' => 'owl.jpg',              
+                'filename' => 'owl.jpg',
                 'gallery' => $animalsGallery,
                 'tags' => [$animalsTag, $natureTag],
             ],
             [
                 'title' => 'Lis w lesie',
                 'description' => 'Lis pokazujący kilka tagów jednocześnie.',
-                'filename' => 'fox.jpg',               
+                'filename' => 'fox.jpg',
                 'gallery' => $animalsGallery,
                 'tags' => [$animalsTag, $forestTag, $natureTag],
             ],
         ];
 
         foreach ($photosData as $index => $photoData) {
+            $photo = new Photo();
+            $photo->setTitle($photoData['title']);
+            $photo->setDescription($photoData['description']);
+            $photo->setFilename($photoData['filename']);
+            $photo->setGallery($photoData['gallery']);
+            $photo->setCreatedAt(new \DateTimeImmutable('-' . ($index + 1) . ' days'));
 
-    $photo = new Photo();
-    $photo->setTitle($photoData['title']);
-    $photo->setDescription($photoData['description']);
-    $photo->setFilename($photoData['filename']);
-    $photo->setGallery($photoData['gallery']);
-    $photo->setCreatedAt(new \DateTimeImmutable('-' . ($index + 1) . ' days'));
+            foreach ($photoData['tags'] as $tag) {
+                $photo->addTag($tag);
+            }
 
-    foreach ($photoData['tags'] as $tag) {
-        $photo->addTag($tag);
-    }
-
-    $manager->persist($photo);
+            $manager->persist($photo);
 
 
             $comment = new Comment();
