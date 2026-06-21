@@ -3,9 +3,9 @@
 {% block title %}New Gallery{% endblock %}
 
 {% block body %}
-    <h1>Create new Gallery</h1>
+    <h1>{{ 'gallery.new'|trans }}</h1>
 
     {{ include('gallery/_form.html.twig') }}
 
-    <a href="{{ path('app_gallery_index') }}">back to list</a>
+    <a href="{{ path('app_gallery_index') }}">{{ 'action.back_to_list'|trans }}</a>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gallery index{% endblock %}
+{% block title %}{{ 'gallery.index'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Gallery index</h1>
+    <h1>{{ 'gallery.index'|trans }}</h1>
 
     <table class="table">
         <thead>
@@ -34,6 +34,6 @@
     </table>
 
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('app_gallery_new') }}">Create new</a>
+    <a href="{{ path('app_gallery_new') }}">{{ 'action.create_new'|trans }}</a>
 {% endif %}
 {% endblock %}
