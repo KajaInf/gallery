@@ -20,14 +20,14 @@ final class Version20260618015025 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE comment ADD CONSTRAINT FK_9474526C7E9E4C8C FOREIGN KEY (photo_id) REFERENCES photo (id)');
-        $this->addSql('CREATE INDEX IDX_9474526C7E9E4C8C ON comment (photo_id)');
+//        $this->addSql('ALTER TABLE comment ADD CONSTRAINT FK_9474526C7E9E4C8C FOREIGN KEY (photo_id) REFERENCES photo (id)');
+//        $this->addSql('CREATE INDEX IDX_9474526C7E9E4C8C ON comment (photo_id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE comment DROP FOREIGN KEY FK_9474526C7E9E4C8C');
-        $this->addSql('DROP INDEX IDX_9474526C7E9E4C8C ON comment');
+  //      $this->addSql('ALTER TABLE comment DROP FOREIGN KEY FK_9474526C7E9E4C8C');
+  //      $this->addSql('DROP INDEX IDX_9474526C7E9E4C8C ON comment');
     }
 }
