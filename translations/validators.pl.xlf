@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="pl" datatype="plaintext" original="validators">
+        <body>
+            <trans-unit id="You should agree to our terms.">
+                <source>You should agree to our terms.</source>
+                <target>Musisz zaakceptować regulamin.</target>
+            </trans-unit>
+            <trans-unit id="Please enter a password">
+                <source>Please enter a password</source>
+                <target>Podaj hasło.</target>
+            </trans-unit>
+            <trans-unit id="Your password should be at least {{ limit }} characters">
+                <source>Your password should be at least {{ limit }} characters</source>
+                <target>Hasło powinno mieć co najmniej {{ limit }} znaków.</target>
+            </trans-unit>
+            <trans-unit id="There is already an account with this email">
+                <source>There is already an account with this email</source>
+                <target>Konto z tym adresem e-mail już istnieje.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

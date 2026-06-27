@@ -10,7 +10,7 @@ class HomeControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/home');
+        $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('body', 'Home');

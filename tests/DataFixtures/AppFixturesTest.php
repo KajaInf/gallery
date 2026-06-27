@@ -41,10 +41,17 @@ class AppFixturesTest extends TestCase
 
         $this->assertCount(24, $persistedObjects);
 
-        $this->assertNotEmpty(array_filter($persistedObjects, static fn (object $object): bool => $object instanceof User));
-        $this->assertNotEmpty(array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Gallery));
-        $this->assertNotEmpty(array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Tag));
-        $this->assertNotEmpty(array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Photo));
-        $this->assertNotEmpty(array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Comment));
+
+        $users = array_filter($persistedObjects, static fn (object $object): bool => $object instanceof User);
+        $galleries = array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Gallery);
+        $tags = array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Tag);
+        $photos = array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Photo);
+        $comments = array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Comment);
+
+        $this->assertNotEmpty($users);
+        $this->assertNotEmpty($galleries);
+        $this->assertNotEmpty($tags);
+        $this->assertNotEmpty($photos);
+        $this->assertNotEmpty($comments);
     }
 }

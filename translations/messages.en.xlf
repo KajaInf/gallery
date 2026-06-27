@@ -38,6 +38,16 @@
             <trans-unit id="comment.index"><source>comment.index</source><target>Comment index</target></trans-unit>
             <trans-unit id="comment.new"><source>comment.new</source><target>Create new Comment</target></trans-unit>
             <trans-unit id="comment.edit"><source>comment.edit</source><target>Edit Comment</target></trans-unit>
+<trans-unit id="login.title"><source>login.title</source><target>Login</target></trans-unit>
+<trans-unit id="login.heading"><source>login.heading</source><target>Please sign in</target></trans-unit>
+<trans-unit id="login.email"><source>login.email</source><target>Email</target></trans-unit>
+<trans-unit id="login.password"><source>login.password</source><target>Password</target></trans-unit>
+<trans-unit id="login.remember_me"><source>login.remember_me</source><target>Remember me</target></trans-unit>
+<trans-unit id="login.submit"><source>login.submit</source><target>Sign in</target></trans-unit>
+<trans-unit id="login.logged_as"><source>login.logged_as</source><target>You are logged in as %user%, </target></trans-unit>
+
+
+
         </body>
     </file>
 </xliff>

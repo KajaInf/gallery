@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="pl" datatype="plaintext" original="messages">
+
+
         <body>
             <trans-unit id="home"><source>home</source><target>Strona główna</target></trans-unit>
             <trans-unit id="gallery"><source>gallery</source><target>Galeria</target></trans-unit>
@@ -38,6 +40,16 @@
             <trans-unit id="comment.index"><source>comment.index</source><target>Lista komentarzy</target></trans-unit>
             <trans-unit id="comment.new"><source>comment.new</source><target>Dodaj nowy komentarz</target></trans-unit>
             <trans-unit id="comment.edit"><source>comment.edit</source><target>Edytuj komentarz</target></trans-unit>
+		<trans-unit id="login.title"><source>login.title</source><target>Logowanie</target></trans-unit>
+<trans-unit id="login.heading"><source>login.heading</source><target>Zaloguj się</target></trans-unit>
+<trans-unit id="login.email"><source>login.email</source><target>Adres e-mail</target></trans-unit>
+<trans-unit id="login.password"><source>login.password</source><target>Hasło</target></trans-unit>
+<trans-unit id="login.remember_me"><source>login.remember_me</source><target>Zapamiętaj mnie</target></trans-unit>
+<trans-unit id="login.submit"><source>login.submit</source><target>Zaloguj</target></trans-unit>
+<trans-unit id="login.logged_as"><source>login.logged_as</source><target>Jesteś zalogowany jako %user%, </target></trans-unit>
+
+
+
         </body>
     </file>
 </xliff>
