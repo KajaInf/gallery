@@ -12,6 +12,7 @@ use App\Service\Interface\PhotoServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Entity\Gallery;
 
 /**
  * Handles photo-related application logic.
@@ -116,6 +117,19 @@ class PhotoService implements PhotoServiceInterface
         return $this->commentRepository->findBy(
             ['photo' => $photo],
             ['createdAt' => 'DESC']
+        );
+    }
+
+   /**
+    * Returns photos assigned to a gallery.
+    *
+    * @return Photo[]
+    */
+    public function getPhotosForGallery(Gallery $gallery): array
+    {
+        return $this->photoRepository->findBy(
+            ['gallery' => $gallery],
+            ['id' => 'DESC']
         );
     }
 }

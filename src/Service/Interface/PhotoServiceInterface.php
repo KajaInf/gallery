@@ -5,6 +5,7 @@ namespace App\Service\Interface;
 use App\Entity\Photo;
 use App\Entity\Tag;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Entity\Gallery;
 
 /**
  * Provides photo-related application operations.
@@ -42,4 +43,11 @@ interface PhotoServiceInterface
      * Returns comments assigned to a photo.
      */
     public function getComments(Photo $photo): array;
+
+    /**
+    * Returns photos assigned to a gallery.
+    *
+    * @return Photo[]
+    */
+    public function getPhotosForGallery(Gallery $gallery): array;
 }

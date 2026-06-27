@@ -4,13 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Gallery;
 use App\Form\GalleryType;
-use App\Repository\PhotoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Service\Interface\GalleryServiceInterface;
+use App\Service\Interface\PhotoServiceInterface;
 
 #[Route('/gallery')]
 final class GalleryController extends AbstractController
@@ -46,16 +46,11 @@ final class GalleryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_gallery_show', methods: ['GET'])]
-    public function show(Gallery $gallery, PhotoRepository $photoRepository): Response
+    public function show(Gallery $gallery, PhotoServiceInterface $photoService): Response
     {
-        $photos = $photoRepository->findBy(
-            ['gallery' => $gallery],
-            ['id' => 'DESC']
-        );
-
         return $this->render('gallery/show.html.twig', [
-            'gallery' => $gallery,
-            'photos' => $photos,
+        'gallery' => $gallery,
+        'photos' => $photoService->getPhotosForGallery($gallery),
         ]);
     }
 
