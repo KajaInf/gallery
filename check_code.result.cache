@@ -1,17 +1,23 @@
    1) src/Form/UserType.php (array_indentation)
    2) src/Form/PhotoType.php (array_indentation)
-   3) src/Controller/ProfileController.php (trailing_comma_in_multiline)
-   4) src/Controller/RegistrationController.php (trailing_comma_in_multiline)
-   5) src/Controller/PhotoController.php (concat_space)
-   6) src/Security/Voter/CommentVoter.php (trailing_comma_in_multiline)
-   7) src/DataFixtures/AppFixtures.php (concat_space, no_trailing_whitespace, trailing_comma_in_multiline, statement_indentation, no_whitespace_in_blank_line)
-   8) src/Controller/SecurityController.php (single_line_throw)
-   9) src/Controller/GalleryController.php (concat_space)
-  10) src/Controller/TagController.php (concat_space)
-  11) src/Controller/CommentController.php (concat_space, statement_indentation)
-  12) src/Controller/UserController.php (concat_space, trailing_comma_in_multiline)
+   3) src/Controller/RegistrationController.php (trailing_comma_in_multiline)
+   4) src/Controller/PhotoController.php (concat_space)
+   5) src/Service/UserService.php (align_multiline_comment, phpdoc_indent, trailing_comma_in_multiline)
+   6) src/Service/GalleryService.php (trailing_comma_in_multiline)
+   7) src/Service/PhotoService.php (phpdoc_indent, concat_space, trailing_comma_in_multiline)
+   8) src/Service/TagService.php (trailing_comma_in_multiline)
+   9) src/Service/Interface/UserServiceInterface.php (align_multiline_comment)
+  10) src/Service/Interface/PhotoServiceInterface.php (align_multiline_comment)
+  11) src/Service/CommentService.php (trailing_comma_in_multiline)
+  12) src/Security/Voter/CommentVoter.php (trailing_comma_in_multiline)
+  13) src/DataFixtures/AppFixtures.php (concat_space, trailing_comma_in_multiline)
+  14) src/Controller/SecurityController.php (single_line_throw)
+  15) src/Controller/GalleryController.php (array_indentation, concat_space)
+  16) src/Controller/TagController.php (array_indentation, concat_space)
+  17) src/Controller/CommentController.php (array_indentation, concat_space, statement_indentation)
+  18) src/Controller/UserController.php (array_indentation, concat_space)
 
-Found 12 of 31 files that can be fixed in 1.031 seconds, 72.00 MB memory used
+Found 18 of 40 files that can be fixed in 1.185 seconds, 72.00 MB memory used
    1) tests/bootstrap.php (concat_space)
    2) tests/Controller/PhotoControllerTest.php (concat_space)
    3) tests/Controller/UserControllerTest.php (concat_space)
@@ -19,7 +25,7 @@ Found 12 of 31 files that can be fixed in 1.031 seconds, 72.00 MB memory used
    5) tests/Controller/CommentControllerTest.php (concat_space)
    6) tests/Controller/TagControllerTest.php (class_attributes_separation, concat_space)
 
-Found 6 of 20 files that can be fixed in 0.693 seconds, 54.00 MB memory used
+Found 6 of 21 files that can be fixed in 0.743 seconds, 72.00 MB memory used
 
 FILE: /home/kaja/gallery/src/Form/ProfileType.php
 ------------------------------------------------------------------------
@@ -146,16 +152,14 @@ FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
 
 
 FILE: /home/kaja/gallery/src/Controller/ProfileController.php
------------------------------------------------------------------------------------
-FOUND 3 ERRORS AND 1 WARNING AFFECTING 3 LINES
------------------------------------------------------------------------------------
+------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+------------------------------------------------------------------------
   3 | WARNING | The license block has to be present at the top
     |         |                 of every PHP file, before the namespace
  15 | ERROR   | Missing doc comment for class ProfileController
- 18 | ERROR   | Declare all the arguments on the same line as the method/function
-    |         | name, no matter how many arguments there are.
  18 | ERROR   | Missing doc comment for function index()
------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 
 FILE: /home/kaja/gallery/src/Controller/RegistrationController.php
@@ -164,37 +168,30 @@ FOUND 3 ERRORS AND 1 WARNING AFFECTING 3 LINES
 -----------------------------------------------------------------------------------
   3 | WARNING | The license block has to be present at the top
     |         |                 of every PHP file, before the namespace
- 16 | ERROR   | Missing doc comment for class RegistrationController
- 19 | ERROR   | Declare all the arguments on the same line as the method/function
+ 15 | ERROR   | Missing doc comment for class RegistrationController
+ 18 | ERROR   | Declare all the arguments on the same line as the method/function
     |         | name, no matter how many arguments there are.
- 19 | ERROR   | Missing doc comment for function register()
+ 18 | ERROR   | Missing doc comment for function register()
 -----------------------------------------------------------------------------------
 
 
 FILE: /home/kaja/gallery/src/Controller/PhotoController.php
 -----------------------------------------------------------------------------------
-FOUND 14 ERRORS AND 1 WARNING AFFECTING 11 LINES
+FOUND 8 ERRORS AND 1 WARNING AFFECTING 8 LINES
 -----------------------------------------------------------------------------------
    3 | WARNING | [ ] The license block has to be present at the top
      |         |                     of every PHP file, before the namespace
-  22 | ERROR   | [ ] Missing doc comment for class PhotoController
-  25 | ERROR   | [ ] Declare all the arguments on the same line as the
+  19 | ERROR   | [ ] Missing doc comment for class PhotoController
+  22 | ERROR   | [ ] Missing doc comment for function index()
+  45 | ERROR   | [ ] Missing doc comment for function new()
+  81 | ERROR   | [ ] Declare all the arguments on the same line as the
      |         |     method/function name, no matter how many arguments there are.
-  25 | ERROR   | [ ] Missing doc comment for function index()
-  62 | ERROR   | [ ] Missing doc comment for function new()
-  72 | ERROR   | [x] Concat operator must not be surrounded by spaces
-  72 | ERROR   | [x] Concat operator must not be surrounded by spaces
-  76 | ERROR   | [x] Concat operator must not be surrounded by spaces
- 104 | ERROR   | [ ] Declare all the arguments on the same line as the
-     |         |     method/function name, no matter how many arguments there are.
- 104 | ERROR   | [ ] Missing doc comment for function show()
- 143 | ERROR   | [ ] Missing doc comment for function edit()
- 164 | ERROR   | [ ] Missing doc comment for function delete()
- 166 | ERROR   | [x] Concat operator must not be surrounded by spaces
- 179 | ERROR   | [x] Concat operator must not be surrounded by spaces
- 179 | ERROR   | [x] Concat operator must not be surrounded by spaces
+  81 | ERROR   | [ ] Missing doc comment for function show()
+ 116 | ERROR   | [ ] Missing doc comment for function edit()
+ 137 | ERROR   | [ ] Missing doc comment for function delete()
+ 139 | ERROR   | [x] Concat operator must not be surrounded by spaces
 -----------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 -----------------------------------------------------------------------------------
 
 
@@ -211,57 +208,67 @@ FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
 
 
 FILE: /home/kaja/gallery/src/Controller/GalleryController.php
-----------------------------------------------------------------------------
-FOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES
-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+FOUND 10 ERRORS AND 1 WARNING AFFECTING 11 LINES
+-----------------------------------------------------------------------------------
   3 | WARNING | [ ] The license block has to be present at the top
     |         |                     of every PHP file, before the namespace
- 17 | ERROR   | [ ] Missing doc comment for class GalleryController
- 20 | ERROR   | [ ] Missing doc comment for function index()
- 29 | ERROR   | [ ] Missing doc comment for function new()
- 51 | ERROR   | [ ] Missing doc comment for function show()
- 66 | ERROR   | [ ] Missing doc comment for function edit()
- 87 | ERROR   | [ ] Missing doc comment for function delete()
- 89 | ERROR   | [x] Concat operator must not be surrounded by spaces
-----------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------------
+ 16 | ERROR   | [ ] Missing doc comment for class GalleryController
+ 19 | ERROR   | [ ] Missing doc comment for function index()
+ 22 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 8
+ 28 | ERROR   | [ ] Missing doc comment for function new()
+ 49 | ERROR   | [ ] Missing doc comment for function show()
+ 52 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 8
+ 53 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 8
+ 59 | ERROR   | [ ] Missing doc comment for function edit()
+ 80 | ERROR   | [ ] Missing doc comment for function delete()
+ 82 | ERROR   | [x] Concat operator must not be surrounded by spaces
+-----------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------
 
 
 FILE: /home/kaja/gallery/src/Controller/TagController.php
-----------------------------------------------------------------------------
-FOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES
-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+FOUND 8 ERRORS AND 1 WARNING AFFECTING 9 LINES
+-----------------------------------------------------------------------------------
   3 | WARNING | [ ] The license block has to be present at the top
     |         |                     of every PHP file, before the namespace
- 17 | ERROR   | [ ] Missing doc comment for class TagController
- 20 | ERROR   | [ ] Missing doc comment for function index()
- 28 | ERROR   | [ ] Missing doc comment for function new()
- 48 | ERROR   | [ ] Missing doc comment for function show()
- 56 | ERROR   | [ ] Missing doc comment for function edit()
- 74 | ERROR   | [ ] Missing doc comment for function delete()
- 76 | ERROR   | [x] Concat operator must not be surrounded by spaces
-----------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------------
+ 16 | ERROR   | [ ] Missing doc comment for class TagController
+ 19 | ERROR   | [ ] Missing doc comment for function index()
+ 22 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 8
+ 27 | ERROR   | [ ] Missing doc comment for function new()
+ 46 | ERROR   | [ ] Missing doc comment for function show()
+ 54 | ERROR   | [ ] Missing doc comment for function edit()
+ 72 | ERROR   | [ ] Missing doc comment for function delete()
+ 74 | ERROR   | [x] Concat operator must not be surrounded by spaces
+-----------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------
 
 
 FILE: /home/kaja/gallery/src/Controller/CommentController.php
-----------------------------------------------------------------------------
-FOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES
-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+FOUND 8 ERRORS AND 1 WARNING AFFECTING 9 LINES
+-----------------------------------------------------------------------------------
   3 | WARNING | [ ] The license block has to be present at the top
     |         |                     of every PHP file, before the namespace
- 18 | ERROR   | [ ] Missing doc comment for class CommentController
- 21 | ERROR   | [ ] Missing doc comment for function index()
- 29 | ERROR   | [ ] Missing doc comment for function new()
- 49 | ERROR   | [ ] Missing doc comment for function show()
- 57 | ERROR   | [ ] Missing doc comment for function edit()
- 76 | ERROR   | [ ] Missing doc comment for function delete()
- 79 | ERROR   | [x] Concat operator must not be surrounded by spaces
-----------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------------
+ 17 | ERROR   | [ ] Missing doc comment for class CommentController
+ 20 | ERROR   | [ ] Missing doc comment for function index()
+ 23 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 8
+ 28 | ERROR   | [ ] Missing doc comment for function new()
+ 47 | ERROR   | [ ] Missing doc comment for function show()
+ 55 | ERROR   | [ ] Missing doc comment for function edit()
+ 74 | ERROR   | [ ] Missing doc comment for function delete()
+ 78 | ERROR   | [x] Concat operator must not be surrounded by spaces
+-----------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------
 
 
 FILE: /home/kaja/gallery/src/Controller/HomeController.php
@@ -277,21 +284,25 @@ FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
 
 FILE: /home/kaja/gallery/src/Controller/UserController.php
 -----------------------------------------------------------------------------------
-FOUND 8 ERRORS AND 1 WARNING AFFECTING 8 LINES
+FOUND 10 ERRORS AND 1 WARNING AFFECTING 11 LINES
 -----------------------------------------------------------------------------------
   3 | WARNING | [ ] The license block has to be present at the top
     |         |                     of every PHP file, before the namespace
- 18 | ERROR   | [ ] Missing doc comment for class UserController
- 21 | ERROR   | [ ] Missing doc comment for function index()
- 29 | ERROR   | [ ] Missing doc comment for function new()
- 49 | ERROR   | [ ] Missing doc comment for function show()
- 57 | ERROR   | [ ] Declare all the arguments on the same line as the
-    |         |     method/function name, no matter how many arguments there are.
- 57 | ERROR   | [ ] Missing doc comment for function edit()
- 86 | ERROR   | [ ] Missing doc comment for function delete()
- 88 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 16 | ERROR   | [ ] Missing doc comment for class UserController
+ 19 | ERROR   | [ ] Missing doc comment for function index()
+ 22 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 8
+ 27 | ERROR   | [ ] Missing doc comment for function new()
+ 46 | ERROR   | [ ] Missing doc comment for function show()
+ 54 | ERROR   | [ ] Missing doc comment for function edit()
+ 69 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 11
+ 70 | ERROR   | [x] Multi-line function call not indented correctly; expected 12
+    |         |     spaces but found 11
+ 75 | ERROR   | [ ] Missing doc comment for function delete()
+ 77 | ERROR   | [x] Concat operator must not be surrounded by spaces
 -----------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 -----------------------------------------------------------------------------------
 
 
@@ -417,7 +428,7 @@ FOUND 5 ERRORS AND 1 WARNING AFFECTING 6 LINES
 
 FILE: /home/kaja/gallery/src/DataFixtures/AppFixtures.php
 -----------------------------------------------------------------------------------
-FOUND 20 ERRORS AND 6 WARNINGS AFFECTING 21 LINES
+FOUND 7 ERRORS AND 1 WARNING AFFECTING 6 LINES
 -----------------------------------------------------------------------------------
    3 | WARNING | [ ] The license block has to be present at the top
      |         |                     of every PHP file, before the namespace
@@ -426,37 +437,11 @@ FOUND 20 ERRORS AND 6 WARNINGS AFFECTING 21 LINES
      |         |     method/function name, no matter how many arguments there are.
   17 | ERROR   | [ ] Missing doc comment for function __construct()
   24 | ERROR   | [ ] Missing doc comment for function load()
-  62 | WARNING | [x] Please trim any trailing whitespace
-  64 | WARNING | [x] Please trim any trailing whitespace
-  66 | WARNING | [x] Please trim any trailing whitespace
- 114 | WARNING | [x] Please trim any trailing whitespace
- 114 | ERROR   | [x] Whitespace found at end of line
- 121 | WARNING | [x] Please trim any trailing whitespace
- 121 | ERROR   | [x] Whitespace found at end of line
- 127 | ERROR   | [x] Blank line found at start of control structure
- 129 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
-     |         |     4
- 130 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
-     |         |     4
- 131 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
-     |         |     4
- 132 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
-     |         |     4
- 133 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
-     |         |     4
- 134 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
-     |         |     4
- 134 | ERROR   | [x] Concat operator must not be surrounded by spaces
- 134 | ERROR   | [x] Concat operator must not be surrounded by spaces
- 136 | ERROR   | [x] Line indented incorrectly; expected 12 spaces, found 4
- 137 | ERROR   | [x] Line indented incorrectly; expected at least 16 spaces, found
-     |         |     8
- 138 | ERROR   | [x] Line indented incorrectly; expected 12 spaces, found 4
- 140 | ERROR   | [x] Line indented incorrectly; expected at least 12 spaces, found
-     |         |     4
- 146 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 133 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 133 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 145 | ERROR   | [x] Concat operator must not be surrounded by spaces
 -----------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 21 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 -----------------------------------------------------------------------------------
 
 
@@ -513,17 +498,171 @@ FOUND 1 ERROR AND 1 WARNING AFFECTING 2 LINES
 ------------------------------------------------------------------------
 
 
-FILE: /home/kaja/gallery/src/Service/CommentService.php
+FILE: /home/kaja/gallery/src/Service/UserService.php
 -----------------------------------------------------------------------------------
-FOUND 4 ERRORS AND 1 WARNING AFFECTING 4 LINES
+FOUND 10 ERRORS AND 1 WARNING AFFECTING 7 LINES
 -----------------------------------------------------------------------------------
   3 | WARNING | The license block has to be present at the top
     |         |                 of every PHP file, before the namespace
- 10 | ERROR   | Missing doc comment for class CommentService
- 12 | ERROR   | Declare all the arguments on the same line as the method/function
+ 16 | ERROR   | Doc comment for parameter "$userRepository" missing
+ 16 | ERROR   | Doc comment for parameter "$entityManager" missing
+ 16 | ERROR   | Doc comment for parameter "$passwordHasher" missing
+ 19 | ERROR   | Declare all the arguments on the same line as the method/function
     |         | name, no matter how many arguments there are.
- 12 | ERROR   | Missing doc comment for function __construct()
- 17 | ERROR   | Missing doc comment for function createForPhoto()
+ 36 | ERROR   | Doc comment for parameter "$user" missing
+ 45 | ERROR   | Doc comment for parameter "$user" missing
+ 45 | ERROR   | Doc comment for parameter "$plainPassword" missing
+ 55 | ERROR   | Doc comment for parameter "$user" missing
+ 55 | ERROR   | Doc comment for parameter "$plainPassword" missing
+ 67 | ERROR   | Doc comment for parameter "$user" missing
+-----------------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/GalleryService.php
+-----------------------------------------------------------------------------------
+FOUND 5 ERRORS AND 1 WARNING AFFECTING 5 LINES
+-----------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 15 | ERROR   | Doc comment for parameter "$galleryRepository" missing
+ 15 | ERROR   | Doc comment for parameter "$entityManager" missing
+ 18 | ERROR   | Declare all the arguments on the same line as the method/function
+    |         | name, no matter how many arguments there are.
+ 34 | ERROR   | Doc comment for parameter "$gallery" missing
+ 43 | ERROR   | Doc comment for parameter "$gallery" missing
+-----------------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/PhotoService.php
+-----------------------------------------------------------------------------------
+FOUND 20 ERRORS AND 1 WARNING AFFECTING 14 LINES
+-----------------------------------------------------------------------------------
+   3 | WARNING | [ ] The license block has to be present at the top
+     |         |                     of every PHP file, before the namespace
+  22 | ERROR   | [ ] Doc comment for parameter "$photoRepository" missing
+  22 | ERROR   | [ ] Doc comment for parameter "$tagRepository" missing
+  22 | ERROR   | [ ] Doc comment for parameter "$commentRepository" missing
+  22 | ERROR   | [ ] Doc comment for parameter "$entityManager" missing
+  22 | ERROR   | [ ] Doc comment for parameter "$projectDir" missing
+  25 | ERROR   | [ ] Declare all the arguments on the same line as the
+     |         |     method/function name, no matter how many arguments there are.
+  35 | ERROR   | [ ] Doc comment for parameter "$tagId" missing
+  49 | ERROR   | [ ] Doc comment for parameter "$tagId" missing
+  51 | ERROR   | [ ] Missing @return tag in function comment
+  61 | ERROR   | [ ] Doc comment for parameter "$photo" missing
+  70 | ERROR   | [ ] Doc comment for parameter "$photo" missing
+  70 | ERROR   | [ ] Doc comment for parameter "$imageFile" missing
+  75 | ERROR   | [x] Concat operator must not be surrounded by spaces
+  75 | ERROR   | [x] Concat operator must not be surrounded by spaces
+  78 | ERROR   | [x] Concat operator must not be surrounded by spaces
+  85 | ERROR   | [ ] Doc comment for parameter "$photo" missing
+ 100 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 100 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 110 | ERROR   | [ ] Doc comment for parameter "$photo" missing
+ 123 | ERROR   | [ ] Doc comment for parameter "$gallery" missing
+-----------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 5 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/TagService.php
+-----------------------------------------------------------------------------------
+FOUND 5 ERRORS AND 1 WARNING AFFECTING 5 LINES
+-----------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 15 | ERROR   | Doc comment for parameter "$tagRepository" missing
+ 15 | ERROR   | Doc comment for parameter "$entityManager" missing
+ 18 | ERROR   | Declare all the arguments on the same line as the method/function
+    |         | name, no matter how many arguments there are.
+ 34 | ERROR   | Doc comment for parameter "$tag" missing
+ 43 | ERROR   | Doc comment for parameter "$tag" missing
+-----------------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/Interface/TagServiceInterface.php
+------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 19 | ERROR   | Doc comment for parameter "$tag" missing
+ 24 | ERROR   | Doc comment for parameter "$tag" missing
+------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/Interface/GalleryServiceInterface.php
+--------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+--------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 19 | ERROR   | Doc comment for parameter "$gallery" missing
+ 24 | ERROR   | Doc comment for parameter "$gallery" missing
+--------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/Interface/UserServiceInterface.php
+------------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 5 LINES
+------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 19 | ERROR   | Doc comment for parameter "$user" missing
+ 24 | ERROR   | Doc comment for parameter "$user" missing
+ 24 | ERROR   | Doc comment for parameter "$plainPassword" missing
+ 29 | ERROR   | Doc comment for parameter "$user" missing
+ 29 | ERROR   | Doc comment for parameter "$plainPassword" missing
+ 34 | ERROR   | Doc comment for parameter "$user" missing
+------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/Interface/PhotoServiceInterface.php
+------------------------------------------------------------------------
+FOUND 8 ERRORS AND 1 WARNING AFFECTING 8 LINES
+------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 15 | ERROR   | Doc comment for parameter "$tagId" missing
+ 22 | ERROR   | Doc comment for parameter "$tagId" missing
+ 27 | ERROR   | Doc comment for parameter "$photo" missing
+ 32 | ERROR   | Doc comment for parameter "$photo" missing
+ 32 | ERROR   | Doc comment for parameter "$imageFile" missing
+ 37 | ERROR   | Doc comment for parameter "$photo" missing
+ 42 | ERROR   | Doc comment for parameter "$photo" missing
+ 47 | ERROR   | Doc comment for parameter "$gallery" missing
+------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/Interface/CommentServiceInterface.php
+--------------------------------------------------------------------------
+FOUND 5 ERRORS AND 1 WARNING AFFECTING 4 LINES
+--------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 21 | ERROR   | Doc comment for parameter "$comment" missing
+ 26 | ERROR   | Doc comment for parameter "$comment" missing
+ 31 | ERROR   | Doc comment for parameter "$comment" missing
+ 31 | ERROR   | Doc comment for parameter "$photo" missing
+ 31 | ERROR   | Doc comment for parameter "$user" missing
+--------------------------------------------------------------------------
+
+
+FILE: /home/kaja/gallery/src/Service/CommentService.php
+-----------------------------------------------------------------------------------
+FOUND 8 ERRORS AND 1 WARNING AFFECTING 6 LINES
+-----------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 17 | ERROR   | Doc comment for parameter "$commentRepository" missing
+ 17 | ERROR   | Doc comment for parameter "$entityManager" missing
+ 20 | ERROR   | Declare all the arguments on the same line as the method/function
+    |         | name, no matter how many arguments there are.
+ 36 | ERROR   | Doc comment for parameter "$comment" missing
+ 45 | ERROR   | Doc comment for parameter "$comment" missing
+ 54 | ERROR   | Doc comment for parameter "$comment" missing
+ 54 | ERROR   | Doc comment for parameter "$photo" missing
+ 54 | ERROR   | Doc comment for parameter "$user" missing
 -----------------------------------------------------------------------------------
 
 
@@ -805,6 +944,17 @@ FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
 -----------------------------------------------------------------------------
 
 
+FILE: /home/kaja/gallery/tests/DataFixtures/AppFixturesTest.php
+------------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 15 | ERROR   | Missing doc comment for class AppFixturesTest
+ 17 | ERROR   | Missing doc comment for function testLoadCreatesExampleData()
+------------------------------------------------------------------------------
+
+
 FILE: /home/kaja/gallery/tests/Service/CommentServiceTest.php
 ------------------------------------------------------------------------
 FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
@@ -815,27 +965,17 @@ FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
  14 | ERROR   | Missing doc comment for function testCreateForPhoto()
 ------------------------------------------------------------------------
 
- ----------- ------------ --------------------------------------------------------- ------------------------------------------ ------------------------------------------ 
-  State       Domain       Id                                                        Message Preview (en)                       Fallback Message Preview (pl)             
- ----------- ------------ --------------------------------------------------------- ------------------------------------------ ------------------------------------------ 
-   missing    validators   You should agree to our terms.                            You should agree to our terms.             You should agree to our terms.            
-   missing    validators   Please enter a password                                   Please enter a password                    Please enter a password                   
-   missing    validators   Your password should be at least {{ limit }} characters   Your password should be at least {{ l...   Your password should be at least {{ l...  
-   missing    validators   There is already an account with this email               There is already an account with this...   There is already an account with this...  
- ----------- ------------ --------------------------------------------------------- ------------------------------------------ ------------------------------------------ 
+ ------- -------- ---- ---------------------- ------------------------------- 
+  State   Domain   Id   Message Preview (en)   Fallback Message Preview (pl)  
+ ------- -------- ---- ---------------------- ------------------------------- 
 
- ----------- ------------ --------------------------------------------------------- ------------------------------------------ 
-  State       Domain       Id                                                        Message Preview (pl)                      
- ----------- ------------ --------------------------------------------------------- ------------------------------------------ 
-   missing    validators   You should agree to our terms.                            You should agree to our terms.            
-   missing    validators   Please enter a password                                   Please enter a password                   
-   missing    validators   Your password should be at least {{ limit }} characters   Your password should be at least {{ l...  
-   missing    validators   There is already an account with this email               There is already an account with this...  
- ----------- ------------ --------------------------------------------------------- ------------------------------------------ 
+ ------- -------- ---- ---------------------- 
+  State   Domain   Id   Message Preview (pl)  
+ ------- -------- ---- ---------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20260619112255
 [warning] Migration DoctrineMigrations\Version20260618015025 was executed but did not result in any SQL statements.
-[notice] finished in 27770.3ms, used 14M memory, 10 migrations executed, 15 sql queries
+[notice] finished in 26504.9ms, used 18M memory, 10 migrations executed, 15 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20260619112255   
 
