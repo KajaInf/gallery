@@ -34,7 +34,8 @@ class CommentServiceTest extends TestCase
 
         $comment = new Comment();
 
-        $service = new CommentService($entityManager);
+        $commentRepository = $this->createMock(\App\Repository\CommentRepository::class);
+        $service = new CommentService($commentRepository, $entityManager);
         $service->createForPhoto($comment, $photo, $user);
 
         $this->assertSame($photo, $comment->getPhoto());
