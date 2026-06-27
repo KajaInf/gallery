@@ -2,51 +2,34 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
 use App\Entity\Photo;
 use App\Form\CommentType;
 use App\Form\PhotoType;
-use App\Repository\CommentRepository;
-use App\Repository\PhotoRepository;
-use App\Repository\TagRepository;
 use App\Service\CommentService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use App\Entity\Comment;
+use App\Service\Interface\PhotoServiceInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/photo')]
 final class PhotoController extends AbstractController
 {
     #[Route(name: 'app_photo_index', methods: ['GET'])]
-    public function index(
-        Request $request,
-        PhotoRepository $photoRepository,
-        TagRepository $tagRepository,
-    ): Response {
+    public function index(Request $request, PhotoServiceInterface $photoService): Response
+    {
         $page = max(1, $request->query->getInt('page', 1));
         $limit = 10;
         $offset = ($page - 1) * $limit;
-
         $tagId = $request->query->get('tag');
 
-        if (null !== $tagId) {
-            $allPhotos = $photoRepository->findByTagId((int) $tagId);
-        } else {
-            $allPhotos = $photoRepository->findBy([], ['createdAt' => 'DESC']);
-        }
-
+        $allPhotos = $photoService->getPhotos($tagId);
         $photos = array_slice($allPhotos, $offset, $limit);
         $totalPages = (int) ceil(count($allPhotos) / $limit);
-
-        $selectedTagEntity = null;
-
-        if (null !== $tagId) {
-            $selectedTagEntity = $tagRepository->find((int) $tagId);
-        }
+        $selectedTagEntity = $photoService->getSelectedTag($tagId);
 
         return $this->render('photo/index.html.twig', [
             'photos' => $photos,
@@ -59,7 +42,7 @@ final class PhotoController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_photo_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, PhotoServiceInterface $photoService): Response
     {
         $photo = new Photo();
         $form = $this->createForm(PhotoType::class, $photo);
@@ -69,15 +52,8 @@ final class PhotoController extends AbstractController
             $imageFile = $form->get('imageFile')->getData();
 
             if ($imageFile) {
-                $newFilename = uniqid('photo_', true) . '.' . $imageFile->guessExtension();
-
                 try {
-                    $imageFile->move(
-                        $this->getParameter('kernel.project_dir') . '/public/uploads/photos',
-                        $newFilename
-                    );
-
-                    $photo->setFilename($newFilename);
+                    $photoService->uploadImage($photo, $imageFile);
                 } catch (FileException $exception) {
                     $this->addFlash('danger', 'Nie udało się przesłać pliku.');
 
@@ -86,8 +62,9 @@ final class PhotoController extends AbstractController
             }
 
             $photo->setCreatedAt(new \DateTimeImmutable());
-            $entityManager->persist($photo);
-            $entityManager->flush();
+            $photoService->save($photo);
+
+
 
             $this->addFlash('success', 'Zdjęcie zostało dodane.');
 
@@ -104,9 +81,8 @@ final class PhotoController extends AbstractController
     public function show(
         Request $request,
         Photo $photo,
-        EntityManagerInterface $entityManager,
-        CommentRepository $commentRepository,
         CommentService $commentService,
+        PhotoServiceInterface $photoService,
     ): Response {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -126,10 +102,7 @@ final class PhotoController extends AbstractController
             ]);
         }
 
-        $comments = $commentRepository->findBy(
-            ['photo' => $photo],
-            ['createdAt' => 'DESC']
-        );
+        $comments = $photoService->getComments($photo);
 
         return $this->render('photo/show.html.twig', [
             'photo' => $photo,
@@ -140,13 +113,13 @@ final class PhotoController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_photo_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Photo $photo, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Photo $photo, PhotoServiceInterface $photoService): Response
     {
         $form = $this->createForm(PhotoType::class, $photo);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $photoService->save($photo);
 
             $this->addFlash('success', 'Zdjęcie zostało zaktualizowane.');
 
@@ -161,30 +134,10 @@ final class PhotoController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/delete', name: 'app_photo_delete', methods: ['POST'])]
-    public function delete(Request $request, Photo $photo, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Photo $photo, PhotoServiceInterface $photoService): Response
     {
         if ($this->isCsrfTokenValid('delete' . $photo->getId(), $request->getPayload()->getString('_token'))) {
-            foreach ($photo->getTags() as $tag) {
-                $photo->removeTag($tag);
-            }
-
-            $comments = $entityManager
-                ->getRepository(Comment::class)
-                ->findBy(['photo' => $photo]);
-
-            foreach ($comments as $comment) {
-                $entityManager->remove($comment);
-            }
-
-            $filePath = $this->getParameter('kernel.project_dir') . '/public/uploads/photos/' . $photo->getFilename();
-
-            if (is_file($filePath)) {
-                unlink($filePath);
-            }
-
-            $entityManager->remove($photo);
-            $entityManager->flush();
-
+            $photoService->delete($photo);
             $this->addFlash('success', 'Zdjęcie zostało usunięte.');
         }
 
