@@ -42,6 +42,16 @@ class UserService implements UserServiceInterface
         $this->entityManager->flush();
     }
 
+   /**
+ * Hashes and saves user password when a plain password is required.
+ */
+    public function setPassword(User $user, string $plainPassword): void
+    {
+        $user->setPassword(
+            $this->passwordHasher->hashPassword($user, $plainPassword)
+        );
+    }
+
     /**
      * Updates user password when a new plain password is provided.
      */
@@ -51,9 +61,7 @@ class UserService implements UserServiceInterface
             return;
         }
 
-        $user->setPassword(
-            $this->passwordHasher->hashPassword($user, $plainPassword)
-        );
+        $this->setPassword($user, $plainPassword);
     }
 
     /**

@@ -22,6 +22,11 @@ interface UserServiceInterface
     public function save(User $user): void;
 
     /**
+    * Hashes and saves user password when a plain password is required.
+    */
+    public function setPassword(User $user, string $plainPassword): void;
+
+    /**
      * Updates user password when a new plain password is provided.
      */
     public function updatePassword(User $user, ?string $plainPassword): void;
