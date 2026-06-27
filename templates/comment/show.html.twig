@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <th>CreatedAt</th>
-                <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ comment.createdAt ? comment.createdAt|format_datetime('medium', 'medium', locale=app.request.locale) : '' }}</td>
             </tr>
         </tbody>
     </table>

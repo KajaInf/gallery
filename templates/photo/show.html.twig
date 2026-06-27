@@ -61,7 +61,7 @@
     {% for comment in comments %}
         <div>
             <strong>{{ comment.nick }}</strong>
-            <small>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i') : '' }}</small>
+            <small>{{ comment.createdAt ? comment.createdAt|format_datetime('medium', 'short', locale=app.request.locale) : '' }}</small>
             <p>{{ comment.content }}</p>
         </div>
         <hr>
