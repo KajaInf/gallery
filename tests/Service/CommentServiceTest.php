@@ -1,16 +1,29 @@
 <?php
 
+/**
+ * Comment service test.
+ */
+
 namespace App\Tests\Service;
 
 use App\Entity\Comment;
 use App\Entity\Photo;
+use App\Repository\CommentRepository;
 use App\Service\CommentService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * Class CommentServiceTest.
+ */
 class CommentServiceTest extends TestCase
 {
+    /**
+     * Tests creating comment for photo.
+     *
+     * @return void
+     */
     public function testCreateForPhoto(): void
     {
         $entityManager = $this->createMock(EntityManagerInterface::class);
@@ -34,7 +47,7 @@ class CommentServiceTest extends TestCase
 
         $comment = new Comment();
 
-        $commentRepository = $this->createMock(\App\Repository\CommentRepository::class);
+        $commentRepository = $this->createMock(CommentRepository::class);
         $service = new CommentService($commentRepository, $entityManager);
         $service->createForPhoto($comment, $photo, $user);
 

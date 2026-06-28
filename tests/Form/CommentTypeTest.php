@@ -1,13 +1,25 @@
 <?php
 
+/**
+ * Comment type form test.
+ */
+
 namespace App\Tests\Form;
 
 use App\Entity\Comment;
 use App\Form\CommentType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * Class CommentTypeTest.
+ */
 class CommentTypeTest extends TypeTestCase
 {
+    /**
+     * Tests submitting valid form data.
+     *
+     * @return void
+     */
     public function testSubmitValidData(): void
     {
         $formData = [

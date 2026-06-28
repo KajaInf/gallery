@@ -1,13 +1,25 @@
 <?php
 
+/**
+ * Profile type form test.
+ */
+
 namespace App\Tests\Form;
 
 use App\Entity\User;
 use App\Form\ProfileType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * Class ProfileTypeTest.
+ */
 class ProfileTypeTest extends TypeTestCase
 {
+    /**
+     * Tests submitting valid form data.
+     *
+     * @return void
+     */
     public function testSubmitValidData(): void
     {
         $formData = [

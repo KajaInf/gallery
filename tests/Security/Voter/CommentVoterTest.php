@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Comment voter test.
+ */
+
 namespace App\Tests\Security\Voter;
 
 use App\Entity\Comment;
@@ -9,8 +13,16 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
+/**
+ * Class CommentVoterTest.
+ */
 class CommentVoterTest extends TestCase
 {
+    /**
+     * Tests that admin can delete comment.
+     *
+     * @return void
+     */
     public function testAdminCanDeleteComment(): void
     {
         $security = $this->createMock(Security::class);

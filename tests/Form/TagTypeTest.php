@@ -1,13 +1,25 @@
 <?php
 
+/**
+ * Tag type form test.
+ */
+
 namespace App\Tests\Form;
 
 use App\Entity\Tag;
 use App\Form\TagType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * Class TagTypeTest.
+ */
 class TagTypeTest extends TypeTestCase
 {
+    /**
+     * Tests submitting valid form data.
+     *
+     * @return void
+     */
     public function testSubmitValidData(): void
     {
         $formData = [
