@@ -1,16 +1,28 @@
 <?php
 
+/**
+ * Photo controller test.
+ */
+
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Entity\Gallery;
 use App\Entity\Photo;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Class PhotoControllerTest.
+ */
 class PhotoControllerTest extends WebTestCase
 {
+    /**
+     * Tests photo index page.
+     *
+     * @return void
+     */
     public function testPhotoIndexIsSuccessful(): void
     {
         $client = static::createClient();
@@ -21,6 +33,11 @@ class PhotoControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h1', 'Lista zdjęć');
     }
 
+    /**
+     * Tests photo index page with tag filter.
+     *
+     * @return void
+     */
     public function testPhotoIndexWithTagFilterIsSuccessful(): void
     {
         $client = static::createClient();
@@ -30,6 +47,11 @@ class PhotoControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+    /**
+     * Tests photo show page.
+     *
+     * @return void
+     */
     public function testPhotoShowIsSuccessful(): void
     {
         $client = static::createClient();
@@ -57,22 +79,11 @@ class PhotoControllerTest extends WebTestCase
         $this->assertSelectorTextContains('body', 'Test photo description');
     }
 
-    private function createAdminUser(): User
-    {
-        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
-        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
-
-        $user = new User();
-        $user->setEmail('admin-photo-test-'.uniqid().'@example.com');
-        $user->setRoles(['ROLE_ADMIN']);
-        $user->setPassword($passwordHasher->hashPassword($user, 'password'));
-
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return $user;
-    }
-
+    /**
+     * Tests photo new page for admin user.
+     *
+     * @return void
+     */
     public function testPhotoNewIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();
@@ -85,6 +96,11 @@ class PhotoControllerTest extends WebTestCase
         $this->assertSelectorExists('form');
     }
 
+    /**
+     * Tests photo edit page for admin user.
+     *
+     * @return void
+     */
     public function testPhotoEditIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();
@@ -111,5 +127,26 @@ class PhotoControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');
+    }
+
+    /**
+     * Creates admin user.
+     *
+     * @return User Admin user
+     */
+    private function createAdminUser(): User
+    {
+        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
+        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
+
+        $user = new User();
+        $user->setEmail('admin-photo-test-'.uniqid().'@example.com');
+        $user->setRoles(['ROLE_ADMIN']);
+        $user->setPassword($passwordHasher->hashPassword($user, 'password'));
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $user;
     }
 }

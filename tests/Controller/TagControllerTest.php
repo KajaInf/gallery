@@ -1,15 +1,27 @@
 <?php
 
+/**
+ * Tag controller test.
+ */
+
 namespace App\Tests\Controller;
 
 use App\Entity\Tag;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use App\Entity\User;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Class TagControllerTest.
+ */
 class TagControllerTest extends WebTestCase
 {
+    /**
+     * Tests tag index redirect for anonymous user.
+     *
+     * @return void
+     */
     public function testTagIndexRedirectsAnonymousUser(): void
     {
         $client = static::createClient();
@@ -19,6 +31,11 @@ class TagControllerTest extends WebTestCase
         $this->assertResponseRedirects();
     }
 
+    /**
+     * Tests tag new page redirect for anonymous user.
+     *
+     * @return void
+     */
     public function testTagNewRedirectsAnonymousUser(): void
     {
         $client = static::createClient();
@@ -28,6 +45,11 @@ class TagControllerTest extends WebTestCase
         $this->assertResponseRedirects();
     }
 
+    /**
+     * Tests tag show page redirect for anonymous user.
+     *
+     * @return void
+     */
     public function testTagShowRedirectsAnonymousUser(): void
     {
         $client = static::createClient();
@@ -45,6 +67,28 @@ class TagControllerTest extends WebTestCase
         $this->assertResponseRedirects();
     }
 
+    /**
+     * Tests tag index page for admin user.
+     *
+     * @return void
+     */
+    public function testTagIndexIsSuccessfulForAdmin(): void
+    {
+        $client = static::createClient();
+        $admin = $this->createAdminUser();
+
+        $client->loginUser($admin);
+        $client->request('GET', '/tag');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('body');
+    }
+
+    /**
+     * Creates admin user.
+     *
+     * @return User Admin user
+     */
     private function createAdminUser(): User
     {
         $entityManager = static::getContainer()->get(EntityManagerInterface::class);
@@ -59,17 +103,5 @@ class TagControllerTest extends WebTestCase
         $entityManager->flush();
 
         return $user;
-    }
-
-    public function testTagIndexIsSuccessfulForAdmin(): void
-    {
-        $client = static::createClient();
-        $admin = $this->createAdminUser();
-
-        $client->loginUser($admin);
-        $client->request('GET', '/tag');
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('body');
     }
 }

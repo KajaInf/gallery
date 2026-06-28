@@ -1,15 +1,27 @@
 <?php
 
+/**
+ * Gallery controller test.
+ */
+
 namespace App\Tests\Controller;
 
 use App\Entity\Gallery;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use App\Entity\User;
 
+/**
+ * Class GalleryControllerTest.
+ */
 class GalleryControllerTest extends WebTestCase
 {
+    /**
+     * Tests gallery index page.
+     *
+     * @return void
+     */
     public function testGalleryIndexIsSuccessful(): void
     {
         $client = static::createClient();
@@ -20,6 +32,11 @@ class GalleryControllerTest extends WebTestCase
         $this->assertSelectorExists('body');
     }
 
+    /**
+     * Tests gallery new redirect for anonymous user.
+     *
+     * @return void
+     */
     public function testGalleryNewRedirectsAnonymousUser(): void
     {
         $client = static::createClient();
@@ -29,6 +46,11 @@ class GalleryControllerTest extends WebTestCase
         $this->assertResponseRedirects();
     }
 
+    /**
+     * Tests gallery show page.
+     *
+     * @return void
+     */
     public function testGalleryShowIsSuccessful(): void
     {
         $client = static::createClient();
@@ -47,6 +69,28 @@ class GalleryControllerTest extends WebTestCase
         $this->assertSelectorTextContains('body', 'Test gallery');
     }
 
+    /**
+     * Tests gallery new page for admin user.
+     *
+     * @return void
+     */
+    public function testGalleryNewIsSuccessfulForAdmin(): void
+    {
+        $client = static::createClient();
+        $admin = $this->createAdminUser();
+
+        $client->loginUser($admin);
+        $client->request('GET', '/gallery/new');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('form');
+    }
+
+    /**
+     * Creates admin user.
+     *
+     * @return User Admin user
+     */
     private function createAdminUser(): User
     {
         $entityManager = static::getContainer()->get(EntityManagerInterface::class);
@@ -61,17 +105,5 @@ class GalleryControllerTest extends WebTestCase
         $entityManager->flush();
 
         return $user;
-    }
-
-    public function testGalleryNewIsSuccessfulForAdmin(): void
-    {
-        $client = static::createClient();
-        $admin = $this->createAdminUser();
-
-        $client->loginUser($admin);
-        $client->request('GET', '/gallery/new');
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('form');
     }
 }

@@ -1,14 +1,26 @@
 <?php
 
+/**
+ * User controller test.
+ */
+
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Class UserControllerTest.
+ */
 class UserControllerTest extends WebTestCase
 {
+    /**
+     * Tests user index redirect for anonymous user.
+     *
+     * @return void
+     */
     public function testUserIndexRedirectsAnonymousUser(): void
     {
         $client = static::createClient();
@@ -18,22 +30,11 @@ class UserControllerTest extends WebTestCase
         $this->assertResponseRedirects();
     }
 
-    private function createAdminUser(): User
-    {
-        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
-        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
-
-        $user = new User();
-        $user->setEmail('admin-user-test-'.uniqid().'@example.com');
-        $user->setRoles(['ROLE_ADMIN']);
-        $user->setPassword($passwordHasher->hashPassword($user, 'password'));
-
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return $user;
-    }
-
+    /**
+     * Tests user index page for admin user.
+     *
+     * @return void
+     */
     public function testUserIndexIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();
@@ -46,6 +47,11 @@ class UserControllerTest extends WebTestCase
         $this->assertSelectorExists('body');
     }
 
+    /**
+     * Tests user new page for admin user.
+     *
+     * @return void
+     */
     public function testUserNewIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();
@@ -58,6 +64,11 @@ class UserControllerTest extends WebTestCase
         $this->assertSelectorExists('form');
     }
 
+    /**
+     * Tests user edit page for admin user.
+     *
+     * @return void
+     */
     public function testUserEditIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();
@@ -79,5 +90,26 @@ class UserControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');
+    }
+
+    /**
+     * Creates admin user.
+     *
+     * @return User Admin user
+     */
+    private function createAdminUser(): User
+    {
+        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
+        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
+
+        $user = new User();
+        $user->setEmail('admin-user-test-'.uniqid().'@example.com');
+        $user->setRoles(['ROLE_ADMIN']);
+        $user->setPassword($passwordHasher->hashPassword($user, 'password'));
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $user;
     }
 }

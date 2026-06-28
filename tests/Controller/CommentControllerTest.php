@@ -1,17 +1,29 @@
 <?php
 
+/**
+ * Comment controller test.
+ */
+
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Entity\Comment;
 use App\Entity\Gallery;
 use App\Entity\Photo;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Class CommentControllerTest.
+ */
 class CommentControllerTest extends WebTestCase
 {
+    /**
+     * Tests comment index redirect for anonymous user.
+     *
+     * @return void
+     */
     public function testCommentIndexRedirectsAnonymousUser(): void
     {
         $client = static::createClient();
@@ -21,22 +33,11 @@ class CommentControllerTest extends WebTestCase
         $this->assertResponseRedirects();
     }
 
-    private function createAdminUser(): User
-    {
-        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
-        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
-
-        $user = new User();
-        $user->setEmail('admin-comment-test-'.uniqid().'@example.com');
-        $user->setRoles(['ROLE_ADMIN']);
-        $user->setPassword($passwordHasher->hashPassword($user, 'password'));
-
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return $user;
-    }
-
+    /**
+     * Tests comment index page for admin user.
+     *
+     * @return void
+     */
     public function testCommentIndexIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();
@@ -49,6 +50,11 @@ class CommentControllerTest extends WebTestCase
         $this->assertSelectorExists('body');
     }
 
+    /**
+     * Tests comment show page for admin user.
+     *
+     * @return void
+     */
     public function testCommentShowIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();
@@ -82,5 +88,26 @@ class CommentControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('body', 'Test comment content');
+    }
+
+    /**
+     * Creates admin user.
+     *
+     * @return User Admin user
+     */
+    private function createAdminUser(): User
+    {
+        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
+        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
+
+        $user = new User();
+        $user->setEmail('admin-comment-test-'.uniqid().'@example.com');
+        $user->setRoles(['ROLE_ADMIN']);
+        $user->setPassword($passwordHasher->hashPassword($user, 'password'));
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $user;
     }
 }
