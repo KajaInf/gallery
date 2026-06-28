@@ -1,19 +1,34 @@
 <?php
 
+/**
+ * Profile controller.
+ */
+
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\ProfileType;
+use App\Service\Interface\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Entity\User;
-use App\Service\Interface\UserServiceInterface;
 
+/**
+ * Class ProfileController.
+ */
 #[IsGranted('ROLE_USER')]
 final class ProfileController extends AbstractController
 {
+    /**
+     * Index action.
+     *
+     * @param Request              $request     HTTP request
+     * @param UserServiceInterface $userService User service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/profile', name: 'app_profile', methods: ['GET', 'POST'])]
     public function index(Request $request, UserServiceInterface $userService): Response
     {
