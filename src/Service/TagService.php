@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Tag service.
+ */
+
 namespace App\Service;
 
 use App\Entity\Tag;
@@ -8,23 +12,24 @@ use App\Service\Interface\TagServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Handles tag persistence operations.
+ * Class TagService.
  */
 class TagService implements TagServiceInterface
 {
     /**
-     * Creates the tag service.
+     * Constructor.
+     *
+     * @param TagRepository          $tagRepository Tag repository
+     * @param EntityManagerInterface $entityManager Entity manager
      */
-    public function __construct(
-        private readonly TagRepository $tagRepository,
-        private readonly EntityManagerInterface $entityManager,
-    ) {
+    public function __construct(private readonly TagRepository $tagRepository, private readonly EntityManagerInterface $entityManager)
+    {
     }
 
     /**
      * Returns all tags.
      *
-     * @return Tag[]
+     * @return Tag[] List of tags
      */
     public function getAll(): array
     {
@@ -33,6 +38,10 @@ class TagService implements TagServiceInterface
 
     /**
      * Saves a tag.
+     *
+     * @param Tag $tag Tag entity
+     *
+     * @return void
      */
     public function save(Tag $tag): void
     {
@@ -42,6 +51,10 @@ class TagService implements TagServiceInterface
 
     /**
      * Deletes a tag.
+     *
+     * @param Tag $tag Tag entity
+     *
+     * @return void
      */
     public function delete(Tag $tag): void
     {

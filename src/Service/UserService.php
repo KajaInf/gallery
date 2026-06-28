@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * User service.
+ */
+
 namespace App\Service;
 
 use App\Entity\User;
@@ -9,24 +13,25 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Handles user-related application logic.
+ * Class UserService.
  */
 class UserService implements UserServiceInterface
 {
     /**
-     * Creates the user service.
+     * Constructor.
+     *
+     * @param UserRepository              $userRepository User repository
+     * @param EntityManagerInterface      $entityManager  Entity manager
+     * @param UserPasswordHasherInterface $passwordHasher Password hasher
      */
-    public function __construct(
-        private readonly UserRepository $userRepository,
-        private readonly EntityManagerInterface $entityManager,
-        private readonly UserPasswordHasherInterface $passwordHasher,
-    ) {
+    public function __construct(private readonly UserRepository $userRepository, private readonly EntityManagerInterface $entityManager, private readonly UserPasswordHasherInterface $passwordHasher)
+    {
     }
 
     /**
      * Returns all users.
      *
-     * @return User[]
+     * @return User[] List of users
      */
     public function getAll(): array
     {
@@ -35,6 +40,10 @@ class UserService implements UserServiceInterface
 
     /**
      * Saves a user.
+     *
+     * @param User $user User entity
+     *
+     * @return void
      */
     public function save(User $user): void
     {
@@ -43,7 +52,12 @@ class UserService implements UserServiceInterface
     }
 
     /**
-     * Hashes and saves user password when a plain password is required.
+     * Sets hashed password.
+     *
+     * @param User   $user          User entity
+     * @param string $plainPassword Plain password
+     *
+     * @return void
      */
     public function setPassword(User $user, string $plainPassword): void
     {
@@ -53,7 +67,12 @@ class UserService implements UserServiceInterface
     }
 
     /**
-     * Updates user password when a new plain password is provided.
+     * Updates password.
+     *
+     * @param User        $user          User entity
+     * @param string|null $plainPassword Plain password
+     *
+     * @return void
      */
     public function updatePassword(User $user, ?string $plainPassword): void
     {
@@ -66,6 +85,10 @@ class UserService implements UserServiceInterface
 
     /**
      * Deletes a user.
+     *
+     * @param User $user User entity
+     *
+     * @return void
      */
     public function delete(User $user): void
     {

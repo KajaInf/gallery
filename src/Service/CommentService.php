@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Comment service.
+ */
+
 namespace App\Service;
 
 use App\Entity\Comment;
@@ -10,23 +14,24 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Handles comment-related application logic.
+ * Class CommentService.
  */
 class CommentService implements CommentServiceInterface
 {
     /**
-     * Creates the comment service.
+     * Constructor.
+     *
+     * @param CommentRepository      $commentRepository Comment repository
+     * @param EntityManagerInterface $entityManager     Entity manager
      */
-    public function __construct(
-        private readonly CommentRepository $commentRepository,
-        private readonly EntityManagerInterface $entityManager,
-    ) {
+    public function __construct(private readonly CommentRepository $commentRepository, private readonly EntityManagerInterface $entityManager)
+    {
     }
 
     /**
      * Returns all comments.
      *
-     * @return Comment[]
+     * @return Comment[] List of comments
      */
     public function getAll(): array
     {
@@ -35,6 +40,10 @@ class CommentService implements CommentServiceInterface
 
     /**
      * Saves a comment.
+     *
+     * @param Comment $comment Comment entity
+     *
+     * @return void
      */
     public function save(Comment $comment): void
     {
@@ -44,6 +53,10 @@ class CommentService implements CommentServiceInterface
 
     /**
      * Deletes a comment.
+     *
+     * @param Comment $comment Comment entity
+     *
+     * @return void
      */
     public function delete(Comment $comment): void
     {
@@ -53,6 +66,12 @@ class CommentService implements CommentServiceInterface
 
     /**
      * Creates a comment assigned to a photo and user.
+     *
+     * @param Comment       $comment Comment entity
+     * @param Photo         $photo   Photo entity
+     * @param UserInterface $user    User entity
+     *
+     * @return void
      */
     public function createForPhoto(Comment $comment, Photo $photo, UserInterface $user): void
     {

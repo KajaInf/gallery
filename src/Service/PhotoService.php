@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * Photo service.
+ */
+
 namespace App\Service;
 
 use App\Entity\Comment;
+use App\Entity\Gallery;
 use App\Entity\Photo;
 use App\Entity\Tag;
 use App\Repository\CommentRepository;
@@ -12,30 +17,31 @@ use App\Service\Interface\PhotoServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use App\Entity\Gallery;
 
 /**
- * Handles photo-related application logic.
+ * Class PhotoService.
  */
 class PhotoService implements PhotoServiceInterface
 {
     /**
-     * Creates the photo service.
+     * Constructor.
+     *
+     * @param PhotoRepository        $photoRepository   Photo repository
+     * @param TagRepository          $tagRepository     Tag repository
+     * @param CommentRepository      $commentRepository Comment repository
+     * @param EntityManagerInterface $entityManager     Entity manager
+     * @param string                 $projectDir        Project directory
      */
-    public function __construct(
-        private readonly PhotoRepository $photoRepository,
-        private readonly TagRepository $tagRepository,
-        private readonly CommentRepository $commentRepository,
-        private readonly EntityManagerInterface $entityManager,
-        #[Autowire('%kernel.project_dir%')]
-        private readonly string $projectDir,
-    ) {
+    public function __construct(private readonly PhotoRepository $photoRepository, private readonly TagRepository $tagRepository, private readonly CommentRepository $commentRepository, private readonly EntityManagerInterface $entityManager, #[Autowire('%kernel.project_dir%')] private readonly string $projectDir)
+    {
     }
 
     /**
-     * Returns photos filtered by tag or all photos sorted by creation date.
+     * Returns photos filtered by tag.
      *
-     * @return Photo[]
+     * @param string|null $tagId Tag identifier
+     *
+     * @return Photo[] List of photos
      */
     public function getPhotos(?string $tagId): array
     {
@@ -47,7 +53,11 @@ class PhotoService implements PhotoServiceInterface
     }
 
     /**
-     * Returns selected tag by id.
+     * Returns selected tag.
+     *
+     * @param string|null $tagId Tag identifier
+     *
+     * @return Tag|null Tag entity
      */
     public function getSelectedTag(?string $tagId): ?Tag
     {
@@ -60,6 +70,10 @@ class PhotoService implements PhotoServiceInterface
 
     /**
      * Saves a photo.
+     *
+     * @param Photo $photo Photo entity
+     *
+     * @return void
      */
     public function save(Photo $photo): void
     {
@@ -68,7 +82,12 @@ class PhotoService implements PhotoServiceInterface
     }
 
     /**
-     * Stores uploaded image file and assigns filename to photo.
+     * Uploads photo image.
+     *
+     * @param Photo        $photo     Photo entity
+     * @param UploadedFile $imageFile Uploaded image
+     *
+     * @return void
      */
     public function uploadImage(Photo $photo, UploadedFile $imageFile): void
     {
@@ -83,7 +102,11 @@ class PhotoService implements PhotoServiceInterface
     }
 
     /**
-     * Deletes a photo with related comments, tags and file.
+     * Deletes a photo.
+     *
+     * @param Photo $photo Photo entity
+     *
+     * @return void
      */
     public function delete(Photo $photo): void
     {
@@ -108,9 +131,11 @@ class PhotoService implements PhotoServiceInterface
     }
 
     /**
-     * Returns comments assigned to a photo.
+     * Returns comments for photo.
      *
-     * @return Comment[]
+     * @param Photo $photo Photo entity
+     *
+     * @return Comment[] List of comments
      */
     public function getComments(Photo $photo): array
     {
@@ -121,9 +146,11 @@ class PhotoService implements PhotoServiceInterface
     }
 
     /**
-     * Returns photos assigned to a gallery.
+     * Returns gallery photos.
      *
-     * @return Photo[]
+     * @param Gallery $gallery Gallery entity
+     *
+     * @return Photo[] List of photos
      */
     public function getPhotosForGallery(Gallery $gallery): array
     {

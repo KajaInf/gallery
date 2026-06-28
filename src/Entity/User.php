@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * User entity.
+ */
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -9,6 +13,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class User.
+ */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -26,28 +33,45 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     /**
-     * @var list<string> The user roles
+     * @var list<string> User roles
      */
     #[ORM\Column]
     private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * @var string Hashed password
      */
     #[ORM\Column]
     #[Assert\NotBlank]
     private ?string $password = null;
 
+    /**
+     * Gets identifier.
+     *
+     * @return int|null Identifier
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return string|null Email
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param string $email Email
+     *
+     * @return static
+     */
     public function setEmail(string $email): static
     {
         $this->email = $email;
@@ -56,9 +80,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * A visual identifier that represents this user.
+     * Gets user identifier.
      *
-     * @see UserInterface
+     * @return string User identifier
      */
     public function getUserIdentifier(): string
     {
@@ -66,19 +90,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @see UserInterface
+     * Gets user roles.
+     *
+     * @return array User roles
      */
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+
+        // Guarantee every user at least has ROLE_USER.
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
 
     /**
-     * @param list<string> $roles
+     * Sets user roles.
+     *
+     * @param list<string> $roles User roles
+     *
+     * @return static
      */
     public function setRoles(array $roles): static
     {
@@ -88,13 +119,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @see PasswordAuthenticatedUserInterface
+     * Gets hashed password.
+     *
+     * @return string|null Hashed password
      */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
+    /**
+     * Sets hashed password.
+     *
+     * @param string $password Hashed password
+     *
+     * @return static
+     */
     public function setPassword(string $password): static
     {
         $this->password = $password;
@@ -102,6 +142,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * Erases temporary sensitive data.
+     *
+     * @return void
+     */
     #[\Deprecated]
     public function eraseCredentials(): void
     {

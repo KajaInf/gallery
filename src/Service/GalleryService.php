@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Gallery service.
+ */
+
 namespace App\Service;
 
 use App\Entity\Gallery;
@@ -8,23 +12,24 @@ use App\Service\Interface\GalleryServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Handles gallery persistence operations.
+ * Class GalleryService.
  */
 class GalleryService implements GalleryServiceInterface
 {
     /**
-     * Creates the gallery service.
+     * Constructor.
+     *
+     * @param GalleryRepository      $galleryRepository Gallery repository
+     * @param EntityManagerInterface $entityManager     Entity manager
      */
-    public function __construct(
-        private readonly GalleryRepository $galleryRepository,
-        private readonly EntityManagerInterface $entityManager,
-    ) {
+    public function __construct(private readonly GalleryRepository $galleryRepository, private readonly EntityManagerInterface $entityManager)
+    {
     }
 
     /**
      * Returns all galleries.
      *
-     * @return Gallery[]
+     * @return Gallery[] List of galleries
      */
     public function getAll(): array
     {
@@ -33,6 +38,10 @@ class GalleryService implements GalleryServiceInterface
 
     /**
      * Saves a gallery.
+     *
+     * @param Gallery $gallery Gallery entity
+     *
+     * @return void
      */
     public function save(Gallery $gallery): void
     {
@@ -42,6 +51,10 @@ class GalleryService implements GalleryServiceInterface
 
     /**
      * Deletes a gallery.
+     *
+     * @param Gallery $gallery Gallery entity
+     *
+     * @return void
      */
     public function delete(Gallery $gallery): void
     {
