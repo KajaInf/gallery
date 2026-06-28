@@ -1,13 +1,25 @@
 <?php
 
+/**
+ * Comment entity test.
+ */
+
 namespace App\Tests\Entity;
 
 use App\Entity\Comment;
 use App\Entity\Photo;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class CommentTest.
+ */
 class CommentTest extends TestCase
 {
+    /**
+     * Tests getters and setters.
+     *
+     * @return void
+     */
     public function testGettersAndSetters(): void
     {
         $comment = new Comment();

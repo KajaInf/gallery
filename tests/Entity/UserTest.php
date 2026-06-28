@@ -1,12 +1,24 @@
 <?php
 
+/**
+ * User entity test.
+ */
+
 namespace App\Tests\Entity;
 
 use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class UserTest.
+ */
 class UserTest extends TestCase
 {
+    /**
+     * Tests getters and setters.
+     *
+     * @return void
+     */
     public function testGettersAndSetters(): void
     {
         $user = new User();
@@ -23,6 +35,11 @@ class UserTest extends TestCase
         $this->assertNull($user->getId());
     }
 
+    /**
+     * Tests that user always has ROLE_USER.
+     *
+     * @return void
+     */
     public function testUserAlwaysHasRoleUser(): void
     {
         $user = new User();

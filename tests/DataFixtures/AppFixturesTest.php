@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * App fixtures test.
+ */
+
 namespace App\Tests\DataFixtures;
 
 use App\DataFixtures\AppFixtures;
@@ -12,8 +16,16 @@ use Doctrine\Persistence\ObjectManager;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Class AppFixturesTest.
+ */
 class AppFixturesTest extends TestCase
 {
+    /**
+     * Tests loading example data.
+     *
+     * @return void
+     */
     public function testLoadCreatesExampleData(): void
     {
         $passwordHasher = $this->createMock(UserPasswordHasherInterface::class);
@@ -40,7 +52,6 @@ class AppFixturesTest extends TestCase
         $fixtures->load($manager);
 
         $this->assertCount(24, $persistedObjects);
-
 
         $users = array_filter($persistedObjects, static fn (object $object): bool => $object instanceof User);
         $galleries = array_filter($persistedObjects, static fn (object $object): bool => $object instanceof Gallery);

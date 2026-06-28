@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Photo entity test.
+ */
+
 namespace App\Tests\Entity;
 
 use App\Entity\Gallery;
@@ -7,8 +11,16 @@ use App\Entity\Photo;
 use App\Entity\Tag;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class PhotoTest.
+ */
 class PhotoTest extends TestCase
 {
+    /**
+     * Tests getters and setters.
+     *
+     * @return void
+     */
     public function testGettersAndSetters(): void
     {
         $photo = new Photo();
@@ -26,6 +38,11 @@ class PhotoTest extends TestCase
         $this->assertSame($gallery, $photo->getGallery());
     }
 
+    /**
+     * Tests tag collection.
+     *
+     * @return void
+     */
     public function testTags(): void
     {
         $photo = new Photo();
