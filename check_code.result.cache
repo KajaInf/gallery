@@ -1,0 +1,67 @@
+   1) src/Form/ProfileType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   2) src/Form/UserType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   3) src/Form/RegistrationFormType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   4) src/Form/CommentType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   5) src/Form/PhotoType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   6) src/Form/TagType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   7) src/Form/GalleryType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   8) src/Controller/GalleryController.php (class_attributes_separation, phpdoc_indent, no_blank_lines_after_phpdoc)
+   9) src/Controller/TagController.php (class_attributes_separation, phpdoc_indent, no_blank_lines_after_phpdoc)
+  10) src/Entity/Comment.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  11) src/Entity/User.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  12) src/Entity/Gallery.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  13) src/Entity/Tag.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  14) src/Entity/Photo.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  15) src/DataFixtures/AppFixtures.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  16) src/Repository/UserRepository.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  17) src/Service/UserService.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  18) src/Service/GalleryService.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  19) src/Service/PhotoService.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  20) src/Service/TagService.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  21) src/Service/Interface/TagServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  22) src/Service/Interface/GalleryServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  23) src/Service/Interface/UserServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  24) src/Service/Interface/PhotoServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  25) src/Service/Interface/CommentServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  26) src/Service/CommentService.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+
+Found 26 of 40 files that can be fixed in 1.390 seconds, 72.00 MB memory used
+   1) tests/Service/CommentServiceTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   2) tests/Form/GalleryTypeTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   3) tests/Form/ProfileTypeTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   4) tests/Form/CommentTypeTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   5) tests/Form/TagTypeTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   6) tests/Controller/PhotoControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   7) tests/Controller/UserControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   8) tests/Controller/GalleryControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   9) tests/Controller/CommentControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  10) tests/Controller/TagControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  11) tests/Controller/ProfileControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  12) tests/Controller/SecurityControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  13) tests/Controller/HomeControllerTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  14) tests/Entity/UserTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  15) tests/Entity/PhotoTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  16) tests/Entity/CommentTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  17) tests/Entity/TagTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  18) tests/Entity/GalleryTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  19) tests/Security/Voter/CommentVoterTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  20) tests/DataFixtures/AppFixturesTest.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+
+Found 20 of 21 files that can be fixed in 0.764 seconds, 72.00 MB memory used
+ ------- -------- ---- ---------------------- ------------------------------- 
+  State   Domain   Id   Message Preview (en)   Fallback Message Preview (pl)  
+ ------- -------- ---- ---------------------- ------------------------------- 
+
+ ------- -------- ---- ---------------------- 
+  State   Domain   Id   Message Preview (pl)  
+ ------- -------- ---- ---------------------- 
+
+[notice] Migrating up to DoctrineMigrations\Version20260619112255
+[warning] Migration DoctrineMigrations\Version20260618015025 was executed but did not result in any SQL statements.
+[notice] finished in 37379.1ms, used 18M memory, 10 migrations executed, 15 sql queries
+
+ [OK] Successfully migrated to version: DoctrineMigrations\Version20260619112255   
+
+
+   > purging database
+   > loading App\DataFixtures\AppFixtures
