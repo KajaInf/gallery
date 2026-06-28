@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Gallery form type.
+ */
+
 namespace App\Form;
 
 use App\Entity\Gallery;
@@ -7,8 +11,19 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class GalleryType.
+ */
 class GalleryType extends AbstractType
 {
+    /**
+     * Builds gallery form.
+     *
+     * @param FormBuilderInterface $builder Form builder
+     * @param array                $options Form options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -16,6 +31,13 @@ class GalleryType extends AbstractType
         ;
     }
 
+    /**
+     * Configures gallery form options.
+     *
+     * @param OptionsResolver $resolver Options resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

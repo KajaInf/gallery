@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * User form type.
+ */
+
 namespace App\Form;
 
 use App\Entity\User;
@@ -10,8 +14,19 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class UserType.
+ */
 class UserType extends AbstractType
 {
+    /**
+     * Builds user form.
+     *
+     * @param FormBuilderInterface $builder Form builder
+     * @param array                $options Form options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -24,22 +39,27 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-
-        ->add('plainPassword', RepeatedType::class, [
-            'type' => PasswordType::class,
-            'mapped' => false,
-            'required' => false,
-            'first_options' => [
-                'label' => 'Nowe hasło',
-            ],
-            'second_options' => [
-                'label' => 'Powtórz nowe hasło',
-            ],
-        ])
-            ->add('password')
-        ;
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'mapped' => false,
+                'required' => false,
+                'first_options' => [
+                    'label' => 'Nowe hasło',
+                ],
+                'second_options' => [
+                    'label' => 'Powtórz nowe hasło',
+                ],
+            ])
+            ->add('password');
     }
 
+    /**
+     * Configures user form options.
+     *
+     * @param OptionsResolver $resolver Options resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

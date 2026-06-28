@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Profile form type.
+ */
+
 namespace App\Form;
 
 use App\Entity\User;
@@ -9,8 +13,19 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class ProfileType.
+ */
 class ProfileType extends AbstractType
 {
+    /**
+     * Builds profile form.
+     *
+     * @param FormBuilderInterface $builder Form builder
+     * @param array                $options Form options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -28,6 +43,13 @@ class ProfileType extends AbstractType
             ]);
     }
 
+    /**
+     * Configures profile form options.
+     *
+     * @param OptionsResolver $resolver Options resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
