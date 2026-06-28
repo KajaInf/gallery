@@ -17,7 +17,7 @@ class TagService implements TagServiceInterface
      */
     public function __construct(
         private readonly TagRepository $tagRepository,
-        private readonly EntityManagerInterface $entityManager
+        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 

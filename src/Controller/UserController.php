@@ -19,7 +19,7 @@ final class UserController extends AbstractController
     public function index(UserServiceInterface $userService): Response
     {
         return $this->render('user/index.html.twig', [
-        'users' => $userService->getAll(),
+            'users' => $userService->getAll(),
         ]);
     }
 
@@ -66,15 +66,15 @@ final class UserController extends AbstractController
         }
 
         return $this->render('user/edit.html.twig', [
-           'user' => $user,
-           'form' => $form,
+            'user' => $user,
+            'form' => $form,
         ]);
     }
 
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserServiceInterface $userService): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
             if ($user === $this->getUser()) {
                 $this->addFlash('danger', 'Nie możesz usunąć własnego konta administratora.');
 

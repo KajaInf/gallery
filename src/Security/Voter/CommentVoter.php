@@ -13,7 +13,7 @@ class CommentVoter extends Voter
     public const DELETE = 'COMMENT_DELETE';
 
     public function __construct(
-        private readonly Security $security
+        private readonly Security $security,
     ) {
     }
 

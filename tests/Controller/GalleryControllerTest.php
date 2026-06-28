@@ -41,18 +41,19 @@ class GalleryControllerTest extends WebTestCase
         $entityManager->persist($gallery);
         $entityManager->flush();
 
-        $client->request('GET', '/gallery/' . $gallery->getId());
+        $client->request('GET', '/gallery/'.$gallery->getId());
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('body', 'Test gallery');
     }
+
     private function createAdminUser(): User
     {
         $entityManager = static::getContainer()->get(EntityManagerInterface::class);
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
 
         $user = new User();
-        $user->setEmail('admin-gallery-test-' . uniqid() . '@example.com');
+        $user->setEmail('admin-gallery-test-'.uniqid().'@example.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 
@@ -61,6 +62,7 @@ class GalleryControllerTest extends WebTestCase
 
         return $user;
     }
+
     public function testGalleryNewIsSuccessfulForAdmin(): void
     {
         $client = static::createClient();

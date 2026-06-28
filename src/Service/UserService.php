@@ -19,7 +19,7 @@ class UserService implements UserServiceInterface
     public function __construct(
         private readonly UserRepository $userRepository,
         private readonly EntityManagerInterface $entityManager,
-        private readonly UserPasswordHasherInterface $passwordHasher
+        private readonly UserPasswordHasherInterface $passwordHasher,
     ) {
     }
 
@@ -42,9 +42,9 @@ class UserService implements UserServiceInterface
         $this->entityManager->flush();
     }
 
-   /**
- * Hashes and saves user password when a plain password is required.
- */
+    /**
+     * Hashes and saves user password when a plain password is required.
+     */
     public function setPassword(User $user, string $plainPassword): void
     {
         $user->setPassword(

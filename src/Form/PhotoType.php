@@ -19,19 +19,19 @@ class PhotoType extends AbstractType
         ->add('title')
         ->add('description')
         ->add('imageFile', FileType::class, [
-        'label' => 'Zdjęcie',
-        'mapped' => false,
-        'required' => false,
+            'label' => 'Zdjęcie',
+            'mapped' => false,
+            'required' => false,
         ])
         ->add('gallery', EntityType::class, [
-        'class' => Gallery::class,
-        'choice_label' => 'title',
+            'class' => Gallery::class,
+            'choice_label' => 'title',
         ])
         ->add('tags', EntityType::class, [
-        'class' => Tag::class,
-        'choice_label' => 'name',
-        'multiple' => true,
-        'expanded' => true,
+            'class' => Tag::class,
+            'choice_label' => 'name',
+            'multiple' => true,
+            'expanded' => true,
         ])
         ;
     }

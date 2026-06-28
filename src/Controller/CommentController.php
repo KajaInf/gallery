@@ -20,7 +20,7 @@ final class CommentController extends AbstractController
     public function index(CommentServiceInterface $commentService): Response
     {
         return $this->render('comment/index.html.twig', [
-        'comments' => $commentService->getAll(),
+            'comments' => $commentService->getAll(),
         ]);
     }
 
@@ -73,9 +73,9 @@ final class CommentController extends AbstractController
     #[Route('/{id}', name: 'app_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, CommentServiceInterface $commentService): Response
     {
-          $this->denyAccessUnlessGranted(CommentVoter::DELETE, $comment);
+        $this->denyAccessUnlessGranted(CommentVoter::DELETE, $comment);
 
-        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->getPayload()->getString('_token'))) {
             $commentService->delete($comment);
         }
 

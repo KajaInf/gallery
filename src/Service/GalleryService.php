@@ -17,7 +17,7 @@ class GalleryService implements GalleryServiceInterface
      */
     public function __construct(
         private readonly GalleryRepository $galleryRepository,
-        private readonly EntityManagerInterface $entityManager
+        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 

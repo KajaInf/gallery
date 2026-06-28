@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Gallery controller.
+ */
+
 namespace App\Controller;
 
 use App\Entity\Gallery;
@@ -12,17 +16,37 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Service\Interface\GalleryServiceInterface;
 use App\Service\Interface\PhotoServiceInterface;
 
+/**
+ * Class GalleryController.
+ */
+
 #[Route('/gallery')]
 final class GalleryController extends AbstractController
 {
+
+/**
+ * Index action.
+ *
+ * @param GalleryServiceInterface $galleryService Gallery service
+ *
+ * @return Response HTTP response
+ */
     #[Route(name: 'app_gallery_index', methods: ['GET'])]
     public function index(GalleryServiceInterface $galleryService): Response
     {
         return $this->render('gallery/index.html.twig', [
-        'galleries' => $galleryService->getAll(),
+            'galleries' => $galleryService->getAll(),
         ]);
     }
 
+/**
+ * New action.
+ *
+ * @param Request                 $request        HTTP request
+ * @param GalleryServiceInterface $galleryService Gallery service
+ *
+ * @return Response HTTP response
+ */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_gallery_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GalleryServiceInterface $galleryService): Response
@@ -45,15 +69,32 @@ final class GalleryController extends AbstractController
         ]);
     }
 
+/**
+ * Show action.
+ *
+ * @param Gallery               $gallery      Gallery entity
+ * @param PhotoServiceInterface $photoService Photo service
+ *
+ * @return Response HTTP response
+ */
     #[Route('/{id}', name: 'app_gallery_show', methods: ['GET'])]
     public function show(Gallery $gallery, PhotoServiceInterface $photoService): Response
     {
         return $this->render('gallery/show.html.twig', [
-        'gallery' => $gallery,
-        'photos' => $photoService->getPhotosForGallery($gallery),
+            'gallery' => $gallery,
+            'photos' => $photoService->getPhotosForGallery($gallery),
         ]);
     }
 
+/**
+ * Edit action.
+ *
+ * @param Request                 $request        HTTP request
+ * @param Gallery                 $gallery        Gallery entity
+ * @param GalleryServiceInterface $galleryService Gallery service
+ *
+ * @return Response HTTP response
+ */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_gallery_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Gallery $gallery, GalleryServiceInterface $galleryService): Response
@@ -75,11 +116,20 @@ final class GalleryController extends AbstractController
         ]);
     }
 
+/**
+ * Delete action.
+ *
+ * @param Request                 $request        HTTP request
+ * @param Gallery                 $gallery        Gallery entity
+ * @param GalleryServiceInterface $galleryService Gallery service
+ *
+ * @return Response HTTP response
+ */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_gallery_delete', methods: ['POST'])]
     public function delete(Request $request, Gallery $gallery, GalleryServiceInterface $galleryService): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $gallery->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->getPayload()->getString('_token'))) {
             $galleryService->delete($gallery);
             $this->addFlash('success', 'Galeria została usunięta.');
         }

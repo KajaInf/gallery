@@ -28,7 +28,7 @@ class PhotoService implements PhotoServiceInterface
         private readonly CommentRepository $commentRepository,
         private readonly EntityManagerInterface $entityManager,
         #[Autowire('%kernel.project_dir%')]
-        private readonly string $projectDir
+        private readonly string $projectDir,
     ) {
     }
 
@@ -72,10 +72,10 @@ class PhotoService implements PhotoServiceInterface
      */
     public function uploadImage(Photo $photo, UploadedFile $imageFile): void
     {
-        $newFilename = uniqid('photo_', true) . '.' . $imageFile->guessExtension();
+        $newFilename = uniqid('photo_', true).'.'.$imageFile->guessExtension();
 
         $imageFile->move(
-            $this->projectDir . '/public/uploads/photos',
+            $this->projectDir.'/public/uploads/photos',
             $newFilename
         );
 
@@ -97,7 +97,7 @@ class PhotoService implements PhotoServiceInterface
             $this->entityManager->remove($comment);
         }
 
-        $filePath = $this->projectDir . '/public/uploads/photos/' . $photo->getFilename();
+        $filePath = $this->projectDir.'/public/uploads/photos/'.$photo->getFilename();
 
         if (is_file($filePath)) {
             unlink($filePath);
@@ -120,11 +120,11 @@ class PhotoService implements PhotoServiceInterface
         );
     }
 
-   /**
-    * Returns photos assigned to a gallery.
-    *
-    * @return Photo[]
-    */
+    /**
+     * Returns photos assigned to a gallery.
+     *
+     * @return Photo[]
+     */
     public function getPhotosForGallery(Gallery $gallery): array
     {
         return $this->photoRepository->findBy(

@@ -45,9 +45,9 @@ interface PhotoServiceInterface
     public function getComments(Photo $photo): array;
 
     /**
-    * Returns photos assigned to a gallery.
-    *
-    * @return Photo[]
-    */
+     * Returns photos assigned to a gallery.
+     *
+     * @return Photo[]
+     */
     public function getPhotosForGallery(Gallery $gallery): array;
 }

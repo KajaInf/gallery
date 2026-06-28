@@ -19,7 +19,7 @@ class CommentService implements CommentServiceInterface
      */
     public function __construct(
         private readonly CommentRepository $commentRepository,
-        private readonly EntityManagerInterface $entityManager
+        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 

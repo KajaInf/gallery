@@ -19,7 +19,7 @@ final class TagController extends AbstractController
     public function index(TagServiceInterface $tagService): Response
     {
         return $this->render('tag/index.html.twig', [
-        'tags' => $tagService->getAll(),
+            'tags' => $tagService->getAll(),
         ]);
     }
 
@@ -71,7 +71,7 @@ final class TagController extends AbstractController
     #[Route('/{id}', name: 'app_tag_delete', methods: ['POST'])]
     public function delete(Request $request, Tag $tag, TagServiceInterface $tagService): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $tag->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$tag->getId(), $request->getPayload()->getString('_token'))) {
             $tagService->delete($tag);
         }
 
