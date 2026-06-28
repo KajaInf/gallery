@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Custom authenticator.
+ */
+
 namespace App\Security;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,16 +20,31 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
+/**
+ * Class AppCustomAuthenticattorAuthenticator.
+ */
 class AppCustomAuthenticattorAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
 
+    /**
+     * Constructor.
+     *
+     * @param UrlGeneratorInterface $urlGenerator URL generator
+     */
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
     }
 
+    /**
+     * Authenticates login request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return Passport Authentication passport
+     */
     public function authenticate(Request $request): Passport
     {
         $email = $request->getPayload()->getString('email');
@@ -42,11 +61,27 @@ class AppCustomAuthenticattorAuthenticator extends AbstractLoginFormAuthenticato
         );
     }
 
+    /**
+     * Handles successful authentication.
+     *
+     * @param Request        $request      HTTP request
+     * @param TokenInterface $token        Security token
+     * @param string         $firewallName Firewall name
+     *
+     * @return Response|null HTTP response
+     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
     }
 
+    /**
+     * Gets login URL.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return string Login URL
+     */
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
