@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Photo repository.
+ */
+
 namespace App\Repository;
 
 use App\Entity\Photo;
@@ -7,10 +11,17 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class PhotoRepository.
+ *
  * @extends ServiceEntityRepository<Photo>
  */
 class PhotoRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Doctrine registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Photo::class);
@@ -42,7 +53,11 @@ class PhotoRepository extends ServiceEntityRepository
     //    }
 
     /**
-     * @return Photo[]
+     * Finds photos assigned to a tag.
+     *
+     * @param int $tagId Tag identifier
+     *
+     * @return Photo[] List of photos
      */
     public function findByTagId(int $tagId): array
     {
