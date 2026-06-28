@@ -1,20 +1,34 @@
 <?php
 
+/**
+ * User controller.
+ */
+
 namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\Interface\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Service\Interface\UserServiceInterface;
 
+/**
+ * Class UserController.
+ */
 #[IsGranted('ROLE_ADMIN')]
 #[Route('/user')]
 final class UserController extends AbstractController
 {
+    /**
+     * Index action.
+     *
+     * @param UserServiceInterface $userService User service
+     *
+     * @return Response HTTP response
+     */
     #[Route(name: 'app_user_index', methods: ['GET'])]
     public function index(UserServiceInterface $userService): Response
     {
@@ -23,6 +37,14 @@ final class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * New action.
+     *
+     * @param Request              $request     HTTP request
+     * @param UserServiceInterface $userService User service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UserServiceInterface $userService): Response
     {
@@ -42,6 +64,13 @@ final class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * Show action.
+     *
+     * @param User $user User entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -50,6 +79,15 @@ final class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * Edit action.
+     *
+     * @param Request              $request     HTTP request
+     * @param User                 $user        User entity
+     * @param UserServiceInterface $userService User service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserServiceInterface $userService): Response
     {
@@ -71,6 +109,15 @@ final class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * Delete action.
+     *
+     * @param Request              $request     HTTP request
+     * @param User                 $user        User entity
+     * @param UserServiceInterface $userService User service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserServiceInterface $userService): Response
     {

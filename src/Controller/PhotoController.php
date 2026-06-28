@@ -1,23 +1,38 @@
 <?php
 
+/**
+ * Photo controller.
+ */
+
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Photo;
 use App\Form\CommentType;
 use App\Form\PhotoType;
 use App\Service\CommentService;
+use App\Service\Interface\PhotoServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Entity\Comment;
-use App\Service\Interface\PhotoServiceInterface;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+/**
+ * Class PhotoController.
+ */
 #[Route('/photo')]
 final class PhotoController extends AbstractController
 {
+    /**
+     * Index action.
+     *
+     * @param Request               $request      HTTP request
+     * @param PhotoServiceInterface $photoService Photo service
+     *
+     * @return Response HTTP response
+     */
     #[Route(name: 'app_photo_index', methods: ['GET'])]
     public function index(Request $request, PhotoServiceInterface $photoService): Response
     {
@@ -40,6 +55,14 @@ final class PhotoController extends AbstractController
         ]);
     }
 
+    /**
+     * New action.
+     *
+     * @param Request               $request      HTTP request
+     * @param PhotoServiceInterface $photoService Photo service
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_photo_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PhotoServiceInterface $photoService): Response
@@ -64,8 +87,6 @@ final class PhotoController extends AbstractController
             $photo->setCreatedAt(new \DateTimeImmutable());
             $photoService->save($photo);
 
-
-
             $this->addFlash('success', 'Zdjęcie zostało dodane.');
 
             return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
@@ -77,13 +98,19 @@ final class PhotoController extends AbstractController
         ]);
     }
 
+    /**
+     * Show action.
+     *
+     * @param Request               $request        HTTP request
+     * @param Photo                 $photo          Photo entity
+     * @param CommentService        $commentService Comment service
+     * @param PhotoServiceInterface $photoService   Photo service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'app_photo_show', methods: ['GET', 'POST'])]
-    public function show(
-        Request $request,
-        Photo $photo,
-        CommentService $commentService,
-        PhotoServiceInterface $photoService,
-    ): Response {
+    public function show(Request $request, Photo $photo, CommentService $commentService, PhotoServiceInterface $photoService): Response
+    {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -111,6 +138,15 @@ final class PhotoController extends AbstractController
         ]);
     }
 
+    /**
+     * Edit action.
+     *
+     * @param Request               $request      HTTP request
+     * @param Photo                 $photo        Photo entity
+     * @param PhotoServiceInterface $photoService Photo service
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_photo_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Photo $photo, PhotoServiceInterface $photoService): Response
@@ -132,6 +168,15 @@ final class PhotoController extends AbstractController
         ]);
     }
 
+    /**
+     * Delete action.
+     *
+     * @param Request               $request      HTTP request
+     * @param Photo                 $photo        Photo entity
+     * @param PhotoServiceInterface $photoService Photo service
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/delete', name: 'app_photo_delete', methods: ['POST'])]
     public function delete(Request $request, Photo $photo, PhotoServiceInterface $photoService): Response

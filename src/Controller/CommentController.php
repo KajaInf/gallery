@@ -1,21 +1,35 @@
 <?php
 
+/**
+ * Comment controller.
+ */
+
 namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Form\CommentType;
+use App\Security\Voter\CommentVoter;
+use App\Service\Interface\CommentServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Security\Voter\CommentVoter;
-use App\Service\Interface\CommentServiceInterface;
 
+/**
+ * Class CommentController.
+ */
 #[IsGranted('ROLE_ADMIN')]
 #[Route('/comment')]
 final class CommentController extends AbstractController
 {
+    /**
+     * Index action.
+     *
+     * @param CommentServiceInterface $commentService Comment service
+     *
+     * @return Response HTTP response
+     */
     #[Route(name: 'app_comment_index', methods: ['GET'])]
     public function index(CommentServiceInterface $commentService): Response
     {
@@ -24,6 +38,14 @@ final class CommentController extends AbstractController
         ]);
     }
 
+    /**
+     * New action.
+     *
+     * @param Request                 $request        HTTP request
+     * @param CommentServiceInterface $commentService Comment service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/new', name: 'app_comment_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CommentServiceInterface $commentService): Response
     {
@@ -43,6 +65,13 @@ final class CommentController extends AbstractController
         ]);
     }
 
+    /**
+     * Show action.
+     *
+     * @param Comment $comment Comment entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
     public function show(Comment $comment): Response
     {
@@ -51,6 +80,15 @@ final class CommentController extends AbstractController
         ]);
     }
 
+    /**
+     * Edit action.
+     *
+     * @param Request                 $request        HTTP request
+     * @param Comment                 $comment        Comment entity
+     * @param CommentServiceInterface $commentService Comment service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}/edit', name: 'app_comment_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Comment $comment, CommentServiceInterface $commentService): Response
     {
@@ -69,6 +107,15 @@ final class CommentController extends AbstractController
         ]);
     }
 
+    /**
+     * Delete action.
+     *
+     * @param Request                 $request        HTTP request
+     * @param Comment                 $comment        Comment entity
+     * @param CommentServiceInterface $commentService Comment service
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, CommentServiceInterface $commentService): Response
