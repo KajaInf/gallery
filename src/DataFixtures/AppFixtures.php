@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Application fixtures.
+ */
+
 namespace App\DataFixtures;
 
 use App\Entity\Comment;
@@ -12,15 +16,28 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Class AppFixtures.
+ */
 class AppFixtures extends Fixture
 {
-    public function __construct(
-        private readonly UserPasswordHasherInterface $passwordHasher,
-        #[Autowire('%kernel.project_dir%')]
-        private readonly string $projectDir,
-    ) {
+    /**
+     * Constructor.
+     *
+     * @param UserPasswordHasherInterface $passwordHasher Password hasher
+     * @param string                      $projectDir     Project directory
+     */
+    public function __construct(private readonly UserPasswordHasherInterface $passwordHasher, #[Autowire('%kernel.project_dir%')] private readonly string $projectDir)
+    {
     }
 
+    /**
+     * Loads application fixtures.
+     *
+     * @param ObjectManager $manager Object manager
+     *
+     * @return void
+     */
     public function load(ObjectManager $manager): void
     {
         $admin = new User();
@@ -58,12 +75,6 @@ class AppFixtures extends Fixture
         $animalsGallery = new Gallery();
         $animalsGallery->setTitle('Galeria zwierząt');
         $manager->persist($animalsGallery);
-
-
-
-
-
-
 
         $photosData = [
             [
@@ -137,7 +148,6 @@ class AppFixtures extends Fixture
             }
 
             $manager->persist($photo);
-
 
             $comment = new Comment();
             $comment->setNick('Użytkownik testowy');
