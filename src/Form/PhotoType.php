@@ -14,6 +14,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 /**
  * Class PhotoType.
@@ -25,8 +26,6 @@ class PhotoType extends AbstractType
      *
      * @param FormBuilderInterface $builder Form builder
      * @param array                $options Form options
-     *
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -37,6 +36,16 @@ class PhotoType extends AbstractType
                 'label' => 'Zdjęcie',
                 'mapped' => false,
                 'required' => false,
+                'constraints' => [
+                new Image([
+                    'mimeTypes' => [
+                    'image/jpeg',
+                    'image/png',
+                    'image/webp',
+                    ],
+                    'mimeTypesMessage' => 'Proszę przesłać poprawny plik graficzny.',
+                ]),
+                ],
             ])
             ->add('gallery', EntityType::class, [
                 'class' => Gallery::class,
@@ -54,8 +63,6 @@ class PhotoType extends AbstractType
      * Configures photo form options.
      *
      * @param OptionsResolver $resolver Options resolver
-     *
-     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
