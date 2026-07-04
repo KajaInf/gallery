@@ -53,6 +53,12 @@ final class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $plainPassword = $form->get('plainPassword')->getData();
+
+            if (null !== $plainPassword && '' !== $plainPassword) {
+                $userService->setPassword($user, $plainPassword);
+            }
+
             $userService->save($user);
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);

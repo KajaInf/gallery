@@ -24,8 +24,6 @@ class UserType extends AbstractType
      *
      * @param FormBuilderInterface $builder Form builder
      * @param array                $options Form options
-     *
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -49,16 +47,13 @@ class UserType extends AbstractType
                 'second_options' => [
                     'label' => 'Powtórz nowe hasło',
                 ],
-            ])
-            ->add('password');
+            ]);
     }
 
     /**
      * Configures user form options.
      *
      * @param OptionsResolver $resolver Options resolver
-     *
-     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
