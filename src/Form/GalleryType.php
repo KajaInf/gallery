@@ -25,7 +25,9 @@ class GalleryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+        ->add('title', null, [
+            'empty_data' => '',
+        ])
         ;
     }
 
