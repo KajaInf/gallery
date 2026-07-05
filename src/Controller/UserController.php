@@ -115,6 +115,38 @@ final class UserController extends AbstractController
     }
 
     /**
+     * Change password action.
+     *
+     * @param Request              $request     HTTP request
+     * @param User                 $user        User entity
+     * @param UserServiceInterface $userService User service
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/password', name: 'app_user_password', methods: ['GET', 'POST'])]
+    public function password(Request $request, User $user, UserServiceInterface $userService): Response
+    {
+        $form = $this->createForm(UserPasswordType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $plainPassword = $form->get('plainPassword')->getData();
+
+            $userService->updatePassword($user, $plainPassword);
+            $userService->save($user);
+
+            $this->addFlash('success', 'Hasło zostało zmienione.');
+
+            return $this->redirectToRoute('app_user_index');
+        }
+
+        return $this->render('user/password.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
+    /**
      * Delete action.
      *
      * @param Request              $request     HTTP request
