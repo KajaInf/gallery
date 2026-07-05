@@ -1,7 +1,7 @@
 <?php
 
 /**
- * User form type.
+ * User create form type.
  */
 
 namespace App\Form;
@@ -9,16 +9,18 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UserType.
+ * Class UserCreateType.
  */
-class UserType extends AbstractType
+class UserCreateType extends AbstractType
 {
     /**
-     * Builds user form.
+     * Builds user create form.
      *
      * @param FormBuilderInterface $builder Form builder
      * @param array                $options Form options
@@ -34,11 +36,22 @@ class UserType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded' => true,
+            ])
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'mapped' => false,
+                'required' => true,
+                'first_options' => [
+                    'label' => 'Hasło',
+                ],
+                'second_options' => [
+                    'label' => 'Powtórz hasło',
+                ],
             ]);
     }
 
     /**
-     * Configures user form options.
+     * Configures user create form options.
      *
      * @param OptionsResolver $resolver Options resolver
      */
