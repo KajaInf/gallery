@@ -143,13 +143,21 @@ final class PhotoController extends AbstractController
             }
         }
 
-        $comments = $photoService->getComments($photo);
+                $commentsPage = max(1, $request->query->getInt('commentsPage', 1));
+        $commentsLimit = 10;
+        $commentsOffset = ($commentsPage - 1) * $commentsLimit;
 
-        return $this->render('photo/show.html.twig', [
-            'photo' => $photo,
-            'comment_form' => $form,
-            'comments' => $comments,
-        ]);
+        $comments = $photoService->getComments($photo, $commentsLimit, $commentsOffset);
+        $commentsCount = $photoService->countComments($photo);
+        $commentsTotalPages = (int) ceil($commentsCount / $commentsLimit);
+
+                return $this->render('photo/show.html.twig', [
+                    'photo' => $photo,
+                    'comment_form' => $form,
+                    'comments' => $comments,
+                    'commentsPage' => $commentsPage,
+                    'commentsTotalPages' => $commentsTotalPages,
+                ]);
     }
 
     /**

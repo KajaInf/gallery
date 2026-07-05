@@ -68,6 +68,8 @@
     {% endfor %}
 {% endif %}
 
+
+
 {% if app.user %}
     {{ form_start(comment_form) }}
         {{ form_widget(comment_form) }}
@@ -75,6 +77,26 @@
     {{ form_end(comment_form) }}
 {% else %}
     <p>Aby dodać komentarz, <a href="{{ path('app_login') }}">zaloguj się</a>.</p>
+{% endif %}
+
+{% if commentsTotalPages > 1 %}
+    <nav>
+        {% if commentsPage > 1 %}
+            <a href="{{ path('app_photo_show', {'id': photo.id, 'commentsPage': commentsPage - 1}) }}">
+                Poprzednia strona komentarzy
+            </a>
+        {% endif %}
+
+        <span>
+            Strona {{ commentsPage }} z {{ commentsTotalPages }}
+        </span>
+
+        {% if commentsPage < commentsTotalPages %}
+            <a href="{{ path('app_photo_show', {'id': photo.id, 'commentsPage': commentsPage + 1}) }}">
+                Następna strona komentarzy
+            </a>
+        {% endif %}
+    </nav>
 {% endif %}
 
 {% endblock %}
