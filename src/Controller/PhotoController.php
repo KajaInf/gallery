@@ -115,18 +115,27 @@ final class PhotoController extends AbstractController
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $user = $this->getUser();
 
-            if (null !== $user) {
-                $commentService->createForPhoto($comment, $photo, $user);
+            if (null === $user) {
+                    $this->addFlash('danger', 'Musisz być zalogowany, aby dodać komentarz.');
 
-                $this->addFlash('success', 'Komentarz został dodany.');
+                    return $this->redirectToRoute('app_login');
             }
 
-            return $this->redirectToRoute('app_photo_show', [
-                'id' => $photo->getId(),
-            ]);
+            $comment->setEmail($user->getUserIdentifier());
+            $comment->setNick($user->getUserIdentifier());
+
+            if ($form->isValid()) {
+                  $commentService->createForPhoto($comment, $photo, $user);
+
+                  $this->addFlash('success', 'Komentarz został dodany.');
+
+                return $this->redirectToRoute('app_photo_show', [
+                    'id' => $photo->getId(),
+                ]);
+            }
         }
 
         $comments = $photoService->getComments($photo);
