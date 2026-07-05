@@ -16,8 +16,6 @@ class UserTest extends TestCase
 {
     /**
      * Tests getters and setters.
-     *
-     * @return void
      */
     public function testGettersAndSetters(): void
     {
@@ -37,8 +35,6 @@ class UserTest extends TestCase
 
     /**
      * Tests that user always has ROLE_USER.
-     *
-     * @return void
      */
     public function testUserAlwaysHasRoleUser(): void
     {

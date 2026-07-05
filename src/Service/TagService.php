@@ -40,8 +40,6 @@ class TagService implements TagServiceInterface
      * Saves a tag.
      *
      * @param Tag $tag Tag entity
-     *
-     * @return void
      */
     public function save(Tag $tag): void
     {
@@ -53,8 +51,6 @@ class TagService implements TagServiceInterface
      * Deletes a tag.
      *
      * @param Tag $tag Tag entity
-     *
-     * @return void
      */
     public function delete(Tag $tag): void
     {

@@ -40,8 +40,6 @@ class GalleryService implements GalleryServiceInterface
      * Saves a gallery.
      *
      * @param Gallery $gallery Gallery entity
-     *
-     * @return void
      */
     public function save(Gallery $gallery): void
     {
@@ -50,11 +48,20 @@ class GalleryService implements GalleryServiceInterface
     }
 
     /**
-     * Deletes a gallery.
+     * Checks if gallery can be deleted.
      *
      * @param Gallery $gallery Gallery entity
      *
-     * @return void
+     * @return bool True if gallery can be deleted
+     */
+    public function canDelete(Gallery $gallery): bool
+    {
+        return 0 === $this->galleryRepository->countPhotos($gallery);
+    }
+    /**
+     * Deletes a gallery.
+     *
+     * @param Gallery $gallery Gallery entity
      */
     public function delete(Gallery $gallery): void
     {

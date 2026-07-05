@@ -21,8 +21,6 @@ class CommentServiceTest extends TestCase
 {
     /**
      * Tests creating comment for photo.
-     *
-     * @return void
      */
     public function testCreateForPhoto(): void
     {

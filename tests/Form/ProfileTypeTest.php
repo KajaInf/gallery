@@ -17,8 +17,6 @@ class ProfileTypeTest extends TypeTestCase
 {
     /**
      * Tests submitting valid form data.
-     *
-     * @return void
      */
     public function testSubmitValidData(): void
     {

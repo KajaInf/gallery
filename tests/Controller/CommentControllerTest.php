@@ -21,8 +21,6 @@ class CommentControllerTest extends WebTestCase
 {
     /**
      * Tests comment index redirect for anonymous user.
-     *
-     * @return void
      */
     public function testCommentIndexRedirectsAnonymousUser(): void
     {
@@ -35,8 +33,6 @@ class CommentControllerTest extends WebTestCase
 
     /**
      * Tests comment index page for admin user.
-     *
-     * @return void
      */
     public function testCommentIndexIsSuccessfulForAdmin(): void
     {
@@ -52,8 +48,6 @@ class CommentControllerTest extends WebTestCase
 
     /**
      * Tests comment show page for admin user.
-     *
-     * @return void
      */
     public function testCommentShowIsSuccessfulForAdmin(): void
     {

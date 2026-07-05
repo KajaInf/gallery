@@ -15,8 +15,6 @@ class HomeControllerTest extends WebTestCase
 {
     /**
      * Tests home page.
-     *
-     * @return void
      */
     public function testHomePageIsSuccessful(): void
     {

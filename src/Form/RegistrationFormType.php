@@ -26,8 +26,6 @@ class RegistrationFormType extends AbstractType
      *
      * @param FormBuilderInterface $builder Form builder
      * @param array                $options Form options
-     *
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -61,8 +59,6 @@ class RegistrationFormType extends AbstractType
      * Configures registration form options.
      *
      * @param OptionsResolver $resolver Options resolver
-     *
-     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

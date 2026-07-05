@@ -7,6 +7,7 @@
 namespace App\Repository;
 
 use App\Entity\Gallery;
+use App\Entity\Photo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -25,6 +26,19 @@ class GalleryRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Gallery::class);
+    }
+    /**
+     * Counts photos assigned to gallery.
+     *
+     * @param Gallery $gallery Gallery entity
+     *
+     * @return int Number of photos
+     */
+    public function countPhotos(Gallery $gallery): int
+    {
+        return (int) $this->getEntityManager()
+            ->getRepository(Photo::class)
+            ->count(['gallery' => $gallery]);
     }
 
     //    /**

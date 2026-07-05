@@ -72,8 +72,6 @@ class PhotoService implements PhotoServiceInterface
      * Saves a photo.
      *
      * @param Photo $photo Photo entity
-     *
-     * @return void
      */
     public function save(Photo $photo): void
     {
@@ -86,8 +84,6 @@ class PhotoService implements PhotoServiceInterface
      *
      * @param Photo        $photo     Photo entity
      * @param UploadedFile $imageFile Uploaded image
-     *
-     * @return void
      */
     public function uploadImage(Photo $photo, UploadedFile $imageFile): void
     {
@@ -105,8 +101,6 @@ class PhotoService implements PhotoServiceInterface
      * Deletes a photo.
      *
      * @param Photo $photo Photo entity
-     *
-     * @return void
      */
     public function delete(Photo $photo): void
     {

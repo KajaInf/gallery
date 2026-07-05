@@ -15,8 +15,6 @@ class ProfileControllerTest extends WebTestCase
 {
     /**
      * Tests profile page redirect for anonymous user.
-     *
-     * @return void
      */
     public function testProfileRedirectsAnonymousUser(): void
     {

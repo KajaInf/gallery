@@ -16,8 +16,6 @@ class TagTest extends TestCase
 {
     /**
      * Tests getters and setters.
-     *
-     * @return void
      */
     public function testGettersAndSetters(): void
     {

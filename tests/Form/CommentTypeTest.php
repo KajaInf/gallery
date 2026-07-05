@@ -17,8 +17,6 @@ class CommentTypeTest extends TypeTestCase
 {
     /**
      * Tests submitting valid form data.
-     *
-     * @return void
      */
     public function testSubmitValidData(): void
     {

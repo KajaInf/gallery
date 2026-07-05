@@ -18,8 +18,6 @@ class PhotoTest extends TestCase
 {
     /**
      * Tests getters and setters.
-     *
-     * @return void
      */
     public function testGettersAndSetters(): void
     {
@@ -40,8 +38,6 @@ class PhotoTest extends TestCase
 
     /**
      * Tests tag collection.
-     *
-     * @return void
      */
     public function testTags(): void
     {

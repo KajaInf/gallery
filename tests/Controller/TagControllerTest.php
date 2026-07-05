@@ -19,8 +19,6 @@ class TagControllerTest extends WebTestCase
 {
     /**
      * Tests tag index redirect for anonymous user.
-     *
-     * @return void
      */
     public function testTagIndexRedirectsAnonymousUser(): void
     {
@@ -33,8 +31,6 @@ class TagControllerTest extends WebTestCase
 
     /**
      * Tests tag new page redirect for anonymous user.
-     *
-     * @return void
      */
     public function testTagNewRedirectsAnonymousUser(): void
     {
@@ -47,8 +43,6 @@ class TagControllerTest extends WebTestCase
 
     /**
      * Tests tag show page redirect for anonymous user.
-     *
-     * @return void
      */
     public function testTagShowRedirectsAnonymousUser(): void
     {
@@ -69,8 +63,6 @@ class TagControllerTest extends WebTestCase
 
     /**
      * Tests tag index page for admin user.
-     *
-     * @return void
      */
     public function testTagIndexIsSuccessfulForAdmin(): void
     {

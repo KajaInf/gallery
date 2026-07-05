@@ -23,8 +23,6 @@ class AppFixturesTest extends TestCase
 {
     /**
      * Tests loading example data.
-     *
-     * @return void
      */
     public function testLoadCreatesExampleData(): void
     {

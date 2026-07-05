@@ -24,8 +24,6 @@ interface GalleryServiceInterface
      * Saves a gallery.
      *
      * @param Gallery $gallery Gallery entity
-     *
-     * @return void
      */
     public function save(Gallery $gallery): void;
 
@@ -33,8 +31,14 @@ interface GalleryServiceInterface
      * Deletes a gallery.
      *
      * @param Gallery $gallery Gallery entity
-     *
-     * @return void
      */
     public function delete(Gallery $gallery): void;
+        /**
+     * Checks if gallery can be deleted.
+     *
+     * @param Gallery $gallery Gallery entity
+     *
+     * @return bool True if gallery can be deleted
+     */
+    public function canDelete(Gallery $gallery): bool;
 }

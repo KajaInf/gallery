@@ -18,8 +18,6 @@ class UserControllerTest extends WebTestCase
 {
     /**
      * Tests user index redirect for anonymous user.
-     *
-     * @return void
      */
     public function testUserIndexRedirectsAnonymousUser(): void
     {
@@ -32,8 +30,6 @@ class UserControllerTest extends WebTestCase
 
     /**
      * Tests user index page for admin user.
-     *
-     * @return void
      */
     public function testUserIndexIsSuccessfulForAdmin(): void
     {
@@ -49,8 +45,6 @@ class UserControllerTest extends WebTestCase
 
     /**
      * Tests user new page for admin user.
-     *
-     * @return void
      */
     public function testUserNewIsSuccessfulForAdmin(): void
     {
@@ -66,8 +60,6 @@ class UserControllerTest extends WebTestCase
 
     /**
      * Tests user edit page for admin user.
-     *
-     * @return void
      */
     public function testUserEditIsSuccessfulForAdmin(): void
     {

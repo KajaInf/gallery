@@ -19,18 +19,16 @@ use App\Service\Interface\PhotoServiceInterface;
 /**
  * Class GalleryController.
  */
-
 #[Route('/gallery')]
 final class GalleryController extends AbstractController
 {
-
-/**
- * Index action.
- *
- * @param GalleryServiceInterface $galleryService Gallery service
- *
- * @return Response HTTP response
- */
+    /**
+     * Index action.
+     *
+     * @param GalleryServiceInterface $galleryService Gallery service
+     *
+     * @return Response HTTP response
+     */
     #[Route(name: 'app_gallery_index', methods: ['GET'])]
     public function index(GalleryServiceInterface $galleryService): Response
     {
@@ -39,14 +37,14 @@ final class GalleryController extends AbstractController
         ]);
     }
 
-/**
- * New action.
- *
- * @param Request                 $request        HTTP request
- * @param GalleryServiceInterface $galleryService Gallery service
- *
- * @return Response HTTP response
- */
+    /**
+     * New action.
+     *
+     * @param Request                 $request        HTTP request
+     * @param GalleryServiceInterface $galleryService Gallery service
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_gallery_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GalleryServiceInterface $galleryService): Response
@@ -69,14 +67,14 @@ final class GalleryController extends AbstractController
         ]);
     }
 
-/**
- * Show action.
- *
- * @param Gallery               $gallery      Gallery entity
- * @param PhotoServiceInterface $photoService Photo service
- *
- * @return Response HTTP response
- */
+    /**
+     * Show action.
+     *
+     * @param Gallery               $gallery      Gallery entity
+     * @param PhotoServiceInterface $photoService Photo service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'app_gallery_show', methods: ['GET'])]
     public function show(Gallery $gallery, PhotoServiceInterface $photoService): Response
     {
@@ -86,15 +84,15 @@ final class GalleryController extends AbstractController
         ]);
     }
 
-/**
- * Edit action.
- *
- * @param Request                 $request        HTTP request
- * @param Gallery                 $gallery        Gallery entity
- * @param GalleryServiceInterface $galleryService Gallery service
- *
- * @return Response HTTP response
- */
+    /**
+     * Edit action.
+     *
+     * @param Request                 $request        HTTP request
+     * @param Gallery                 $gallery        Gallery entity
+     * @param GalleryServiceInterface $galleryService Gallery service
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_gallery_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Gallery $gallery, GalleryServiceInterface $galleryService): Response
@@ -116,20 +114,26 @@ final class GalleryController extends AbstractController
         ]);
     }
 
-/**
- * Delete action.
- *
- * @param Request                 $request        HTTP request
- * @param Gallery                 $gallery        Gallery entity
- * @param GalleryServiceInterface $galleryService Gallery service
- *
- * @return Response HTTP response
- */
+    /**
+     * Delete action.
+     *
+     * @param Request                 $request        HTTP request
+     * @param Gallery                 $gallery        Gallery entity
+     * @param GalleryServiceInterface $galleryService Gallery service
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_gallery_delete', methods: ['POST'])]
     public function delete(Request $request, Gallery $gallery, GalleryServiceInterface $galleryService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->getPayload()->getString('_token'))) {
+            if (!$galleryService->canDelete($gallery)) {
+                $this->addFlash('danger', 'Nie można usunąć galerii, która zawiera zdjęcia.');
+
+                return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
+            }
+
             $galleryService->delete($gallery);
             $this->addFlash('success', 'Galeria została usunięta.');
         }

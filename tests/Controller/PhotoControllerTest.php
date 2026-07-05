@@ -20,8 +20,6 @@ class PhotoControllerTest extends WebTestCase
 {
     /**
      * Tests photo index page.
-     *
-     * @return void
      */
     public function testPhotoIndexIsSuccessful(): void
     {
@@ -35,8 +33,6 @@ class PhotoControllerTest extends WebTestCase
 
     /**
      * Tests photo index page with tag filter.
-     *
-     * @return void
      */
     public function testPhotoIndexWithTagFilterIsSuccessful(): void
     {
@@ -49,8 +45,6 @@ class PhotoControllerTest extends WebTestCase
 
     /**
      * Tests photo show page.
-     *
-     * @return void
      */
     public function testPhotoShowIsSuccessful(): void
     {
@@ -81,8 +75,6 @@ class PhotoControllerTest extends WebTestCase
 
     /**
      * Tests photo new page for admin user.
-     *
-     * @return void
      */
     public function testPhotoNewIsSuccessfulForAdmin(): void
     {
@@ -98,8 +90,6 @@ class PhotoControllerTest extends WebTestCase
 
     /**
      * Tests photo edit page for admin user.
-     *
-     * @return void
      */
     public function testPhotoEditIsSuccessfulForAdmin(): void
     {

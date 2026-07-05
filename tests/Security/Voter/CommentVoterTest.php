@@ -20,8 +20,6 @@ class CommentVoterTest extends TestCase
 {
     /**
      * Tests that admin can delete comment.
-     *
-     * @return void
      */
     public function testAdminCanDeleteComment(): void
     {

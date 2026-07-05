@@ -38,8 +38,6 @@ interface PhotoServiceInterface
      * Saves a photo.
      *
      * @param Photo $photo Photo entity
-     *
-     * @return void
      */
     public function save(Photo $photo): void;
 
@@ -48,8 +46,6 @@ interface PhotoServiceInterface
      *
      * @param Photo        $photo     Photo entity
      * @param UploadedFile $imageFile Uploaded image
-     *
-     * @return void
      */
     public function uploadImage(Photo $photo, UploadedFile $imageFile): void;
 
@@ -57,8 +53,6 @@ interface PhotoServiceInterface
      * Deletes a photo.
      *
      * @param Photo $photo Photo entity
-     *
-     * @return void
      */
     public function delete(Photo $photo): void;
 

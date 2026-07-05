@@ -18,19 +18,17 @@ use App\Service\Interface\TagServiceInterface;
 /**
  * Class TagController.
  */
-
 #[IsGranted('ROLE_ADMIN')]
 #[Route('/tag')]
 final class TagController extends AbstractController
 {
-
-/**
- * Index action.
- *
- * @param TagServiceInterface $tagService Tag service
- *
- * @return Response HTTP response
- */
+    /**
+     * Index action.
+     *
+     * @param TagServiceInterface $tagService Tag service
+     *
+     * @return Response HTTP response
+     */
     #[Route(name: 'app_tag_index', methods: ['GET'])]
     public function index(TagServiceInterface $tagService): Response
     {
@@ -39,15 +37,14 @@ final class TagController extends AbstractController
         ]);
     }
 
-
-/**
- * New action.
- *
- * @param Request             $request    HTTP request
- * @param TagServiceInterface $tagService Tag service
- *
- * @return Response HTTP response
- */
+    /**
+     * New action.
+     *
+     * @param Request             $request    HTTP request
+     * @param TagServiceInterface $tagService Tag service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/new', name: 'app_tag_new', methods: ['GET', 'POST'])]
     public function new(Request $request, TagServiceInterface $tagService): Response
     {
@@ -67,13 +64,13 @@ final class TagController extends AbstractController
         ]);
     }
 
-/**
- * Show action.
- *
- * @param Tag $tag Tag entity
- *
- * @return Response HTTP response
- */
+    /**
+     * Show action.
+     *
+     * @param Tag $tag Tag entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'app_tag_show', methods: ['GET'])]
     public function show(Tag $tag): Response
     {
@@ -82,16 +79,15 @@ final class TagController extends AbstractController
         ]);
     }
 
-
-/**
- * Edit action.
- *
- * @param Request             $request    HTTP request
- * @param Tag                 $tag        Tag entity
- * @param TagServiceInterface $tagService Tag service
- *
- * @return Response HTTP response
- */
+    /**
+     * Edit action.
+     *
+     * @param Request             $request    HTTP request
+     * @param Tag                 $tag        Tag entity
+     * @param TagServiceInterface $tagService Tag service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}/edit', name: 'app_tag_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tag $tag, TagServiceInterface $tagService): Response
     {
@@ -110,15 +106,15 @@ final class TagController extends AbstractController
         ]);
     }
 
-/**
- * Delete action.
- *
- * @param Request             $request    HTTP request
- * @param Tag                 $tag        Tag entity
- * @param TagServiceInterface $tagService Tag service
- *
- * @return Response HTTP response
- */
+    /**
+     * Delete action.
+     *
+     * @param Request             $request    HTTP request
+     * @param Tag                 $tag        Tag entity
+     * @param TagServiceInterface $tagService Tag service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'app_tag_delete', methods: ['POST'])]
     public function delete(Request $request, Tag $tag, TagServiceInterface $tagService): Response
     {

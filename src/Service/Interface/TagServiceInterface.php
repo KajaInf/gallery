@@ -24,8 +24,6 @@ interface TagServiceInterface
      * Saves a tag.
      *
      * @param Tag $tag Tag entity
-     *
-     * @return void
      */
     public function save(Tag $tag): void;
 
@@ -33,8 +31,6 @@ interface TagServiceInterface
      * Deletes a tag.
      *
      * @param Tag $tag Tag entity
-     *
-     * @return void
      */
     public function delete(Tag $tag): void;
 }

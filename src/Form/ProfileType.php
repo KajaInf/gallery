@@ -23,8 +23,6 @@ class ProfileType extends AbstractType
      *
      * @param FormBuilderInterface $builder Form builder
      * @param array                $options Form options
-     *
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -47,8 +45,6 @@ class ProfileType extends AbstractType
      * Configures profile form options.
      *
      * @param OptionsResolver $resolver Options resolver
-     *
-     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

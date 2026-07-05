@@ -19,8 +19,6 @@ class GalleryControllerTest extends WebTestCase
 {
     /**
      * Tests gallery index page.
-     *
-     * @return void
      */
     public function testGalleryIndexIsSuccessful(): void
     {
@@ -34,8 +32,6 @@ class GalleryControllerTest extends WebTestCase
 
     /**
      * Tests gallery new redirect for anonymous user.
-     *
-     * @return void
      */
     public function testGalleryNewRedirectsAnonymousUser(): void
     {
@@ -48,8 +44,6 @@ class GalleryControllerTest extends WebTestCase
 
     /**
      * Tests gallery show page.
-     *
-     * @return void
      */
     public function testGalleryShowIsSuccessful(): void
     {
@@ -71,8 +65,6 @@ class GalleryControllerTest extends WebTestCase
 
     /**
      * Tests gallery new page for admin user.
-     *
-     * @return void
      */
     public function testGalleryNewIsSuccessfulForAdmin(): void
     {

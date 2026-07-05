@@ -144,8 +144,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Erases temporary sensitive data.
-     *
-     * @return void
      */
     #[\Deprecated]
     public function eraseCredentials(): void

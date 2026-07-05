@@ -24,8 +24,6 @@ interface UserServiceInterface
      * Saves a user.
      *
      * @param User $user User entity
-     *
-     * @return void
      */
     public function save(User $user): void;
 
@@ -34,8 +32,6 @@ interface UserServiceInterface
      *
      * @param User   $user          User entity
      * @param string $plainPassword Plain password
-     *
-     * @return void
      */
     public function setPassword(User $user, string $plainPassword): void;
 
@@ -44,8 +40,6 @@ interface UserServiceInterface
      *
      * @param User        $user          User entity
      * @param string|null $plainPassword Plain password
-     *
-     * @return void
      */
     public function updatePassword(User $user, ?string $plainPassword): void;
 
@@ -53,8 +47,6 @@ interface UserServiceInterface
      * Deletes a user.
      *
      * @param User $user User entity
-     *
-     * @return void
      */
     public function delete(User $user): void;
 }
