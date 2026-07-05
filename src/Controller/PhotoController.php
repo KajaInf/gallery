@@ -112,6 +112,13 @@ final class PhotoController extends AbstractController
     public function show(Request $request, Photo $photo, CommentService $commentService, PhotoServiceInterface $photoService): Response
     {
         $comment = new Comment();
+
+        $user = $this->getUser();
+        if (null !== $user) {
+            $comment->setEmail($user->getUserIdentifier());
+            $comment->setNick($user->getUserIdentifier());
+        }
+
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
@@ -124,8 +131,6 @@ final class PhotoController extends AbstractController
                     return $this->redirectToRoute('app_login');
             }
 
-            $comment->setEmail($user->getUserIdentifier());
-            $comment->setNick($user->getUserIdentifier());
 
             if ($form->isValid()) {
                   $commentService->createForPhoto($comment, $photo, $user);
