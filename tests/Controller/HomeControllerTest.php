@@ -23,6 +23,6 @@ class HomeControllerTest extends WebTestCase
         $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('body', 'Home');
+        $this->assertSelectorTextContains('body', 'Galeria zdjęć');
     }
 }

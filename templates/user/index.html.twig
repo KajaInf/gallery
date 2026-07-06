@@ -10,8 +10,8 @@
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Roles</th>
-                <th>actions</th>
+                <th>Role</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
@@ -21,13 +21,13 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Pokaż</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Edytuj</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Brak użytkowników</td>
             </tr>
         {% endfor %}
         </tbody>

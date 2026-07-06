@@ -11,9 +11,9 @@
                 <th>Id</th>
                 <th>Nick</th>
                 <th>Email</th>
-                <th>Content</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
+                <th>Treść</th>
+                <th>Data utworzenia</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
@@ -25,13 +25,13 @@
                 <td>{{ comment.content }}</td>
                 <td>{{ comment.createdAt ? comment.createdAt|format_datetime('medium', 'medium', locale=app.request.locale) : '' }}</td>
                 <td>
-                    <a href="{{ path('app_comment_show', {'id': comment.id}) }}">show</a>
-                    <a href="{{ path('app_comment_edit', {'id': comment.id}) }}">edit</a>
+                    <a href="{{ path('app_comment_show', {'id': comment.id}) }}">Pokaż</a>
+                    <a href="{{ path('app_comment_edit', {'id': comment.id}) }}">Edytuj</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Brak komentarzy</td>
             </tr>
         {% endfor %}
         </tbody>

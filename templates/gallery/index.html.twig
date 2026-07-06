@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>actions</th>
+                <th>Nazwa</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
@@ -19,15 +19,15 @@
                 <td>{{ gallery.id }}</td>
                 <td>{{ gallery.title }}</td>
                 <td>
-                    <a href="{{ path('app_gallery_show', {'id': gallery.id}) }}">show</a>
+                    <a href="{{ path('app_gallery_show', {'id': gallery.id}) }}">Pokaż</a>
                     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('app_gallery_edit', {'id': gallery.id}) }}">edit</a>
+    <a href="{{ path('app_gallery_edit', {'id': gallery.id}) }}">Edytuj</a>
 {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Brak galerii</td>
             </tr>
         {% endfor %}
         </tbody>
