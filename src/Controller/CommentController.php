@@ -117,7 +117,7 @@ final class CommentController extends AbstractController
      * @return Response HTTP response
      */
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}', name: 'app_comment_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_comment_delete', methods: ['DELETE'])]
     public function delete(Request $request, Comment $comment, CommentServiceInterface $commentService): Response
     {
         $this->denyAccessUnlessGranted(CommentVoter::DELETE, $comment);

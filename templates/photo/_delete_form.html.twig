@@ -1,12 +1,5 @@
-<form method="post"
-      action="{{ path('app_photo_delete', {'id': photo.id}) }}"
-      onsubmit="return confirm('Czy na pewno chcesz usunąć to zdjęcie?');">
-
-    <input type="hidden"
-           name="_token"
-           value="{{ csrf_token('delete' ~ photo.id) }}">
-
-    <button class="btn btn-danger">
-        {{ 'action.delete'|trans }}
-    </button>
+<form method="post" action="{{ path('app_photo_delete', {'id': photo.id}) }}">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ photo.id) }}">
+    <button class="btn btn-danger">{{ 'action.delete'|trans }}</button>
 </form>

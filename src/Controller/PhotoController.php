@@ -200,7 +200,7 @@ final class PhotoController extends AbstractController
      * @return Response HTTP response
      */
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}/delete', name: 'app_photo_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_photo_delete', methods: ['DELETE'])]
     public function delete(Request $request, Photo $photo, PhotoServiceInterface $photoService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$photo->getId(), $request->getPayload()->getString('_token'))) {

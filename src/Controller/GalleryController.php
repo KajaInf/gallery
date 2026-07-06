@@ -124,7 +124,7 @@ final class GalleryController extends AbstractController
      * @return Response HTTP response
      */
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}', name: 'app_gallery_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_gallery_delete', methods: ['DELETE'])]
     public function delete(Request $request, Gallery $gallery, GalleryServiceInterface $galleryService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->getPayload()->getString('_token'))) {

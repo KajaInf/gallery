@@ -115,7 +115,7 @@ final class TagController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'app_tag_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_tag_delete', methods: ['DELETE'])]
     public function delete(Request $request, Tag $tag, TagServiceInterface $tagService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$tag->getId(), $request->getPayload()->getString('_token'))) {
