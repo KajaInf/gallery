@@ -18,6 +18,10 @@
                 <source>There is already an account with this email</source>
                 <target>Konto z tym adresem e-mail już istnieje.</target>
             </trans-unit>
+            <trans-unit id="image.invalid">
+    <source>Proszę przesłać poprawny plik graficzny.</source>
+    <target>Proszę przesłać poprawny plik graficzny.</target>
+</trans-unit>
         </body>
     </file>
 </xliff>
