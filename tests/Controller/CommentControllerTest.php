@@ -78,7 +78,7 @@ class CommentControllerTest extends WebTestCase
         $entityManager->flush();
 
         $client->loginUser($admin);
-        $client->request('GET', '/comment/' . $comment->getId());
+        $client->request('GET', '/comment/'.$comment->getId());
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('body', 'Test comment content');
@@ -95,7 +95,7 @@ class CommentControllerTest extends WebTestCase
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
 
         $user = new User();
-        $user->setEmail('admin-comment-test-' . uniqid() . '@example.com');
+        $user->setEmail('admin-comment-test-'.uniqid().'@example.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 

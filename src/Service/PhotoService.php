@@ -84,10 +84,10 @@ class PhotoService implements PhotoServiceInterface
      */
     public function uploadImage(Photo $photo, UploadedFile $imageFile): void
     {
-        $newFilename = uniqid('photo_', true) . '.' . $imageFile->guessExtension();
+        $newFilename = uniqid('photo_', true).'.'.$imageFile->guessExtension();
 
         $imageFile->move(
-            $this->projectDir . '/public/uploads/photos',
+            $this->projectDir.'/public/uploads/photos',
             $newFilename
         );
 
@@ -101,7 +101,7 @@ class PhotoService implements PhotoServiceInterface
      */
     public function delete(Photo $photo): void
     {
-        $filePath = $this->projectDir . '/public/uploads/photos/' . $photo->getFilename();
+        $filePath = $this->projectDir.'/public/uploads/photos/'.$photo->getFilename();
 
         if (is_file($filePath)) {
             unlink($filePath);

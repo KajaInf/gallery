@@ -122,7 +122,7 @@ final class CommentController extends AbstractController
     {
         $this->denyAccessUnlessGranted(CommentVoter::DELETE, $comment);
 
-        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->getPayload()->getString('_token'))) {
             $commentService->delete($comment);
         }
 

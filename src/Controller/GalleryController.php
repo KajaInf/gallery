@@ -127,7 +127,7 @@ final class GalleryController extends AbstractController
     #[Route('/{id}', name: 'app_gallery_delete', methods: ['DELETE'])]
     public function delete(Request $request, Gallery $gallery, GalleryServiceInterface $galleryService): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $gallery->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->getPayload()->getString('_token'))) {
             if (!$galleryService->canDelete($gallery)) {
                 $this->addFlash('danger', 'Nie można usunąć galerii, która zawiera zdjęcia.');
 

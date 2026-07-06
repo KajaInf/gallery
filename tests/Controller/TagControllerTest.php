@@ -56,7 +56,7 @@ class TagControllerTest extends WebTestCase
         $entityManager->persist($tag);
         $entityManager->flush();
 
-        $client->request('GET', '/tag/' . $tag->getId());
+        $client->request('GET', '/tag/'.$tag->getId());
 
         $this->assertResponseRedirects();
     }
@@ -87,7 +87,7 @@ class TagControllerTest extends WebTestCase
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
 
         $user = new User();
-        $user->setEmail('admin-tag-test-' . uniqid() . '@example.com');
+        $user->setEmail('admin-tag-test-'.uniqid().'@example.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 

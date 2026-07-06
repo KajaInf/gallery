@@ -158,7 +158,7 @@ final class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['DELETE'])]
     public function delete(Request $request, User $user, UserServiceInterface $userService): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
             if ($user === $this->getUser()) {
                 $this->addFlash('danger', 'Nie możesz usunąć własnego konta administratora.');
 

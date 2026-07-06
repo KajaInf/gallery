@@ -139,7 +139,7 @@ class AppFixtures extends Fixture
             $photo->setDescription($photoData['description']);
             $photo->setFilename($photoData['filename']);
             $photo->setGallery($photoData['gallery']);
-            $photo->setCreatedAt(new \DateTimeImmutable('-' . ($index + 1) . ' days'));
+            $photo->setCreatedAt(new \DateTimeImmutable('-'.($index + 1).' days'));
 
             foreach ($photoData['tags'] as $tag) {
                 $photo->addTag($tag);
@@ -150,7 +150,7 @@ class AppFixtures extends Fixture
             $comment = new Comment();
             $comment->setNick('Użytkownik testowy');
             $comment->setEmail('user@example.com');
-            $comment->setContent('Przykładowy komentarz do zdjęcia: ' . $photoData['title']);
+            $comment->setContent('Przykładowy komentarz do zdjęcia: '.$photoData['title']);
             $comment->setCreatedAt(new \DateTimeImmutable());
             $comment->setPhoto($photo);
 

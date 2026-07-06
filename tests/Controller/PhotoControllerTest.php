@@ -66,7 +66,7 @@ class PhotoControllerTest extends WebTestCase
         $entityManager->persist($photo);
         $entityManager->flush();
 
-        $client->request('GET', '/photo/' . $photo->getId());
+        $client->request('GET', '/photo/'.$photo->getId());
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('body', 'Test photo');
@@ -113,7 +113,7 @@ class PhotoControllerTest extends WebTestCase
         $entityManager->flush();
 
         $client->loginUser($admin);
-        $client->request('GET', '/photo/' . $photo->getId() . '/edit');
+        $client->request('GET', '/photo/'.$photo->getId().'/edit');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');
@@ -130,7 +130,7 @@ class PhotoControllerTest extends WebTestCase
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
 
         $user = new User();
-        $user->setEmail('admin-photo-test-' . uniqid() . '@example.com');
+        $user->setEmail('admin-photo-test-'.uniqid().'@example.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 
