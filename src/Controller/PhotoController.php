@@ -77,7 +77,7 @@ final class PhotoController extends AbstractController
             if ($imageFile) {
                 try {
                     $photoService->uploadImage($photo, $imageFile);
-                } catch (FileException $exception) {
+                } catch (FileException) {
                     $this->addFlash('danger', 'Nie udało się przesłać pliku.');
 
                     return $this->redirectToRoute('app_photo_new');

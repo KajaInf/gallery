@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class Photo.
  */
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
-class Photo
+class Photo implements \Stringable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
