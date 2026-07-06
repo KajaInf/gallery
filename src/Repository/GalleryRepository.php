@@ -41,6 +41,28 @@ class GalleryRepository extends ServiceEntityRepository
             ->count(['gallery' => $gallery]);
     }
 
+/**
+ * Saves gallery.
+ *
+ * @param Gallery $gallery Gallery entity
+ */
+    public function save(Gallery $gallery): void
+    {
+        $this->getEntityManager()->persist($gallery);
+        $this->getEntityManager()->flush();
+    }
+
+/**
+ * Deletes gallery.
+ *
+ * @param Gallery $gallery Gallery entity
+ */
+    public function delete(Gallery $gallery): void
+    {
+        $this->getEntityManager()->remove($gallery);
+        $this->getEntityManager()->flush();
+    }
+
     //    /**
     //     * @return Gallery[] Returns an array of Gallery objects
     //     */

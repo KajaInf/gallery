@@ -10,7 +10,6 @@ use App\Entity\Comment;
 use App\Entity\Photo;
 use App\Repository\CommentRepository;
 use App\Service\CommentService;
-use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -24,16 +23,6 @@ class CommentServiceTest extends TestCase
      */
     public function testCreateForPhoto(): void
     {
-        $entityManager = $this->createMock(EntityManagerInterface::class);
-
-        $entityManager
-            ->expects($this->once())
-            ->method('persist');
-
-        $entityManager
-            ->expects($this->once())
-            ->method('flush');
-
         $user = $this->createMock(UserInterface::class);
         $user
             ->method('getUserIdentifier')
@@ -46,7 +35,12 @@ class CommentServiceTest extends TestCase
         $comment = new Comment();
 
         $commentRepository = $this->createMock(CommentRepository::class);
-        $service = new CommentService($commentRepository, $entityManager);
+        $commentRepository
+            ->expects($this->once())
+            ->method('save')
+            ->with($comment);
+
+        $service = new CommentService($commentRepository);
         $service->createForPhoto($comment, $photo, $user);
 
         $this->assertSame($photo, $comment->getPhoto());

@@ -66,6 +66,28 @@ class CommentRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    /**
+ * Saves comment.
+ *
+ * @param Comment $comment Comment entity
+ */
+    public function save(Comment $comment): void
+    {
+        $this->getEntityManager()->persist($comment);
+        $this->getEntityManager()->flush();
+    }
+
+/**
+ * Deletes comment.
+ *
+ * @param Comment $comment Comment entity
+ */
+    public function delete(Comment $comment): void
+    {
+        $this->getEntityManager()->remove($comment);
+        $this->getEntityManager()->flush();
+    }
+
     //    /**
     //     * @return Comment[] Returns an array of Comment objects
     //     */

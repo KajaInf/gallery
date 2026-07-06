@@ -14,7 +14,6 @@ use App\Repository\CommentRepository;
 use App\Repository\PhotoRepository;
 use App\Repository\TagRepository;
 use App\Service\Interface\PhotoServiceInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -26,13 +25,12 @@ class PhotoService implements PhotoServiceInterface
     /**
      * Constructor.
      *
-     * @param PhotoRepository        $photoRepository   Photo repository
-     * @param TagRepository          $tagRepository     Tag repository
-     * @param CommentRepository      $commentRepository Comment repository
-     * @param EntityManagerInterface $entityManager     Entity manager
-     * @param string                 $projectDir        Project directory
+     * @param PhotoRepository   $photoRepository   Photo repository
+     * @param TagRepository     $tagRepository     Tag repository
+     * @param CommentRepository $commentRepository Comment repository
+     * @param string            $projectDir        Project directory
      */
-    public function __construct(private readonly PhotoRepository $photoRepository, private readonly TagRepository $tagRepository, private readonly CommentRepository $commentRepository, private readonly EntityManagerInterface $entityManager, #[Autowire('%kernel.project_dir%')] private readonly string $projectDir)
+    public function __construct(private readonly PhotoRepository $photoRepository, private readonly TagRepository $tagRepository, private readonly CommentRepository $commentRepository, #[Autowire('%kernel.project_dir%')] private readonly string $projectDir)
     {
     }
 
@@ -75,8 +73,7 @@ class PhotoService implements PhotoServiceInterface
      */
     public function save(Photo $photo): void
     {
-        $this->entityManager->persist($photo);
-        $this->entityManager->flush();
+           $this->photoRepository->save($photo);
     }
 
     /**
@@ -104,24 +101,13 @@ class PhotoService implements PhotoServiceInterface
      */
     public function delete(Photo $photo): void
     {
-        foreach ($photo->getTags() as $tag) {
-            $photo->removeTag($tag);
-        }
-
-        $comments = $this->commentRepository->findBy(['photo' => $photo]);
-
-        foreach ($comments as $comment) {
-            $this->entityManager->remove($comment);
-        }
-
         $filePath = $this->projectDir.'/public/uploads/photos/'.$photo->getFilename();
 
         if (is_file($filePath)) {
             unlink($filePath);
         }
 
-        $this->entityManager->remove($photo);
-        $this->entityManager->flush();
+        $this->photoRepository->delete($photo);
     }
 
         /**

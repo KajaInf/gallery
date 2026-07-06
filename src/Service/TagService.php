@@ -9,7 +9,6 @@ namespace App\Service;
 use App\Entity\Tag;
 use App\Repository\TagRepository;
 use App\Service\Interface\TagServiceInterface;
-use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class TagService.
@@ -19,10 +18,9 @@ class TagService implements TagServiceInterface
     /**
      * Constructor.
      *
-     * @param TagRepository          $tagRepository Tag repository
-     * @param EntityManagerInterface $entityManager Entity manager
+     * @param TagRepository $tagRepository Tag repository
      */
-    public function __construct(private readonly TagRepository $tagRepository, private readonly EntityManagerInterface $entityManager)
+    public function __construct(private readonly TagRepository $tagRepository)
     {
     }
 
@@ -43,8 +41,7 @@ class TagService implements TagServiceInterface
      */
     public function save(Tag $tag): void
     {
-        $this->entityManager->persist($tag);
-        $this->entityManager->flush();
+           $this->tagRepository->save($tag);
     }
 
     /**
@@ -54,7 +51,6 @@ class TagService implements TagServiceInterface
      */
     public function delete(Tag $tag): void
     {
-        $this->entityManager->remove($tag);
-        $this->entityManager->flush();
+            $this->tagRepository->delete($tag);
     }
 }

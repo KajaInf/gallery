@@ -9,7 +9,6 @@ namespace App\Service;
 use App\Entity\Gallery;
 use App\Repository\GalleryRepository;
 use App\Service\Interface\GalleryServiceInterface;
-use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class GalleryService.
@@ -19,10 +18,9 @@ class GalleryService implements GalleryServiceInterface
     /**
      * Constructor.
      *
-     * @param GalleryRepository      $galleryRepository Gallery repository
-     * @param EntityManagerInterface $entityManager     Entity manager
+     * @param GalleryRepository $galleryRepository Gallery repository
      */
-    public function __construct(private readonly GalleryRepository $galleryRepository, private readonly EntityManagerInterface $entityManager)
+    public function __construct(private readonly GalleryRepository $galleryRepository)
     {
     }
 
@@ -43,8 +41,7 @@ class GalleryService implements GalleryServiceInterface
      */
     public function save(Gallery $gallery): void
     {
-        $this->entityManager->persist($gallery);
-        $this->entityManager->flush();
+            $this->galleryRepository->save($gallery);
     }
 
     /**
@@ -65,7 +62,6 @@ class GalleryService implements GalleryServiceInterface
      */
     public function delete(Gallery $gallery): void
     {
-        $this->entityManager->remove($gallery);
-        $this->entityManager->flush();
+            $this->galleryRepository->delete($gallery);
     }
 }

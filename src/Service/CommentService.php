@@ -10,7 +10,6 @@ use App\Entity\Comment;
 use App\Entity\Photo;
 use App\Repository\CommentRepository;
 use App\Service\Interface\CommentServiceInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -21,10 +20,9 @@ class CommentService implements CommentServiceInterface
     /**
      * Constructor.
      *
-     * @param CommentRepository      $commentRepository Comment repository
-     * @param EntityManagerInterface $entityManager     Entity manager
+     * @param CommentRepository $commentRepository Comment repository
      */
-    public function __construct(private readonly CommentRepository $commentRepository, private readonly EntityManagerInterface $entityManager)
+    public function __construct(private readonly CommentRepository $commentRepository)
     {
     }
 
@@ -45,8 +43,7 @@ class CommentService implements CommentServiceInterface
      */
     public function save(Comment $comment): void
     {
-        $this->entityManager->persist($comment);
-        $this->entityManager->flush();
+            $this->commentRepository->save($comment);
     }
 
     /**
@@ -56,8 +53,7 @@ class CommentService implements CommentServiceInterface
      */
     public function delete(Comment $comment): void
     {
-        $this->entityManager->remove($comment);
-        $this->entityManager->flush();
+            $this->commentRepository->delete($comment);
     }
 
     /**
