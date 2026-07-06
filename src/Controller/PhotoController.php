@@ -203,7 +203,7 @@ final class PhotoController extends AbstractController
     #[Route('/{id}/delete', name: 'app_photo_delete', methods: ['DELETE'])]
     public function delete(Request $request, Photo $photo, PhotoServiceInterface $photoService): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$photo->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $photo->getId(), $request->getPayload()->getString('_token'))) {
             $photoService->delete($photo);
             $this->addFlash('success', 'Zdjęcie zostało usunięte.');
         }

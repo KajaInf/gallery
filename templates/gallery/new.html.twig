@@ -7,5 +7,7 @@
 
     {{ include('gallery/_form.html.twig') }}
 
-    <a href="{{ path('app_gallery_index') }}">{{ 'action.back_to_list'|trans }}</a>
+<a href="{{ path('app_gallery_index') }}" class="btn btn-secondary">
+    {{ 'action.back_to_list'|trans }}
+</a>
 {% endblock %}

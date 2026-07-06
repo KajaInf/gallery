@@ -70,7 +70,7 @@ class UserControllerTest extends WebTestCase
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
 
         $user = new User();
-        $user->setEmail('edited-user-'.uniqid().'@example.com');
+        $user->setEmail('edited-user-' . uniqid() . '@example.com');
         $user->setRoles(['ROLE_USER']);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 
@@ -78,7 +78,7 @@ class UserControllerTest extends WebTestCase
         $entityManager->flush();
 
         $client->loginUser($admin);
-        $client->request('GET', '/user/'.$user->getId().'/edit');
+        $client->request('GET', '/user/' . $user->getId() . '/edit');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');
@@ -95,7 +95,7 @@ class UserControllerTest extends WebTestCase
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
 
         $user = new User();
-        $user->setEmail('admin-user-test-'.uniqid().'@example.com');
+        $user->setEmail('admin-user-test-' . uniqid() . '@example.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 

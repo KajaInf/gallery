@@ -13,7 +13,9 @@
         </a>
     </p>
 
-    <a href="{{ path('app_user_index') }}">{{ 'action.back_to_list'|trans }}</a>
+<a href="{{ path('app_user_index') }}" class="btn btn-secondary mb-2">
+    {{ 'action.back_to_list'|trans }}
+</a>
 
     {#{ include('user/_delete_form.html.twig') }#}
 {% endblock %}

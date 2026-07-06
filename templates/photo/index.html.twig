@@ -5,6 +5,12 @@
 {% block body %}
     <h1>{{ 'photo.index'|trans }}</h1>
 
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('app_photo_new') }}" class="btn btn-success mb-3">
+        {{ 'action.create_new'|trans }}
+    </a>
+{% endif %}
+
 <div class="row">
 
     {% for photo in photos %}
@@ -60,9 +66,6 @@
 
 </div>    
 
-    {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('app_photo_new') }}">{{ 'action.create_new'|trans }}</a>
-{% endif %}
 
 {% if totalPages > 1 %}
     <nav>

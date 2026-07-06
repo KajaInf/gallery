@@ -19,8 +19,12 @@
                 <td>{{ tag.id }}</td>
                 <td>{{ tag.name }}</td>
                 <td>
-                    <a href="{{ path('app_tag_show', {'id': tag.id}) }}">Pokaż</a>
-                    <a href="{{ path('app_tag_edit', {'id': tag.id}) }}">Edytuj</a>
+<a href="{{ path('app_tag_show', {'id': tag.id}) }}" class="btn btn-primary btn-sm">
+    Pokaż
+</a>
+<a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="btn btn-warning btn-sm">
+    Edytuj
+</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +35,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_tag_new') }}">{{ 'action.create_new'|trans }}</a>
+<a href="{{ path('app_tag_new') }}" class="btn btn-success mb-3">
+    {{ 'action.create_new'|trans }}
+</a>
 {% endblock %}

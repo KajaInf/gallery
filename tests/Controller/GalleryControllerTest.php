@@ -57,7 +57,7 @@ class GalleryControllerTest extends WebTestCase
         $entityManager->persist($gallery);
         $entityManager->flush();
 
-        $client->request('GET', '/gallery/'.$gallery->getId());
+        $client->request('GET', '/gallery/' . $gallery->getId());
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('body', 'Test gallery');
@@ -89,7 +89,7 @@ class GalleryControllerTest extends WebTestCase
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
 
         $user = new User();
-        $user->setEmail('admin-gallery-test-'.uniqid().'@example.com');
+        $user->setEmail('admin-gallery-test-' . uniqid() . '@example.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 

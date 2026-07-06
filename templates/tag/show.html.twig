@@ -18,9 +18,13 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_tag_index') }}">{{ 'action.back_to_list'|trans }}</a>
+<a href="{{ path('app_tag_index') }}" class="btn btn-secondary mb-2">
+    {{ 'action.back_to_list'|trans }}
+</a>
 
-    <a href="{{ path('app_tag_edit', {'id': tag.id}) }}">Edytuj</a>
+<a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="btn btn-warning mb-2">
+    Edytuj
+</a>
 
     {{ include('tag/_delete_form.html.twig') }}
 {% endblock %}

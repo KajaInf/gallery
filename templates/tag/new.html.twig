@@ -7,5 +7,7 @@
 
     {{ include('tag/_form.html.twig') }}
 
-    <a href="{{ path('app_tag_index') }}">{{ 'action.back_to_list'|trans }}</a>
+<a href="{{ path('app_tag_index') }}" class="btn btn-secondary">
+    {{ 'action.back_to_list'|trans }}
+</a>
 {% endblock %}
