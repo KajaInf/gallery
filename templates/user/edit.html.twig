@@ -17,5 +17,7 @@
     {{ 'action.back_to_list'|trans }}
 </a>
 
-    {{ include('user/_delete_form.html.twig') }}
+<a href="{{ path('app_user_delete_confirm', {'id': user.id}) }}" class="btn btn-danger">
+    Usuń
+</a>
 {% endblock %}

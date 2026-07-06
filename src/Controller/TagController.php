@@ -106,6 +106,22 @@ final class TagController extends AbstractController
         ]);
     }
 
+/**
+ * Delete confirmation action.
+ *
+ * @param Tag $tag Tag entity
+ *
+ * @return Response HTTP response
+ */
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/{id}/delete', name: 'app_tag_delete_confirm', methods: ['GET'])]
+    public function deleteConfirm(Tag $tag): Response
+    {
+        return $this->render('tag/delete.html.twig', [
+            'tag' => $tag,
+        ]);
+    }
+
     /**
      * Delete action.
      *

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuwanie tagu{% endblock %}
+
+{% block body %}
+    <h1>Usuwanie tagu</h1>
+
+    <p>
+        Czy na pewno chcesz usunąć tag "{{ tag.name }}"?
+    </p>
+
+    {{ include('tag/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_tag_show', {'id': tag.id}) }}" class="btn btn-secondary">
+        Anuluj
+    </a>
+{% endblock %}

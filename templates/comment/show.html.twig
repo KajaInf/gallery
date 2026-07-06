@@ -38,5 +38,7 @@
     Edytuj
 </a>
 
-    {{ include('comment/_delete_form.html.twig') }}
+<a href="{{ path('app_comment_delete_confirm', {'id': comment.id}) }}" class="btn btn-danger">
+    Usuń
+</a>
 {% endblock %}

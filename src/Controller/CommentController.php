@@ -107,6 +107,22 @@ final class CommentController extends AbstractController
         ]);
     }
 
+/**
+ * Delete confirmation action.
+ *
+ * @param Comment $comment Comment entity
+ *
+ * @return Response HTTP response
+ */
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/{id}/delete', name: 'app_comment_delete_confirm', methods: ['GET'])]
+    public function deleteConfirm(Comment $comment): Response
+    {
+        return $this->render('comment/delete.html.twig', [
+            'comment' => $comment,
+        ]);
+    }
+
     /**
      * Delete action.
      *

@@ -146,6 +146,21 @@ final class UserController extends AbstractController
         ]);
     }
 
+/**
+ * Delete confirmation action.
+ *
+ * @param User $user User entity
+ *
+ * @return Response HTTP response
+ */
+    #[Route('/{id}/delete', name: 'app_user_delete_confirm', methods: ['GET'])]
+    public function deleteConfirm(User $user): Response
+    {
+        return $this->render('user/delete.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
     /**
      * Delete action.
      *
