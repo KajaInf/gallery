@@ -29,7 +29,9 @@
 {% endif %}
 
     {% if is_granted('ROLE_ADMIN') %}
-    {{ include('gallery/_delete_form.html.twig') }}
+    <a href="{{ path('app_gallery_delete_confirm', {'id': gallery.id}) }}" class="btn btn-danger">
+    Usuń
+</a>
 {% endif %}
 
 <h2>Zdjęcia w galerii</h2>

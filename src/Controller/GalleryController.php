@@ -113,6 +113,21 @@ final class GalleryController extends AbstractController
             'form' => $form,
         ]);
     }
+/**
+ * Delete confirmation action.
+ *
+ * @param Gallery $gallery Gallery entity
+ *
+ * @return Response HTTP response
+ */
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/{id}/delete', name: 'app_gallery_delete_confirm', methods: ['GET'])]
+    public function deleteConfirm(Gallery $gallery): Response
+    {
+        return $this->render('gallery/delete.html.twig', [
+            'gallery' => $gallery,
+        ]);
+    }
 
     /**
      * Delete action.

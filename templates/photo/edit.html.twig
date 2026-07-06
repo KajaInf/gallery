@@ -11,5 +11,7 @@
     {{ 'action.back_to_list'|trans }}
     </a>
 
-    {{ include('photo/_delete_form.html.twig') }}
+<a href="{{ path('app_photo_delete_confirm', {'id': photo.id}) }}" class="btn btn-danger">
+    Usuń
+</a>
 {% endblock %}

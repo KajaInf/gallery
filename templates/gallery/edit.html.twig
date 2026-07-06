@@ -11,5 +11,7 @@
     {{ 'action.back_to_list'|trans }}
 </a>
 
-    {{ include('gallery/_delete_form.html.twig') }}
+<a href="{{ path('app_gallery_delete_confirm', {'id': gallery.id}) }}" class="btn btn-danger">
+    Usuń
+</a>
 {% endblock %}
