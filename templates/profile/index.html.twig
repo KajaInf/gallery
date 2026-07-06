@@ -9,4 +9,10 @@
     {{ form_widget(profile_form) }}
     <button type="submit">Zapisz zmiany</button>
 {{ form_end(profile_form) }}
+
+<p>
+    <a href="{{ path('app_profile_password') }}" class="btn btn-secondary">
+        Zmień hasło
+    </a>
+</p>
 {% endblock %}
