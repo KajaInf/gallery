@@ -62,11 +62,31 @@ class PhotoRepository extends ServiceEntityRepository
     public function findByTagId(int $tagId): array
     {
         return $this->createQueryBuilder('p')
-            ->join('p.tags', 't')
-            ->andWhere('t.id = :tagId')
-            ->setParameter('tagId', $tagId)
-            ->orderBy('p.createdAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+        ->join('p.tags', 'selectedTag')
+        ->leftJoin('p.gallery', 'g')
+        ->addSelect('g')
+        ->leftJoin('p.tags', 't')
+        ->addSelect('t')
+        ->andWhere('selectedTag.id = :tagId')
+        ->setParameter('tagId', $tagId)
+        ->orderBy('p.createdAt', 'DESC')
+        ->getQuery()
+        ->getResult();
+    }
+    /**
+ * Finds photos with relations.
+ *
+ * @return Photo[] List of photos
+ */
+    public function findAllWithRelations(): array
+    {
+        return $this->createQueryBuilder('p')
+        ->leftJoin('p.gallery', 'g')
+        ->addSelect('g')
+        ->leftJoin('p.tags', 't')
+        ->addSelect('t')
+        ->orderBy('p.createdAt', 'DESC')
+        ->getQuery()
+        ->getResult();
     }
 }

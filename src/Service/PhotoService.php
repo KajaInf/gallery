@@ -49,7 +49,7 @@ class PhotoService implements PhotoServiceInterface
             return $this->photoRepository->findByTagId((int) $tagId);
         }
 
-        return $this->photoRepository->findBy([], ['createdAt' => 'DESC']);
+        return $this->photoRepository->findAllWithRelations();
     }
 
     /**
