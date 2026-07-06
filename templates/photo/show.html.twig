@@ -52,7 +52,10 @@
 {% endif %}
 
     {% if is_granted('ROLE_ADMIN') %}
-    {{ include('photo/_delete_form.html.twig') }}
+<a href="{{ path('app_photo_delete_confirm', {'id': photo.id}) }}"
+   class="btn btn-danger">
+    Usuń
+</a>
 {% endif %}
 
 <hr>

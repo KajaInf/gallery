@@ -191,6 +191,22 @@ final class PhotoController extends AbstractController
     }
 
     /**
+     * Delete confirmation action.
+     *
+     * @param Photo $photo Photo entity
+     *
+     * @return Response HTTP response
+     */
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/{id}/delete', name: 'app_photo_delete_confirm', methods: ['GET'])]
+    public function deleteConfirm(Photo $photo): Response
+    {
+        return $this->render('photo/delete.html.twig', [
+            'photo' => $photo,
+        ]);
+    }
+
+    /**
      * Delete action.
      *
      * @param Request               $request      HTTP request
