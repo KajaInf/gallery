@@ -45,7 +45,10 @@
 <trans-unit id="login.remember_me"><source>login.remember_me</source><target>Remember me</target></trans-unit>
 <trans-unit id="login.submit"><source>login.submit</source><target>Sign in</target></trans-unit>
 <trans-unit id="login.logged_as"><source>login.logged_as</source><target>You are logged in as %user%, </target></trans-unit>
-
+<trans-unit id="label.email">
+    <source>Email</source>
+    <target>Email</target>
+</trans-unit>
 
 
         </body>

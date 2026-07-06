@@ -47,6 +47,10 @@
 <trans-unit id="login.remember_me"><source>login.remember_me</source><target>Zapamiętaj mnie</target></trans-unit>
 <trans-unit id="login.submit"><source>login.submit</source><target>Zaloguj</target></trans-unit>
 <trans-unit id="login.logged_as"><source>login.logged_as</source><target>Jesteś zalogowany jako %user%, </target></trans-unit>
+<trans-unit id="label.email">
+    <source>Email</source>
+    <target>E-mail</target>
+</trans-unit>
 
 
 
