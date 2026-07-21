@@ -73,7 +73,7 @@ class PhotoService implements PhotoServiceInterface
      */
     public function save(Photo $photo): void
     {
-           $this->photoRepository->save($photo);
+        $this->photoRepository->save($photo);
     }
 
     /**
@@ -110,7 +110,7 @@ class PhotoService implements PhotoServiceInterface
         $this->photoRepository->delete($photo);
     }
 
-        /**
+    /**
      * Returns comments for photo.
      *
      * @param Photo $photo  Photo entity
@@ -123,6 +123,7 @@ class PhotoService implements PhotoServiceInterface
     {
         return $this->commentRepository->findByPhoto($photo, $limit, $offset);
     }
+
     /**
      * Counts comments for photo.
      *

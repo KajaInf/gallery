@@ -43,7 +43,7 @@ class UserService implements UserServiceInterface
      */
     public function save(User $user): void
     {
-         $this->userRepository->save($user);
+        $this->userRepository->save($user);
     }
 
     /**
@@ -81,6 +81,6 @@ class UserService implements UserServiceInterface
      */
     public function delete(User $user): void
     {
-            $this->userRepository->delete($user);
+        $this->userRepository->delete($user);
     }
 }

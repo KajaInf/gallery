@@ -7,11 +7,10 @@ use Rector\Symfony\Set\SymfonySetList;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__.'/src',
-        __DIR__.'/tests',
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
     ])
     ->withPhpSets(php81: true)
     ->withSets([
         SymfonySetList::SYMFONY_64,
     ]);
-

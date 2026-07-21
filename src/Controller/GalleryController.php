@@ -8,13 +8,13 @@ namespace App\Controller;
 
 use App\Entity\Gallery;
 use App\Form\GalleryType;
+use App\Service\Interface\GalleryServiceInterface;
+use App\Service\Interface\PhotoServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Service\Interface\GalleryServiceInterface;
-use App\Service\Interface\PhotoServiceInterface;
 
 /**
  * Class GalleryController.
@@ -113,13 +113,14 @@ final class GalleryController extends AbstractController
             'form' => $form,
         ]);
     }
-/**
- * Delete confirmation action.
- *
- * @param Gallery $gallery Gallery entity
- *
- * @return Response HTTP response
- */
+
+    /**
+     * Delete confirmation action.
+     *
+     * @param Gallery $gallery Gallery entity
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/delete', name: 'app_gallery_delete_confirm', methods: ['GET'])]
     public function deleteConfirm(Gallery $gallery): Response

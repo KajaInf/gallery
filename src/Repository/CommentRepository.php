@@ -67,21 +67,21 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
- * Saves comment.
- *
- * @param Comment $comment Comment entity
- */
+     * Saves comment.
+     *
+     * @param Comment $comment Comment entity
+     */
     public function save(Comment $comment): void
     {
         $this->getEntityManager()->persist($comment);
         $this->getEntityManager()->flush();
     }
 
-/**
- * Deletes comment.
- *
- * @param Comment $comment Comment entity
- */
+    /**
+     * Deletes comment.
+     *
+     * @param Comment $comment Comment entity
+     */
     public function delete(Comment $comment): void
     {
         $this->getEntityManager()->remove($comment);

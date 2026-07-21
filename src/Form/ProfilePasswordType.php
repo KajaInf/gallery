@@ -30,10 +30,10 @@ class ProfilePasswordType extends AbstractType
             'mapped' => false,
             'required' => true,
             'first_options' => [
-            'label' => 'label.new_password',
+                'label' => 'label.new_password',
             ],
             'second_options' => [
-            'label' => 'label.repeat_new_password',
+                'label' => 'label.repeat_new_password',
             ],
         ]);
     }

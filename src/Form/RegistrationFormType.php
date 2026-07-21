@@ -37,9 +37,9 @@ class RegistrationFormType extends AbstractType
             'label' => 'label.agree_terms',
             'mapped' => false,
             'constraints' => [
-            new IsTrue(
-                message: 'registration.terms_required',
-            ),
+                new IsTrue(
+                    message: 'registration.terms_required',
+                ),
             ],
         ])
         ->add('plainPassword', PasswordType::class, [
@@ -47,14 +47,14 @@ class RegistrationFormType extends AbstractType
             'mapped' => false,
             'attr' => ['autocomplete' => 'new-password'],
             'constraints' => [
-            new NotBlank(
-                message: 'registration.password_required',
-            ),
-            new Length(
-                min: 6,
-                minMessage: 'registration.password_too_short',
-                max: 4096,
-            ),
+                new NotBlank(
+                    message: 'registration.password_required',
+                ),
+                new Length(
+                    min: 6,
+                    minMessage: 'registration.password_too_short',
+                    max: 4096,
+                ),
             ],
         ]);
     }

@@ -8,12 +8,12 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Form\TagType;
+use App\Service\Interface\TagServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Service\Interface\TagServiceInterface;
 
 /**
  * Class TagController.
@@ -106,13 +106,13 @@ final class TagController extends AbstractController
         ]);
     }
 
-/**
- * Delete confirmation action.
- *
- * @param Tag $tag Tag entity
- *
- * @return Response HTTP response
- */
+    /**
+     * Delete confirmation action.
+     *
+     * @param Tag $tag Tag entity
+     *
+     * @return Response HTTP response
+     */
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/delete', name: 'app_tag_delete_confirm', methods: ['GET'])]
     public function deleteConfirm(Tag $tag): Response

@@ -43,7 +43,7 @@ class CommentService implements CommentServiceInterface
      */
     public function save(Comment $comment): void
     {
-            $this->commentRepository->save($comment);
+        $this->commentRepository->save($comment);
     }
 
     /**
@@ -53,7 +53,7 @@ class CommentService implements CommentServiceInterface
      */
     public function delete(Comment $comment): void
     {
-            $this->commentRepository->delete($comment);
+        $this->commentRepository->delete($comment);
     }
 
     /**

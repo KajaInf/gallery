@@ -41,14 +41,14 @@ class PhotoType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
-                new Image([
-                    'mimeTypes' => [
-                    'image/jpeg',
-                    'image/png',
-                    'image/webp',
-                    ],
-                    'mimeTypesMessage' => 'Proszę przesłać poprawny plik graficzny.',
-                ]),
+                    new Image([
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Proszę przesłać poprawny plik graficzny.',
+                    ]),
                 ],
             ])
             ->add('gallery', EntityType::class, [

@@ -41,7 +41,7 @@ class TagService implements TagServiceInterface
      */
     public function save(Tag $tag): void
     {
-           $this->tagRepository->save($tag);
+        $this->tagRepository->save($tag);
     }
 
     /**
@@ -51,6 +51,6 @@ class TagService implements TagServiceInterface
      */
     public function delete(Tag $tag): void
     {
-            $this->tagRepository->delete($tag);
+        $this->tagRepository->delete($tag);
     }
 }

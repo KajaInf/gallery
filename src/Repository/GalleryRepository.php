@@ -27,6 +27,7 @@ class GalleryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Gallery::class);
     }
+
     /**
      * Counts photos assigned to gallery.
      *
@@ -41,22 +42,22 @@ class GalleryRepository extends ServiceEntityRepository
             ->count(['gallery' => $gallery]);
     }
 
-/**
- * Saves gallery.
- *
- * @param Gallery $gallery Gallery entity
- */
+    /**
+     * Saves gallery.
+     *
+     * @param Gallery $gallery Gallery entity
+     */
     public function save(Gallery $gallery): void
     {
         $this->getEntityManager()->persist($gallery);
         $this->getEntityManager()->flush();
     }
 
-/**
- * Deletes gallery.
- *
- * @param Gallery $gallery Gallery entity
- */
+    /**
+     * Deletes gallery.
+     *
+     * @param Gallery $gallery Gallery entity
+     */
     public function delete(Gallery $gallery): void
     {
         $this->getEntityManager()->remove($gallery);

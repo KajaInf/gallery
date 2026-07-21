@@ -41,7 +41,7 @@ class GalleryService implements GalleryServiceInterface
      */
     public function save(Gallery $gallery): void
     {
-            $this->galleryRepository->save($gallery);
+        $this->galleryRepository->save($gallery);
     }
 
     /**
@@ -55,6 +55,7 @@ class GalleryService implements GalleryServiceInterface
     {
         return 0 === $this->galleryRepository->countPhotos($gallery);
     }
+
     /**
      * Deletes a gallery.
      *
@@ -62,6 +63,6 @@ class GalleryService implements GalleryServiceInterface
      */
     public function delete(Gallery $gallery): void
     {
-            $this->galleryRepository->delete($gallery);
+        $this->galleryRepository->delete($gallery);
     }
 }

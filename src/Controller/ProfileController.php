@@ -7,6 +7,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ProfilePasswordType;
 use App\Form\ProfileType;
 use App\Service\Interface\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Form\ProfilePasswordType;
 
 /**
  * Class ProfileController.
@@ -54,14 +54,14 @@ final class ProfileController extends AbstractController
         ]);
     }
 
-/**
- * Password action.
- *
- * @param Request              $request     HTTP request
- * @param UserServiceInterface $userService User service
- *
- * @return Response HTTP response
- */
+    /**
+     * Password action.
+     *
+     * @param Request              $request     HTTP request
+     * @param UserServiceInterface $userService User service
+     *
+     * @return Response HTTP response
+     */
     #[Route('/profile/password', name: 'app_profile_password', methods: ['GET', 'POST'])]
     public function password(Request $request, UserServiceInterface $userService): Response
     {

@@ -27,22 +27,22 @@ class TagRepository extends ServiceEntityRepository
         parent::__construct($registry, Tag::class);
     }
 
-/**
- * Saves tag.
- *
- * @param Tag $tag Tag entity
- */
+    /**
+     * Saves tag.
+     *
+     * @param Tag $tag Tag entity
+     */
     public function save(Tag $tag): void
     {
         $this->getEntityManager()->persist($tag);
         $this->getEntityManager()->flush();
     }
 
-/**
- * Deletes tag.
- *
- * @param Tag $tag Tag entity
- */
+    /**
+     * Deletes tag.
+     *
+     * @param Tag $tag Tag entity
+     */
     public function delete(Tag $tag): void
     {
         $this->getEntityManager()->remove($tag);

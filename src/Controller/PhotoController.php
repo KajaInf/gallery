@@ -126,16 +126,15 @@ final class PhotoController extends AbstractController
             $user = $this->getUser();
 
             if (null === $user) {
-                    $this->addFlash('danger', 'Musisz być zalogowany, aby dodać komentarz.');
+                $this->addFlash('danger', 'Musisz być zalogowany, aby dodać komentarz.');
 
-                    return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('app_login');
             }
 
-
             if ($form->isValid()) {
-                  $commentService->createForPhoto($comment, $photo, $user);
+                $commentService->createForPhoto($comment, $photo, $user);
 
-                  $this->addFlash('success', 'Komentarz został dodany.');
+                $this->addFlash('success', 'Komentarz został dodany.');
 
                 return $this->redirectToRoute('app_photo_show', [
                     'id' => $photo->getId(),
@@ -143,7 +142,7 @@ final class PhotoController extends AbstractController
             }
         }
 
-                $commentsPage = max(1, $request->query->getInt('commentsPage', 1));
+        $commentsPage = max(1, $request->query->getInt('commentsPage', 1));
         $commentsLimit = 10;
         $commentsOffset = ($commentsPage - 1) * $commentsLimit;
 
@@ -151,13 +150,13 @@ final class PhotoController extends AbstractController
         $commentsCount = $photoService->countComments($photo);
         $commentsTotalPages = (int) ceil($commentsCount / $commentsLimit);
 
-                return $this->render('photo/show.html.twig', [
-                    'photo' => $photo,
-                    'comment_form' => $form,
-                    'comments' => $comments,
-                    'commentsPage' => $commentsPage,
-                    'commentsTotalPages' => $commentsTotalPages,
-                ]);
+        return $this->render('photo/show.html.twig', [
+            'photo' => $photo,
+            'comment_form' => $form,
+            'comments' => $comments,
+            'commentsPage' => $commentsPage,
+            'commentsTotalPages' => $commentsTotalPages,
+        ]);
     }
 
     /**

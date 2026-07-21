@@ -34,8 +34,8 @@ class UserCreateType extends AbstractType
         ->add('roles', ChoiceType::class, [
             'label' => 'label.roles',
             'choices' => [
-            'role.user' => 'ROLE_USER',
-            'role.admin' => 'ROLE_ADMIN',
+                'role.user' => 'ROLE_USER',
+                'role.admin' => 'ROLE_ADMIN',
             ],
             'choice_translation_domain' => 'messages',
             'multiple' => true,
@@ -46,10 +46,10 @@ class UserCreateType extends AbstractType
             'mapped' => false,
             'required' => true,
             'first_options' => [
-            'label' => 'label.password',
+                'label' => 'label.password',
             ],
             'second_options' => [
-            'label' => 'label.repeat_password',
+                'label' => 'label.repeat_password',
             ],
         ]);
     }

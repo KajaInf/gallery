@@ -56,7 +56,7 @@ interface PhotoServiceInterface
      */
     public function delete(Photo $photo): void;
 
-      /**
+    /**
      * Returns photo comments.
      *
      * @param Photo $photo  Photo entity
@@ -66,6 +66,7 @@ interface PhotoServiceInterface
      * @return array List of comments
      */
     public function getComments(Photo $photo, int $limit, int $offset): array;
+
     /**
      * Counts photo comments.
      *

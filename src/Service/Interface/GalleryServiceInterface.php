@@ -33,7 +33,8 @@ interface GalleryServiceInterface
      * @param Gallery $gallery Gallery entity
      */
     public function delete(Gallery $gallery): void;
-        /**
+
+    /**
      * Checks if gallery can be deleted.
      *
      * @param Gallery $gallery Gallery entity

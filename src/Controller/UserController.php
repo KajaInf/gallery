@@ -7,15 +7,15 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\UserCreateType;
 use App\Form\UserPasswordType;
+use App\Form\UserType;
 use App\Service\Interface\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use App\Form\UserCreateType;
 
 /**
  * Class UserController.
@@ -146,13 +146,13 @@ final class UserController extends AbstractController
         ]);
     }
 
-/**
- * Delete confirmation action.
- *
- * @param User $user User entity
- *
- * @return Response HTTP response
- */
+    /**
+     * Delete confirmation action.
+     *
+     * @param User $user User entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}/delete', name: 'app_user_delete_confirm', methods: ['GET'])]
     public function deleteConfirm(User $user): Response
     {
