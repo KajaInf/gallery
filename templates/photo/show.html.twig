@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Zdjęcie{% endblock %}
+{% block title %}{{ 'photo.show'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Zdjęcie</h1>
+    <h1>{{ 'photo.show'|trans }}</h1>
 
     <table class="table">
         <tbody>
@@ -12,98 +12,129 @@
                 <td>{{ photo.id }}</td>
             </tr>
             <tr>
-                <th>Tytuł</th>
+                <th>{{ 'photo.title'|trans }}</th>
                 <td>{{ photo.title }}</td>
             </tr>
             <tr>
-                <th>Plik</th>
+                <th>{{ 'photo.file'|trans }}</th>
                 <td>{{ photo.filename }}</td>
-<tr>
-    <th>Obraz</th>
-    <td>
-        <img src="{{ asset('uploads/photos/' ~ photo.filename) }}" alt="{{ photo.title }}" style="max-width: 400px;">
-    </td>
-</tr>
             </tr>
-<p>
-    {{ photo.description }}
-</p>
             <tr>
-    <th>Tags</th>
-    <td>
-        {% for tag in photo.tags %}
-            {{ tag.name }}{% if not loop.last %}, {% endif %}
-        {% else %}
-            brak
-        {% endfor %}
-    </td>
-</tr>
+                <th>{{ 'photo.image'|trans }}</th>
+                <td>
+                    <img
+                        src="{{ asset('uploads/photos/' ~ photo.filename) }}"
+                        alt="{{ photo.title }}"
+                        style="max-width: 400px;"
+                    >
+                </td>
+            </tr>
+            <tr>
+                <th>{{ 'label.description'|trans }}</th>
+                <td>{{ photo.description }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'photo.tags'|trans }}</th>
+                <td>
+                    {% for tag in photo.tags %}
+                        {{ tag.name }}{% if not loop.last %}, {% endif %}
+                    {% else %}
+                        {{ 'photo.no_tags'|trans }}
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
-<a href="{{ path('app_photo_index') }}" class="btn btn-secondary">
-    {{ 'action.back_to_list'|trans }}
-</a>
+    <a href="{{ path('app_photo_index') }}" class="btn btn-secondary">
+        {{ 'action.back_to_list'|trans }}
+    </a>
 
     {% if is_granted('ROLE_ADMIN') %}
-<a href="{{ path('app_photo_edit', {'id': photo.id}) }}" class="btn btn-warning">
-    Edytuj
-</a>
-{% endif %}
+        <a href="{{ path('app_photo_edit', {'id': photo.id}) }}" class="btn btn-warning">
+            {{ 'action.edit'|trans }}
+        </a>
 
-    {% if is_granted('ROLE_ADMIN') %}
-<a href="{{ path('app_photo_delete_confirm', {'id': photo.id}) }}"
-   class="btn btn-danger">
-    Usuń
-</a>
-{% endif %}
+        <a
+            href="{{ path('app_photo_delete_confirm', {'id': photo.id}) }}"
+            class="btn btn-danger"
+        >
+            {{ 'action.delete'|trans }}
+        </a>
+    {% endif %}
 
-<hr>
+    <hr>
 
-<h2>Komentarze</h2>
+    <h2>{{ 'comment.heading'|trans }}</h2>
 
-{% if comments is empty %}
-    <p>Brak komentarzy.</p>
-{% else %}
-    {% for comment in comments %}
-        <div>
-            <strong>{{ comment.nick }}</strong>
-            <small>{{ comment.createdAt ? comment.createdAt|format_datetime('medium', 'short', locale=app.request.locale) : '' }}</small>
-            <p>{{ comment.content }}</p>
-        </div>
-        <hr>
-    {% endfor %}
-{% endif %}
+    {% if comments is empty %}
+        <p>{{ 'comment.none'|trans }}</p>
+    {% else %}
+        {% for comment in comments %}
+            <div>
+                <strong>{{ comment.nick }}</strong>
+                <small>
+                    {{ comment.createdAt
+                        ? comment.createdAt|format_datetime(
+                            'medium',
+                            'short',
+                            locale=app.request.locale
+                        )
+                        : ''
+                    }}
+                </small>
+                <p>{{ comment.content }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
 
+    {% if app.user %}
+        {{ form_start(comment_form) }}
+            {{ form_widget(comment_form) }}
 
+            <button type="submit" class="btn btn-primary">
+                {{ 'comment.add'|trans }}
+            </button>
+        {{ form_end(comment_form) }}
+    {% else %}
+        <a href="{{ path('app_login') }}" class="btn btn-primary">
+            {{ 'comment.login'|trans }}
+        </a>
+    {% endif %}
 
-{% if app.user %}
-    {{ form_start(comment_form) }}
-        {{ form_widget(comment_form) }}
-        <button type="submit" class="btn btn-primary">Dodaj komentarz</button>
-    {{ form_end(comment_form) }}
-{% else %}
-    <a href="{{ path('app_login') }}" class="btn btn-primary">zaloguj się</a>
-{% endif %}
+    {% if commentsTotalPages > 1 %}
+        <nav>
+            {% if commentsPage > 1 %}
+                <a
+                    href="{{ path('app_photo_show', {
+                        'id': photo.id,
+                        'commentsPage': commentsPage - 1
+                    }) }}"
+                    class="btn btn-outline-primary btn-sm"
+                >
+                    {{ 'comment.previous_page'|trans }}
+                </a>
+            {% endif %}
 
-{% if commentsTotalPages > 1 %}
-    <nav>
-        {% if commentsPage > 1 %}
-            <a href="{{ path('app_photo_show', {'id': photo.id, 'commentsPage': commentsPage - 1}) }}" class="btn btn-outline-primary btn-sm">
-    Poprzednia strona komentarzy
-</a>
-        {% endif %}
+            <span>
+                {{ 'pagination.page_of'|trans({
+                    '%page%': commentsPage,
+                    '%pages%': commentsTotalPages
+                }) }}
+            </span>
 
-        <span>
-            Strona {{ commentsPage }} z {{ commentsTotalPages }}
-        </span>
-
-        {% if commentsPage < commentsTotalPages %}
-           <a href="{{ path('app_photo_show', {'id': photo.id, 'commentsPage': commentsPage + 1}) }}" class="btn btn-outline-primary btn-sm">
-    Następna strona komentarzy
-</a>
-        {% endif %}
-    </nav>
-{% endif %}
-
+            {% if commentsPage < commentsTotalPages %}
+                <a
+                    href="{{ path('app_photo_show', {
+                        'id': photo.id,
+                        'commentsPage': commentsPage + 1
+                    }) }}"
+                    class="btn btn-outline-primary btn-sm"
+                >
+                    {{ 'comment.next_page'|trans }}
+                </a>
+            {% endif %}
+        </nav>
+    {% endif %}
 {% endblock %}

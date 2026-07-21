@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Strona główna{% endblock %}
+{% block title %}{{ 'home.title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Galeria zdjęć</h1>
+    <h1>{{ 'home.heading'|trans }}</h1>
 
-    <p>Witaj w aplikacji galerii zdjęć.</p>
+    <p>{{ 'home.welcome'|trans }}</p>
 
     <a href="{{ path('app_photo_index') }}" class="btn btn-primary">
-        Przejdź do zdjęć
+        {{ 'home.photos'|trans }}
     </a>
 
     <a href="{{ path('app_gallery_index') }}" class="btn btn-secondary">
-        Przejdź do galerii
+        {{ 'home.galleries'|trans }}
     </a>
 {% endblock %}

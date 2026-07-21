@@ -48,7 +48,7 @@
 <trans-unit id="login.submit"><source>login.submit</source><target>Zaloguj</target></trans-unit>
 <trans-unit id="login.logged_as"><source>login.logged_as</source><target>Jesteś zalogowany jako %user%, </target></trans-unit>
 <trans-unit id="label.email">
-    <source>Email</source>
+    <source>label.email</source>
     <target>E-mail</target>
 </trans-unit>
 <trans-unit id="label.roles">
@@ -83,7 +83,134 @@
     <source>label.agree_terms</source>
     <target>Akceptuję regulamin</target>
 </trans-unit>
+<trans-unit id="home.title">
+    <source>home.title</source>
+    <target>Strona główna</target>
+</trans-unit>
+<trans-unit id="home.heading">
+    <source>home.heading</source>
+    <target>Galeria zdjęć</target>
+</trans-unit>
+<trans-unit id="home.welcome">
+    <source>home.welcome</source>
+    <target>Witaj w aplikacji galerii zdjęć.</target>
+</trans-unit>
+<trans-unit id="home.photos">
+    <source>home.photos</source>
+    <target>Przejdź do zdjęć</target>
+</trans-unit>
+<trans-unit id="home.galleries">
+    <source>home.galleries</source>
+    <target>Przejdź do galerii</target>
+</trans-unit>
 
+<trans-unit id="profile.title">
+    <source>profile.title</source>
+    <target>Mój profil</target>
+</trans-unit>
+<trans-unit id="profile.save">
+    <source>profile.save</source>
+    <target>Zapisz zmiany</target>
+</trans-unit>
+<trans-unit id="profile.change_password">
+    <source>profile.change_password</source>
+    <target>Zmień hasło</target>
+</trans-unit>
+<trans-unit id="profile.password_title">
+    <source>profile.password_title</source>
+    <target>Zmiana hasła</target>
+</trans-unit>
+<trans-unit id="profile.back">
+    <source>profile.back</source>
+    <target>Powrót do profilu</target>
+</trans-unit>
+
+<trans-unit id="photo.show">
+    <source>photo.show</source>
+    <target>Zdjęcie</target>
+</trans-unit>
+<trans-unit id="photo.title">
+    <source>photo.title</source>
+    <target>Tytuł</target>
+</trans-unit>
+<trans-unit id="photo.file">
+    <source>photo.file</source>
+    <target>Plik</target>
+</trans-unit>
+<trans-unit id="photo.image">
+    <source>photo.image</source>
+    <target>Obraz</target>
+</trans-unit>
+<trans-unit id="photo.tags">
+    <source>photo.tags</source>
+    <target>Tagi</target>
+</trans-unit>
+<trans-unit id="photo.no_tags">
+    <source>photo.no_tags</source>
+    <target>Brak tagów</target>
+</trans-unit>
+<trans-unit id="photo.view_comments">
+    <source>photo.view_comments</source>
+    <target>Zobacz zdjęcie i komentarze</target>
+</trans-unit>
+<trans-unit id="photo.no_photos">
+    <source>photo.no_photos</source>
+    <target>Brak zdjęć.</target>
+</trans-unit>
+<trans-unit id="photo.filter_by_tag">
+    <source>photo.filter_by_tag</source>
+    <target>Filtrowanie po tagu:</target>
+</trans-unit>
+<trans-unit id="photo.show_all">
+    <source>photo.show_all</source>
+    <target>Pokaż wszystkie zdjęcia</target>
+</trans-unit>
+<trans-unit id="photo.delete_title">
+    <source>photo.delete_title</source>
+    <target>Usuwanie zdjęcia</target>
+</trans-unit>
+<trans-unit id="photo.delete_confirm">
+    <source>photo.delete_confirm</source>
+    <target>Czy na pewno chcesz usunąć zdjęcie „%title%”?</target>
+</trans-unit>
+
+<trans-unit id="comment.heading">
+    <source>comment.heading</source>
+    <target>Komentarze</target>
+</trans-unit>
+<trans-unit id="comment.none">
+    <source>comment.none</source>
+    <target>Brak komentarzy.</target>
+</trans-unit>
+<trans-unit id="comment.add">
+    <source>comment.add</source>
+    <target>Dodaj komentarz</target>
+</trans-unit>
+<trans-unit id="comment.login">
+    <source>comment.login</source>
+    <target>Zaloguj się</target>
+</trans-unit>
+<trans-unit id="comment.previous_page">
+    <source>comment.previous_page</source>
+    <target>Poprzednia strona komentarzy</target>
+</trans-unit>
+<trans-unit id="comment.next_page">
+    <source>comment.next_page</source>
+    <target>Następna strona komentarzy</target>
+</trans-unit>
+<trans-unit id="pagination.page_of">
+    <source>pagination.page_of</source>
+    <target>Strona %page% z %pages%</target>
+</trans-unit>
+
+<trans-unit id="action.cancel">
+    <source>action.cancel</source>
+    <target>Anuluj</target>
+</trans-unit>
+<trans-unit id="label.description">
+    <source>label.description</source>
+    <target>Opis</target>
+</trans-unit>
 
 
         </body>

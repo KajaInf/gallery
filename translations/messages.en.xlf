@@ -46,7 +46,7 @@
 <trans-unit id="login.submit"><source>login.submit</source><target>Sign in</target></trans-unit>
 <trans-unit id="login.logged_as"><source>login.logged_as</source><target>You are logged in as %user%, </target></trans-unit>
 <trans-unit id="label.email">
-    <source>Email</source>
+    <source>label.email</source>
     <target>Email</target>
 </trans-unit>
 <trans-unit id="label.roles">
@@ -81,7 +81,134 @@
     <source>label.agree_terms</source>
     <target>I agree to the terms</target>
 </trans-unit>
+<trans-unit id="home.title">
+    <source>home.title</source>
+    <target>Home</target>
+</trans-unit>
+<trans-unit id="home.heading">
+    <source>home.heading</source>
+    <target>Photo gallery</target>
+</trans-unit>
+<trans-unit id="home.welcome">
+    <source>home.welcome</source>
+    <target>Welcome to the photo gallery application.</target>
+</trans-unit>
+<trans-unit id="home.photos">
+    <source>home.photos</source>
+    <target>Go to photos</target>
+</trans-unit>
+<trans-unit id="home.galleries">
+    <source>home.galleries</source>
+    <target>Go to galleries</target>
+</trans-unit>
 
+<trans-unit id="profile.title">
+    <source>profile.title</source>
+    <target>My profile</target>
+</trans-unit>
+<trans-unit id="profile.save">
+    <source>profile.save</source>
+    <target>Save changes</target>
+</trans-unit>
+<trans-unit id="profile.change_password">
+    <source>profile.change_password</source>
+    <target>Change password</target>
+</trans-unit>
+<trans-unit id="profile.password_title">
+    <source>profile.password_title</source>
+    <target>Change password</target>
+</trans-unit>
+<trans-unit id="profile.back">
+    <source>profile.back</source>
+    <target>Back to profile</target>
+</trans-unit>
+
+<trans-unit id="photo.show">
+    <source>photo.show</source>
+    <target>Photo</target>
+</trans-unit>
+<trans-unit id="photo.title">
+    <source>photo.title</source>
+    <target>Title</target>
+</trans-unit>
+<trans-unit id="photo.file">
+    <source>photo.file</source>
+    <target>File</target>
+</trans-unit>
+<trans-unit id="photo.image">
+    <source>photo.image</source>
+    <target>Image</target>
+</trans-unit>
+<trans-unit id="photo.tags">
+    <source>photo.tags</source>
+    <target>Tags</target>
+</trans-unit>
+<trans-unit id="photo.no_tags">
+    <source>photo.no_tags</source>
+    <target>No tags</target>
+</trans-unit>
+<trans-unit id="photo.view_comments">
+    <source>photo.view_comments</source>
+    <target>View photo and comments</target>
+</trans-unit>
+<trans-unit id="photo.no_photos">
+    <source>photo.no_photos</source>
+    <target>No photos.</target>
+</trans-unit>
+<trans-unit id="photo.filter_by_tag">
+    <source>photo.filter_by_tag</source>
+    <target>Filtering by tag:</target>
+</trans-unit>
+<trans-unit id="photo.show_all">
+    <source>photo.show_all</source>
+    <target>Show all photos</target>
+</trans-unit>
+<trans-unit id="photo.delete_title">
+    <source>photo.delete_title</source>
+    <target>Delete photo</target>
+</trans-unit>
+<trans-unit id="photo.delete_confirm">
+    <source>photo.delete_confirm</source>
+    <target>Are you sure you want to delete the photo “%title%”?</target>
+</trans-unit>
+
+<trans-unit id="comment.heading">
+    <source>comment.heading</source>
+    <target>Comments</target>
+</trans-unit>
+<trans-unit id="comment.none">
+    <source>comment.none</source>
+    <target>No comments.</target>
+</trans-unit>
+<trans-unit id="comment.add">
+    <source>comment.add</source>
+    <target>Add comment</target>
+</trans-unit>
+<trans-unit id="comment.login">
+    <source>comment.login</source>
+    <target>Log in</target>
+</trans-unit>
+<trans-unit id="comment.previous_page">
+    <source>comment.previous_page</source>
+    <target>Previous comments page</target>
+</trans-unit>
+<trans-unit id="comment.next_page">
+    <source>comment.next_page</source>
+    <target>Next comments page</target>
+</trans-unit>
+<trans-unit id="pagination.page_of">
+    <source>pagination.page_of</source>
+    <target>Page %page% of %pages%</target>
+</trans-unit>
+
+<trans-unit id="action.cancel">
+    <source>action.cancel</source>
+    <target>Cancel</target>
+</trans-unit>
+<trans-unit id="label.description">
+    <source>label.description</source>
+    <target>Description</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

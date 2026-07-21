@@ -1,24 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Usuwanie zdjęcia{% endblock %}
+{% block title %}{{ 'photo.delete_title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Usuwanie zdjęcia</h1>
+    <h1>{{ 'photo.delete_title'|trans }}</h1>
 
     <p>
-        Czy na pewno chcesz usunąć zdjęcie "{{ photo.title }}"?
+        {{ 'photo.delete_confirm'|trans({'%title%': photo.title}) }}
     </p>
 
     <form method="post" action="{{ path('app_photo_delete', {'id': photo.id}) }}">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ photo.id) }}">
+        <input
+            type="hidden"
+            name="_token"
+            value="{{ csrf_token('delete' ~ photo.id) }}"
+        >
 
         <button class="btn btn-danger" type="submit">
-            Usuń
+            {{ 'action.delete'|trans }}
         </button>
 
         <a href="{{ path('app_photo_show', {'id': photo.id}) }}" class="btn btn-secondary">
-            Anuluj
+            {{ 'action.cancel'|trans }}
         </a>
     </form>
 {% endblock %}

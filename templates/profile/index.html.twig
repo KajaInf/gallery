@@ -1,18 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mój profil{% endblock %}
+{% block title %}{{ 'profile.title'|trans }}{% endblock %}
 
 {% block body %}
-<h1>Mój profil</h1>
+    <h1>{{ 'profile.title'|trans }}</h1>
 
-{{ form_start(profile_form) }}
-    {{ form_widget(profile_form) }}
-    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
-{{ form_end(profile_form) }}
+    {{ form_start(profile_form) }}
+        {{ form_widget(profile_form) }}
 
-<p>
-    <a href="{{ path('app_profile_password') }}" class="btn btn-secondary">
-        Zmień hasło
-    </a>
-</p>
+        <button type="submit" class="btn btn-primary">
+            {{ 'profile.save'|trans }}
+        </button>
+    {{ form_end(profile_form) }}
+
+    <p>
+        <a href="{{ path('app_profile_password') }}" class="btn btn-secondary">
+            {{ 'profile.change_password'|trans }}
+        </a>
+    </p>
 {% endblock %}
