@@ -51,6 +51,38 @@
     <source>Email</source>
     <target>E-mail</target>
 </trans-unit>
+<trans-unit id="label.roles">
+    <source>label.roles</source>
+    <target>Role</target>
+</trans-unit>
+<trans-unit id="role.user">
+    <source>role.user</source>
+    <target>Użytkownik</target>
+</trans-unit>
+<trans-unit id="role.admin">
+    <source>role.admin</source>
+    <target>Administrator</target>
+</trans-unit>
+<trans-unit id="label.password">
+    <source>label.password</source>
+    <target>Hasło</target>
+</trans-unit>
+<trans-unit id="label.repeat_password">
+    <source>label.repeat_password</source>
+    <target>Powtórz hasło</target>
+</trans-unit>
+<trans-unit id="label.new_password">
+    <source>label.new_password</source>
+    <target>Nowe hasło</target>
+</trans-unit>
+<trans-unit id="label.repeat_new_password">
+    <source>label.repeat_new_password</source>
+    <target>Powtórz nowe hasło</target>
+</trans-unit>
+<trans-unit id="label.agree_terms">
+    <source>label.agree_terms</source>
+    <target>Akceptuję regulamin</target>
+</trans-unit>
 
 
 

@@ -30,10 +30,10 @@ class UserPasswordType extends AbstractType
             'mapped' => false,
             'required' => true,
             'first_options' => [
-                'label' => 'Nowe hasło',
+            'label' => 'label.new_password',
             ],
             'second_options' => [
-                'label' => 'Powtórz nowe hasło',
+            'label' => 'label.repeat_new_password',
             ],
         ]);
     }

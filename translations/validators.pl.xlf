@@ -22,6 +22,18 @@
     <source>Proszę przesłać poprawny plik graficzny.</source>
     <target>Proszę przesłać poprawny plik graficzny.</target>
 </trans-unit>
+<trans-unit id="registration.terms_required">
+    <source>registration.terms_required</source>
+    <target>Musisz zaakceptować regulamin.</target>
+</trans-unit>
+<trans-unit id="registration.password_required">
+    <source>registration.password_required</source>
+    <target>Wprowadź hasło.</target>
+</trans-unit>
+<trans-unit id="registration.password_too_short">
+    <source>registration.password_too_short</source>
+    <target>Hasło musi mieć co najmniej {{ limit }} znaków.</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

@@ -30,10 +30,14 @@ class PhotoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('description')
+            ->add('title', null, [
+                'label' => 'label.title',
+            ])
+        ->add('description', null, [
+            'label' => 'label.description',
+        ])
             ->add('imageFile', FileType::class, [
-                'label' => 'Zdjęcie',
+                'label' => 'label.photo',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -50,12 +54,14 @@ class PhotoType extends AbstractType
             ->add('gallery', EntityType::class, [
                 'class' => Gallery::class,
                 'choice_label' => 'title',
+                'label' => 'label.gallery',
             ])
             ->add('tags', EntityType::class, [
                 'class' => Tag::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
+                'label' => 'label.tags',
             ]);
     }
 

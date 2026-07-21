@@ -28,26 +28,30 @@ class UserCreateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Użytkownik' => 'ROLE_USER',
-                    'Administrator' => 'ROLE_ADMIN',
-                ],
-                'multiple' => true,
-                'expanded' => true,
+            ->add('email', null, [
+                'label' => 'label.email',
             ])
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'mapped' => false,
-                'required' => true,
-                'first_options' => [
-                    'label' => 'Hasło',
-                ],
-                'second_options' => [
-                    'label' => 'Powtórz hasło',
-                ],
-            ]);
+        ->add('roles', ChoiceType::class, [
+            'label' => 'label.roles',
+            'choices' => [
+            'role.user' => 'ROLE_USER',
+            'role.admin' => 'ROLE_ADMIN',
+            ],
+            'choice_translation_domain' => 'messages',
+            'multiple' => true,
+            'expanded' => true,
+        ])
+        ->add('plainPassword', RepeatedType::class, [
+            'type' => PasswordType::class,
+            'mapped' => false,
+            'required' => true,
+            'first_options' => [
+            'label' => 'label.password',
+            ],
+            'second_options' => [
+            'label' => 'label.repeat_password',
+            ],
+        ]);
     }
 
     /**

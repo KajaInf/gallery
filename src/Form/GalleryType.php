@@ -26,6 +26,7 @@ class GalleryType extends AbstractType
     {
         $builder
         ->add('title', null, [
+            'label' => 'label.title',
             'empty_data' => '',
         ])
         ;

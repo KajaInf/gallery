@@ -49,7 +49,38 @@
     <source>Email</source>
     <target>Email</target>
 </trans-unit>
-
+<trans-unit id="label.roles">
+    <source>label.roles</source>
+    <target>Roles</target>
+</trans-unit>
+<trans-unit id="role.user">
+    <source>role.user</source>
+    <target>User</target>
+</trans-unit>
+<trans-unit id="role.admin">
+    <source>role.admin</source>
+    <target>Administrator</target>
+</trans-unit>
+<trans-unit id="label.password">
+    <source>label.password</source>
+    <target>Password</target>
+</trans-unit>
+<trans-unit id="label.repeat_password">
+    <source>label.repeat_password</source>
+    <target>Repeat password</target>
+</trans-unit>
+<trans-unit id="label.new_password">
+    <source>label.new_password</source>
+    <target>New password</target>
+</trans-unit>
+<trans-unit id="label.repeat_new_password">
+    <source>label.repeat_new_password</source>
+    <target>Repeat new password</target>
+</trans-unit>
+<trans-unit id="label.agree_terms">
+    <source>label.agree_terms</source>
+    <target>I agree to the terms</target>
+</trans-unit>
 
         </body>
     </file>
