@@ -44,4 +44,19 @@ interface CommentServiceInterface
      * @param UserInterface $user    User entity
      */
     public function createForPhoto(Comment $comment, Photo $photo, UserInterface $user): void;
+
+    /**
+     * Returns paginated comments assigned to photo.
+     *
+     * @param Photo $photo Photo entity
+     * @param int   $page  Page number
+     * @param int   $limit Results limit
+     *
+     * @return array{
+     *     comments: Comment[],
+     *     currentPage: int,
+     *     totalPages: int
+     * } Paginated comments data
+     */
+    public function getPaginatedForPhoto(Photo $photo, int $page, int $limit = 10): array;
 }

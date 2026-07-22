@@ -9,6 +9,7 @@ return (new Config())
     ->setRiskyAllowed(false)
     ->setRules([
         '@Symfony' => true,
+	'no_superfluous_phpdoc_tags' => false,
     ])
     ->setFinder(
         Finder::create()

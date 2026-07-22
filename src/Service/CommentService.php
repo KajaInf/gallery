@@ -72,4 +72,33 @@ class CommentService implements CommentServiceInterface
 
         $this->save($comment);
     }
+
+    /**
+     * Returns paginated comments assigned to photo.
+     *
+     * @param Photo $photo Photo entity
+     * @param int   $page  Page number
+     * @param int   $limit Results limit
+     *
+     * @return array{
+     *     comments: Comment[],
+     *     currentPage: int,
+     *     totalPages: int
+     * } Paginated comments data
+     */
+    public function getPaginatedForPhoto(Photo $photo, int $page, int $limit = 10): array
+    {
+        $currentPage = max(1, $page);
+        $offset = ($currentPage - 1) * $limit;
+
+        $comments = $this->commentRepository->findByPhoto($photo, $limit, $offset);
+        $commentsCount = $this->commentRepository->countByPhoto($photo);
+        $totalPages = (int) ceil($commentsCount / $limit);
+
+        return [
+            'comments' => $comments,
+            'currentPage' => $currentPage,
+            'totalPages' => $totalPages,
+        ];
+    }
 }

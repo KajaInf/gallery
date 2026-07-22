@@ -10,7 +10,7 @@ use App\Entity\Comment;
 use App\Entity\Photo;
 use App\Form\CommentType;
 use App\Form\PhotoType;
-use App\Service\CommentService;
+use App\Service\Interface\CommentServiceInterface;
 use App\Service\Interface\PhotoServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -101,15 +101,14 @@ final class PhotoController extends AbstractController
     /**
      * Show action.
      *
-     * @param Request               $request        HTTP request
-     * @param Photo                 $photo          Photo entity
-     * @param CommentService        $commentService Comment service
-     * @param PhotoServiceInterface $photoService   Photo service
+     * @param Request                 $request        HTTP request
+     * @param Photo                   $photo          Photo entity
+     * @param CommentServiceInterface $commentService Comment service
      *
      * @return Response HTTP response
      */
     #[Route('/{id}', name: 'app_photo_show', methods: ['GET', 'POST'])]
-    public function show(Request $request, Photo $photo, CommentService $commentService, PhotoServiceInterface $photoService): Response
+    public function show(Request $request, Photo $photo, CommentServiceInterface $commentService): Response
     {
         $comment = new Comment();
 
@@ -142,20 +141,17 @@ final class PhotoController extends AbstractController
             }
         }
 
-        $commentsPage = max(1, $request->query->getInt('commentsPage', 1));
-        $commentsLimit = 10;
-        $commentsOffset = ($commentsPage - 1) * $commentsLimit;
-
-        $comments = $photoService->getComments($photo, $commentsLimit, $commentsOffset);
-        $commentsCount = $photoService->countComments($photo);
-        $commentsTotalPages = (int) ceil($commentsCount / $commentsLimit);
+        $commentsPagination = $commentService->getPaginatedForPhoto(
+            $photo,
+            $request->query->getInt('commentsPage', 1)
+        );
 
         return $this->render('photo/show.html.twig', [
             'photo' => $photo,
             'comment_form' => $form,
-            'comments' => $comments,
-            'commentsPage' => $commentsPage,
-            'commentsTotalPages' => $commentsTotalPages,
+            'comments' => $commentsPagination['comments'],
+            'commentsPage' => $commentsPagination['currentPage'],
+            'commentsTotalPages' => $commentsPagination['totalPages'],
         ]);
     }
 
