@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nazwa</th>
-                <th>Akcje</th>
+                <th>{{ 'gallery.name'|trans }}</th>
+                <th>{{ 'gallery.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -20,18 +20,18 @@
                 <td>{{ gallery.title }}</td>
                 <td>
                    <a href="{{ path('app_gallery_show', {'id': gallery.id}) }}" class="btn btn-primary btn-sm">
-    Pokaż
+    {{ 'action.show'|trans }}
 </a>
                     {% if is_granted('ROLE_ADMIN') %}
 <a href="{{ path('app_gallery_edit', {'id': gallery.id}) }}" class="btn btn-warning btn-sm">
-    Edytuj
+    {{ 'action.edit'|trans }}
 </a>
 {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">Brak galerii</td>
+                <td colspan="3">{{ 'gallery.none'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>

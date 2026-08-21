@@ -209,6 +209,52 @@
     <source>label.description</source>
     <target>Description</target>
 </trans-unit>
+<trans-unit id="gallery.show">
+    <source>gallery.show</source>
+    <target>Gallery</target>
+</trans-unit>
+<trans-unit id="gallery.name">
+    <source>gallery.name</source>
+    <target>Name</target>
+</trans-unit>
+<trans-unit id="gallery.actions">
+    <source>gallery.actions</source>
+    <target>Actions</target>
+</trans-unit>
+<trans-unit id="gallery.photos">
+    <source>gallery.photos</source>
+    <target>Photos in gallery</target>
+</trans-unit>
+<trans-unit id="gallery.no_photos">
+    <source>gallery.no_photos</source>
+    <target>No photos in this gallery.</target>
+</trans-unit>
+<trans-unit id="gallery.none">
+    <source>gallery.none</source>
+    <target>No galleries</target>
+</trans-unit>
+<trans-unit id="gallery.delete_title">
+    <source>gallery.delete_title</source>
+    <target>Delete gallery</target>
+</trans-unit>
+<trans-unit id="gallery.delete_confirm">
+    <source>gallery.delete_confirm</source>
+    <target>Are you sure you want to delete the gallery “%title%”?</target>
+</trans-unit>
+
+<trans-unit id="registration.title">
+    <source>registration.title</source>
+    <target>Registration</target>
+</trans-unit>
+<trans-unit id="registration.submit">
+    <source>registration.submit</source>
+    <target>Register</target>
+</trans-unit>
+
+<trans-unit id="action.show">
+    <source>action.show</source>
+    <target>Show</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

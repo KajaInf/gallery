@@ -211,7 +211,52 @@
     <source>label.description</source>
     <target>Opis</target>
 </trans-unit>
+<trans-unit id="gallery.show">
+    <source>gallery.show</source>
+    <target>Galeria</target>
+</trans-unit>
+<trans-unit id="gallery.name">
+    <source>gallery.name</source>
+    <target>Nazwa</target>
+</trans-unit>
+<trans-unit id="gallery.actions">
+    <source>gallery.actions</source>
+    <target>Akcje</target>
+</trans-unit>
+<trans-unit id="gallery.photos">
+    <source>gallery.photos</source>
+    <target>Zdjęcia w galerii</target>
+</trans-unit>
+<trans-unit id="gallery.no_photos">
+    <source>gallery.no_photos</source>
+    <target>Brak zdjęć w tej galerii.</target>
+</trans-unit>
+<trans-unit id="gallery.none">
+    <source>gallery.none</source>
+    <target>Brak galerii</target>
+</trans-unit>
+<trans-unit id="gallery.delete_title">
+    <source>gallery.delete_title</source>
+    <target>Usuwanie galerii</target>
+</trans-unit>
+<trans-unit id="gallery.delete_confirm">
+    <source>gallery.delete_confirm</source>
+    <target>Czy na pewno chcesz usunąć galerię „%title%”?</target>
+</trans-unit>
 
+<trans-unit id="registration.title">
+    <source>registration.title</source>
+    <target>Rejestracja</target>
+</trans-unit>
+<trans-unit id="registration.submit">
+    <source>registration.submit</source>
+    <target>Zarejestruj</target>
+</trans-unit>
+
+<trans-unit id="action.show">
+    <source>action.show</source>
+    <target>Pokaż</target>
+</trans-unit>
 
         </body>
     </file>

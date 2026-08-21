@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Galeria{% endblock %}
+{% block title %}{{ 'gallery.show'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Galeria</h1>
+    <h1>{{ 'gallery.show'|trans }}</h1>
 
     <table class="table">
         <tbody>
@@ -12,7 +12,7 @@
                 <td>{{ gallery.id }}</td>
             </tr>
             <tr>
-                <th>Nazwa</th>
+                <th>{{ 'gallery.name'|trans }}</th>
                 <td>{{ gallery.title }}</td>
             </tr>
         </tbody>
@@ -24,20 +24,20 @@
 
     {% if is_granted('ROLE_ADMIN') %}
 <a href="{{ path('app_gallery_edit', {'id': gallery.id}) }}" class="btn btn-warning mb-2">
-    Edytuj
+    {{ 'action.edit'|trans }}
 </a>
 {% endif %}
 
     {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('app_gallery_delete_confirm', {'id': gallery.id}) }}" class="btn btn-danger">
-    Usuń
+    {{ 'action.delete'|trans }}
 </a>
 {% endif %}
 
-<h2>Zdjęcia w galerii</h2>
+<h2>{{ 'gallery.photos'|trans }}</h2>
 
 {% if photos is empty %}
-    <p>Brak zdjęć w tej galerii.</p>
+    <p>{{ 'gallery.no_photos'|trans }}</p>
 {% else %}
     <div class="row">
         {% for photo in photos %}
@@ -46,7 +46,7 @@
                     <img src="{{ asset('uploads/photos/' ~ photo.filename) }}" class="card-img-top" alt="{{ photo.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ photo.title }}</h5>
-                        <a href="{{ path('app_photo_show', {'id': photo.id}) }}" class="btn btn-primary">Zobacz</a>
+                        <a href="{{ path('app_photo_show', {'id': photo.id}) }}" class="btn btn-primary">{{ 'action.show'|trans }}</a>
                     </div>
                 </div>
             </div>
