@@ -44,7 +44,7 @@ final class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $userService->save($user);
 
-            $this->addFlash('success', 'Dane profilu zostały zaktualizowane.');
+            $this->addFlash('success', 'flash.profile.updated');
 
             return $this->redirectToRoute('app_profile');
         }
@@ -79,7 +79,7 @@ final class ProfileController extends AbstractController
             $userService->updatePassword($user, $plainPassword);
             $userService->save($user);
 
-            $this->addFlash('success', 'Hasło zostało zmienione.');
+            $this->addFlash('success', 'flash.password.changed');
 
             return $this->redirectToRoute('app_profile');
         }

@@ -78,7 +78,7 @@ final class PhotoController extends AbstractController
                 try {
                     $photoService->uploadImage($photo, $imageFile);
                 } catch (FileException) {
-                    $this->addFlash('danger', 'Nie udało się przesłać pliku.');
+                    $this->addFlash('danger', 'flash.photo.upload_error');
 
                     return $this->redirectToRoute('app_photo_new');
                 }
@@ -87,7 +87,7 @@ final class PhotoController extends AbstractController
             $photo->setCreatedAt(new \DateTimeImmutable());
             $photoService->save($photo);
 
-            $this->addFlash('success', 'Zdjęcie zostało dodane.');
+            $this->addFlash('success', 'flash.photo.created');
 
             return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -107,39 +107,16 @@ final class PhotoController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'app_photo_show', methods: ['GET', 'POST'])]
+    #[Route('/{id}', name: 'app_photo_show', methods: ['GET'])]
     public function show(Request $request, Photo $photo, CommentServiceInterface $commentService): Response
     {
-        $comment = new Comment();
-
         $user = $this->getUser();
-        if (null !== $user) {
-            $comment->setEmail($user->getUserIdentifier());
-            $comment->setNick($user->getUserIdentifier());
-        }
+
+        $comment = null !== $user
+            ? $commentService->createForUser($user)
+            : new Comment();
 
         $form = $this->createForm(CommentType::class, $comment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
-            $user = $this->getUser();
-
-            if (null === $user) {
-                $this->addFlash('danger', 'Musisz być zalogowany, aby dodać komentarz.');
-
-                return $this->redirectToRoute('app_login');
-            }
-
-            if ($form->isValid()) {
-                $commentService->createForPhoto($comment, $photo, $user);
-
-                $this->addFlash('success', 'Komentarz został dodany.');
-
-                return $this->redirectToRoute('app_photo_show', [
-                    'id' => $photo->getId(),
-                ]);
-            }
-        }
 
         $commentsPagination = $commentService->getPaginatedForPhoto(
             $photo,
@@ -152,6 +129,42 @@ final class PhotoController extends AbstractController
             'comments' => $commentsPagination['comments'],
             'commentsPage' => $commentsPagination['currentPage'],
             'commentsTotalPages' => $commentsPagination['totalPages'],
+        ]);
+    }
+
+    /**
+     * Adds comment to photo.
+     *
+     * @param Request                 $request        HTTP request
+     * @param Photo                   $photo          Photo entity
+     * @param CommentServiceInterface $commentService Comment service
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/comment', name: 'app_photo_comment_add', methods: ['POST'])]
+    public function addComment(Request $request, Photo $photo, CommentServiceInterface $commentService): Response
+    {
+        $user = $this->getUser();
+
+        if (null === $user) {
+            $this->addFlash('danger', 'flash.comment.login_required');
+
+            return $this->redirectToRoute('app_login');
+        }
+
+        $comment = $commentService->createForUser($user);
+
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commentService->createForPhoto($comment, $photo, $user);
+
+            $this->addFlash('success', 'flash.comment.created');
+        }
+
+        return $this->redirectToRoute('app_photo_show', [
+            'id' => $photo->getId(),
         ]);
     }
 
@@ -174,7 +187,7 @@ final class PhotoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $photoService->save($photo);
 
-            $this->addFlash('success', 'Zdjęcie zostało zaktualizowane.');
+            $this->addFlash('success', 'flash.photo.updated');
 
             return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -216,7 +229,7 @@ final class PhotoController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$photo->getId(), $request->getPayload()->getString('_token'))) {
             $photoService->delete($photo);
-            $this->addFlash('success', 'Zdjęcie zostało usunięte.');
+            $this->addFlash('success', 'flash.photo.deleted');
         }
 
         return $this->redirectToRoute('app_photo_index', [], Response::HTTP_SEE_OTHER);

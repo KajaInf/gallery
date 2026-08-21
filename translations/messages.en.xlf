@@ -364,6 +364,58 @@
     <source>label.id</source>
     <target>Id</target>
 </trans-unit>
+<trans-unit id="flash.profile.updated">
+    <source>flash.profile.updated</source>
+    <target>Profile data has been updated.</target>
+</trans-unit>
+<trans-unit id="flash.password.changed">
+    <source>flash.password.changed</source>
+    <target>Password has been changed.</target>
+</trans-unit>
+<trans-unit id="flash.photo.upload_error">
+    <source>flash.photo.upload_error</source>
+    <target>The file could not be uploaded.</target>
+</trans-unit>
+<trans-unit id="flash.photo.created">
+    <source>flash.photo.created</source>
+    <target>Photo has been added.</target>
+</trans-unit>
+<trans-unit id="flash.comment.login_required">
+    <source>flash.comment.login_required</source>
+    <target>You must be logged in to add a comment.</target>
+</trans-unit>
+<trans-unit id="flash.comment.created">
+    <source>flash.comment.created</source>
+    <target>Comment has been added.</target>
+</trans-unit>
+<trans-unit id="flash.photo.updated">
+    <source>flash.photo.updated</source>
+    <target>Photo has been updated.</target>
+</trans-unit>
+<trans-unit id="flash.photo.deleted">
+    <source>flash.photo.deleted</source>
+    <target>Photo has been deleted.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.created">
+    <source>flash.gallery.created</source>
+    <target>Gallery has been added.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.updated">
+    <source>flash.gallery.updated</source>
+    <target>Gallery has been updated.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.not_empty">
+    <source>flash.gallery.not_empty</source>
+    <target>A gallery containing photos cannot be deleted.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.deleted">
+    <source>flash.gallery.deleted</source>
+    <target>Gallery has been deleted.</target>
+</trans-unit>
+<trans-unit id="flash.user.own_account_delete">
+    <source>flash.user.own_account_delete</source>
+    <target>You cannot delete your own administrator account.</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

@@ -57,6 +57,22 @@ class CommentService implements CommentServiceInterface
     }
 
     /**
+     * Creates a new comment for user.
+     *
+     * @param UserInterface $user User entity
+     *
+     * @return Comment Comment entity
+     */
+    public function createForUser(UserInterface $user): Comment
+    {
+        $comment = new Comment();
+        $comment->setEmail($user->getUserIdentifier());
+        $comment->setNick($user->getUserIdentifier());
+
+        return $comment;
+    }
+
+    /**
      * Creates a comment assigned to a photo and user.
      *
      * @param Comment       $comment Comment entity

@@ -90,7 +90,10 @@
     {% endif %}
 
     {% if app.user %}
-        {{ form_start(comment_form) }}
+        {{ form_start(comment_form, {
+    action: path('app_photo_comment_add', {'id': photo.id}),
+    method: 'POST'
+}) }}
             {{ form_widget(comment_form) }}
 
             <button type="submit" class="btn btn-primary">

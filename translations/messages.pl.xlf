@@ -366,6 +366,58 @@
     <source>label.id</source>
     <target>Id</target>
 </trans-unit>
+<trans-unit id="flash.profile.updated">
+    <source>flash.profile.updated</source>
+    <target>Dane profilu zostały zaktualizowane.</target>
+</trans-unit>
+<trans-unit id="flash.password.changed">
+    <source>flash.password.changed</source>
+    <target>Hasło zostało zmienione.</target>
+</trans-unit>
+<trans-unit id="flash.photo.upload_error">
+    <source>flash.photo.upload_error</source>
+    <target>Nie udało się przesłać pliku.</target>
+</trans-unit>
+<trans-unit id="flash.photo.created">
+    <source>flash.photo.created</source>
+    <target>Zdjęcie zostało dodane.</target>
+</trans-unit>
+<trans-unit id="flash.comment.login_required">
+    <source>flash.comment.login_required</source>
+    <target>Musisz być zalogowany, aby dodać komentarz.</target>
+</trans-unit>
+<trans-unit id="flash.comment.created">
+    <source>flash.comment.created</source>
+    <target>Komentarz został dodany.</target>
+</trans-unit>
+<trans-unit id="flash.photo.updated">
+    <source>flash.photo.updated</source>
+    <target>Zdjęcie zostało zaktualizowane.</target>
+</trans-unit>
+<trans-unit id="flash.photo.deleted">
+    <source>flash.photo.deleted</source>
+    <target>Zdjęcie zostało usunięte.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.created">
+    <source>flash.gallery.created</source>
+    <target>Galeria została dodana.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.updated">
+    <source>flash.gallery.updated</source>
+    <target>Galeria została zaktualizowana.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.not_empty">
+    <source>flash.gallery.not_empty</source>
+    <target>Nie można usunąć galerii, która zawiera zdjęcia.</target>
+</trans-unit>
+<trans-unit id="flash.gallery.deleted">
+    <source>flash.gallery.deleted</source>
+    <target>Galeria została usunięta.</target>
+</trans-unit>
+<trans-unit id="flash.user.own_account_delete">
+    <source>flash.user.own_account_delete</source>
+    <target>Nie możesz usunąć własnego konta administratora.</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

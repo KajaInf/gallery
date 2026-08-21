@@ -59,4 +59,13 @@ interface CommentServiceInterface
      * } Paginated comments data
      */
     public function getPaginatedForPhoto(Photo $photo, int $page, int $limit = 10): array;
+
+    /**
+     * Creates a new comment for user.
+     *
+     * @param UserInterface $user User entity
+     *
+     * @return Comment Comment entity
+     */
+    public function createForUser(UserInterface $user): Comment;
 }

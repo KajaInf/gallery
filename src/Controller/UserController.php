@@ -135,7 +135,7 @@ final class UserController extends AbstractController
             $userService->updatePassword($user, $plainPassword);
             $userService->save($user);
 
-            $this->addFlash('success', 'Hasło zostało zmienione.');
+            $this->addFlash('success', 'flash.password.changed');
 
             return $this->redirectToRoute('app_user_index');
         }
@@ -175,7 +175,7 @@ final class UserController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
             if ($user === $this->getUser()) {
-                $this->addFlash('danger', 'Nie możesz usunąć własnego konta administratora.');
+                $this->addFlash('danger', 'flash.user.own_account_delete');
 
                 return $this->redirectToRoute('app_user_index');
             }

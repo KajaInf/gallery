@@ -56,7 +56,7 @@ final class GalleryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $galleryService->save($gallery);
 
-            $this->addFlash('success', 'Galeria została dodana.');
+            $this->addFlash('success', 'flash.gallery.created');
 
             return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -103,7 +103,7 @@ final class GalleryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $galleryService->save($gallery);
 
-            $this->addFlash('success', 'Galeria została zaktualizowana.');
+            $this->addFlash('success', 'flash.gallery.updated');
 
             return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -145,13 +145,13 @@ final class GalleryController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->getPayload()->getString('_token'))) {
             if (!$galleryService->canDelete($gallery)) {
-                $this->addFlash('danger', 'Nie można usunąć galerii, która zawiera zdjęcia.');
+                $this->addFlash('danger', 'flash.gallery.not_empty');
 
                 return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
             }
 
             $galleryService->delete($gallery);
-            $this->addFlash('success', 'Galeria została usunięta.');
+            $this->addFlash('success', 'flash.gallery.deleted');
         }
 
         return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
