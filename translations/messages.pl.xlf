@@ -293,6 +293,79 @@
     <source>user.change_password</source>
     <target>Zmień hasło</target>
 </trans-unit>
+<trans-unit id="tag.show">
+    <source>tag.show</source>
+    <target>Tag</target>
+</trans-unit>
+<trans-unit id="tag.name">
+    <source>tag.name</source>
+    <target>Nazwa</target>
+</trans-unit>
+<trans-unit id="tag.actions">
+    <source>tag.actions</source>
+    <target>Akcje</target>
+</trans-unit>
+<trans-unit id="tag.none">
+    <source>tag.none</source>
+    <target>Brak tagów</target>
+</trans-unit>
+<trans-unit id="tag.delete_title">
+    <source>tag.delete_title</source>
+    <target>Usuwanie tagu</target>
+</trans-unit>
+<trans-unit id="tag.delete_confirm">
+    <source>tag.delete_confirm</source>
+    <target>Czy na pewno chcesz usunąć tag „%name%”?</target>
+</trans-unit>
+
+<trans-unit id="comment.show">
+    <source>comment.show</source>
+    <target>Komentarz</target>
+</trans-unit>
+<trans-unit id="comment.nick">
+    <source>comment.nick</source>
+    <target>Nick</target>
+</trans-unit>
+<trans-unit id="comment.email">
+    <source>comment.email</source>
+    <target>E-mail</target>
+</trans-unit>
+<trans-unit id="comment.user">
+    <source>comment.user</source>
+    <target>Użytkownik</target>
+</trans-unit>
+<trans-unit id="comment.photo">
+    <source>comment.photo</source>
+    <target>Zdjęcie</target>
+</trans-unit>
+<trans-unit id="comment.content">
+    <source>comment.content</source>
+    <target>Treść</target>
+</trans-unit>
+<trans-unit id="comment.created_at">
+    <source>comment.created_at</source>
+    <target>Data utworzenia</target>
+</trans-unit>
+<trans-unit id="comment.actions">
+    <source>comment.actions</source>
+    <target>Akcje</target>
+</trans-unit>
+<trans-unit id="comment.none_admin">
+    <source>comment.none_admin</source>
+    <target>Brak komentarzy</target>
+</trans-unit>
+<trans-unit id="comment.delete_title">
+    <source>comment.delete_title</source>
+    <target>Usuwanie komentarza</target>
+</trans-unit>
+<trans-unit id="comment.delete_confirm">
+    <source>comment.delete_confirm</source>
+    <target>Czy na pewno chcesz usunąć komentarz użytkownika „%nick%”?</target>
+</trans-unit>
+<trans-unit id="label.id">
+    <source>label.id</source>
+    <target>Id</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

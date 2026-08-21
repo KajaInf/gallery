@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Comment{% endblock %}
+{% block title %}{{ 'comment.show'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Komentarz</h1>
+    <h1>{{ 'comment.show'|trans }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'label.id'|trans }}</th>
                 <td>{{ comment.id }}</td>
             </tr>
             <tr>
-                <th>Nick</th>
+                <th>{{ 'comment.nick'|trans }}</th>
                 <td>{{ comment.nick }}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>{{ 'comment.email'|trans }}</th>
                 <td>{{ comment.email }}</td>
             </tr>
             <tr>
-                <th>Treść</th>
+                <th>{{ 'comment.content'|trans }}</th>
                 <td>{{ comment.content }}</td>
             </tr>
             <tr>
-                <th>Data utworzenia</th>
+                <th>{{ 'comment.created_at'|trans }}</th>
                 <td>{{ comment.createdAt ? comment.createdAt|format_datetime('medium', 'medium', locale=app.request.locale) : '' }}</td>
             </tr>
         </tbody>
@@ -35,10 +35,10 @@
 </a>
 
 <a href="{{ path('app_comment_edit', {'id': comment.id}) }}" class="btn btn-warning mb-2">
-    Edytuj
+    {{ 'action.edit'|trans }}
 </a>
 
 <a href="{{ path('app_comment_delete_confirm', {'id': comment.id}) }}" class="btn btn-danger">
-    Usuń
+    {{ 'action.delete'|trans }}
 </a>
 {% endblock %}

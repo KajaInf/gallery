@@ -8,9 +8,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nazwa</th>
-                <th>Akcje</th>
+                <th>{{ 'label.id'|trans }}</th>
+                <th>{{ 'tag.name'|trans }}</th>
+                <th>{{ 'tag.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -20,16 +20,16 @@
                 <td>{{ tag.name }}</td>
                 <td>
 <a href="{{ path('app_tag_show', {'id': tag.id}) }}" class="btn btn-primary btn-sm">
-    Pokaż
+    {{ 'action.show'|trans }}
 </a>
 <a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="btn btn-warning btn-sm">
-    Edytuj
+    {{ 'action.edit'|trans }}
 </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">brak tagów</td>
+                <td colspan="3">{{ 'tag.none'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>

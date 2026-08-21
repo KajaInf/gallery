@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tag{% endblock %}
+{% block title %}{{ 'tag.show'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Tag</h1>
+    <h1>{{ 'tag.show'|trans }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'label.id'|trans }}</th>
                 <td>{{ tag.id }}</td>
             </tr>
             <tr>
-                <th>Nazwa</th>
+                <th>{{ 'tag.name'|trans }}</th>
                 <td>{{ tag.name }}</td>
             </tr>
         </tbody>
@@ -23,10 +23,10 @@
 </a>
 
 <a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="btn btn-warning mb-2">
-    Edytuj
+    {{ 'action.edit'|trans }}
 </a>
 
 <a href="{{ path('app_tag_delete_confirm', {'id': tag.id}) }}" class="btn btn-danger">
-    Usuń
+    {{ 'action.delete'|trans }}
 </a>
 {% endblock %}

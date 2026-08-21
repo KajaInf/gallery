@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Usuwanie tagu{% endblock %}
+{% block title %}{{ 'tag.delete_title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Usuwanie tagu</h1>
+    <h1>{{ 'tag.delete_title'|trans }}</h1>
 
     <p>
-        Czy na pewno chcesz usunąć tag "{{ tag.name }}"?
+        {{ 'tag.delete_confirm'|trans({'%name%': tag.name}) }}
     </p>
 
     {{ include('tag/_delete_form.html.twig') }}
 
     <a href="{{ path('app_tag_show', {'id': tag.id}) }}" class="btn btn-secondary">
-        Anuluj
+        {{ 'action.cancel'|trans }}
     </a>
 {% endblock %}
