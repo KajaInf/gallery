@@ -44,6 +44,7 @@ class UserTest extends TestCase
 
         $this->assertContains('ROLE_USER', $user->getRoles());
     }
+
     /**
      * Tests erasing credentials.
      */

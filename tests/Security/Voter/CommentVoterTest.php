@@ -40,6 +40,7 @@ class CommentVoterTest extends TestCase
 
         $this->assertSame(CommentVoter::ACCESS_GRANTED, $result);
     }
+
     /**
      * Tests that anonymous user cannot delete comment.
      */
@@ -61,7 +62,8 @@ class CommentVoterTest extends TestCase
 
         $this->assertSame(CommentVoter::ACCESS_DENIED, $result);
     }
-     /**
+
+    /**
      * Tests unsupported attribute.
      */
     public function testUnsupportedAttributeIsAbstained(): void
