@@ -416,6 +416,10 @@
     <source>flash.user.own_account_delete</source>
     <target>You cannot delete your own administrator account.</target>
 </trans-unit>
+<trans-unit id="label.content">
+    <source>label.content</source>
+    <target>Content</target>
+</trans-unit>
         </body>
     </file>
 </xliff>
