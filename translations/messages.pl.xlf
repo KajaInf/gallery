@@ -257,7 +257,42 @@
     <source>action.show</source>
     <target>Pokaż</target>
 </trans-unit>
-
+<trans-unit id="user.show">
+    <source>user.show</source>
+    <target>Użytkownik</target>
+</trans-unit>
+<trans-unit id="user.email">
+    <source>user.email</source>
+    <target>E-mail</target>
+</trans-unit>
+<trans-unit id="user.roles">
+    <source>user.roles</source>
+    <target>Role</target>
+</trans-unit>
+<trans-unit id="user.actions">
+    <source>user.actions</source>
+    <target>Akcje</target>
+</trans-unit>
+<trans-unit id="user.none">
+    <source>user.none</source>
+    <target>Brak użytkowników</target>
+</trans-unit>
+<trans-unit id="user.delete_title">
+    <source>user.delete_title</source>
+    <target>Usuwanie użytkownika</target>
+</trans-unit>
+<trans-unit id="user.delete_confirm">
+    <source>user.delete_confirm</source>
+    <target>Czy na pewno chcesz usunąć użytkownika „%email%”?</target>
+</trans-unit>
+<trans-unit id="user.password_title">
+    <source>user.password_title</source>
+    <target>Zmiana hasła użytkownika</target>
+</trans-unit>
+<trans-unit id="user.change_password">
+    <source>user.change_password</source>
+    <target>Zmień hasło</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

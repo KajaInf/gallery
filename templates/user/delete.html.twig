@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Usuwanie użytkownika{% endblock %}
+{% block title %}{{ 'user.delete_title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Usuwanie użytkownika</h1>
+    <h1>{{ 'user.delete_title'|trans }}</h1>
 
     <p>
-        Czy na pewno chcesz usunąć użytkownika "{{ user.email }}"?
+        {{ 'user.delete_confirm'|trans({'%email%': user.email}) }}
     </p>
 
     {{ include('user/_delete_form.html.twig') }}
 
     <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-secondary">
-        Anuluj
+        {{ 'action.cancel'|trans }}
     </a>
 {% endblock %}

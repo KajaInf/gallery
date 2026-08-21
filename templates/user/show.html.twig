@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Użytkownik{% endblock %}
+{% block title %}{{ 'user.show'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Użytkownik</h1>
+    <h1>{{ 'user.show'|trans }}</h1>
 
     <table class="table">
         <tbody>
@@ -12,11 +12,11 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>{{ 'user.email'|trans }}</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Role</th>
+                <th>{{ 'user.roles'|trans }}</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
         </tbody>
@@ -27,10 +27,10 @@
 </a>
 
 <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-warning mb-2">
-    Edytuj
+    {{ 'action.edit'|trans }}
 </a>
 
 <a href="{{ path('app_user_delete_confirm', {'id': user.id}) }}" class="btn btn-danger">
-    Usuń
+    {{ 'action.delete'|trans }}
 </a>
 {% endblock %}
