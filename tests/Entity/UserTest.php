@@ -44,4 +44,15 @@ class UserTest extends TestCase
 
         $this->assertContains('ROLE_USER', $user->getRoles());
     }
+    /**
+     * Tests erasing credentials.
+     */
+    public function testEraseCredentials(): void
+    {
+        $user = new User();
+
+        $user->eraseCredentials();
+
+        $this->assertTrue(true);
+    }
 }

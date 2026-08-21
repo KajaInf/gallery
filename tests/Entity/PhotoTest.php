@@ -55,4 +55,34 @@ class PhotoTest extends TestCase
 
         $this->assertCount(0, $photo->getTags());
     }
+
+    /**
+     * Tests description and creation date.
+     */
+    public function testDescriptionAndCreatedAt(): void
+    {
+        $photo = new Photo();
+        $createdAt = new \DateTimeImmutable('2026-08-21 12:00:00');
+
+        $photo->setDescription('Opis zdjęcia');
+        $photo->setCreatedAt($createdAt);
+
+        $this->assertSame('Opis zdjęcia', $photo->getDescription());
+        $this->assertSame($createdAt, $photo->getCreatedAt());
+        $this->assertNull($photo->getId());
+    }
+
+    /**
+     * Tests string representation.
+     */
+    public function testToString(): void
+    {
+        $photo = new Photo();
+
+        $this->assertSame('', (string) $photo);
+
+        $photo->setTitle('Kruk');
+
+        $this->assertSame('Kruk', (string) $photo);
+    }
 }
