@@ -420,6 +420,10 @@
     <source>label.content</source>
     <target>Content</target>
 </trans-unit>
+<trans-unit id="action.save">
+    <source>action.save</source>
+    <target>Save</target>
+</trans-unit>
         </body>
     </file>
 </xliff>

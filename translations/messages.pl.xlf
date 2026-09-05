@@ -422,6 +422,10 @@
     <source>label.content</source>
     <target>Treść</target>
 </trans-unit>
+<trans-unit id="action.save">
+    <source>action.save</source>
+    <target>Zapisz</target>
+</trans-unit>
         </body>
     </file>
 </xliff>
