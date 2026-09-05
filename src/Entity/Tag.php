@@ -50,8 +50,6 @@ class Tag
      * Sets name.
      *
      * @param string $name Tag name
-     *
-     * @return static
      */
     public function setName(string $name): static
     {

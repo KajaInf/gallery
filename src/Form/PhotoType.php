@@ -31,13 +31,13 @@ class PhotoType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'label' => 'label.title',
+                'label' => 'photo.title',
             ])
         ->add('description', null, [
             'label' => 'label.description',
         ])
             ->add('imageFile', FileType::class, [
-                'label' => 'label.photo',
+                'label' => 'photo.file',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -54,14 +54,14 @@ class PhotoType extends AbstractType
             ->add('gallery', EntityType::class, [
                 'class' => Gallery::class,
                 'choice_label' => 'title',
-                'label' => 'label.gallery',
+                'label' => 'gallery',
             ])
             ->add('tags', EntityType::class, [
                 'class' => Tag::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'label.tags',
+                'label' => 'photo.tags',
             ]);
     }
 

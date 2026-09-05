@@ -26,7 +26,7 @@ class TagType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => 'label.name',
+                'label' => 'tag.name',
             ])
         ;
     }

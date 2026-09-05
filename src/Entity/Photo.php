@@ -80,8 +80,6 @@ class Photo implements \Stringable
      * Sets title.
      *
      * @param string $title Photo title
-     *
-     * @return static
      */
     public function setTitle(string $title): static
     {
@@ -104,8 +102,6 @@ class Photo implements \Stringable
      * Sets filename.
      *
      * @param string $filename Filename
-     *
-     * @return static
      */
     public function setFilename(string $filename): static
     {
@@ -128,8 +124,6 @@ class Photo implements \Stringable
      * Sets gallery.
      *
      * @param Gallery|null $gallery Gallery
-     *
-     * @return static
      */
     public function setGallery(?Gallery $gallery): static
     {
@@ -162,8 +156,6 @@ class Photo implements \Stringable
      * Adds tag.
      *
      * @param Tag $tag Tag
-     *
-     * @return static
      */
     public function addTag(Tag $tag): static
     {
@@ -178,8 +170,6 @@ class Photo implements \Stringable
      * Removes tag.
      *
      * @param Tag $tag Tag
-     *
-     * @return static
      */
     public function removeTag(Tag $tag): static
     {
@@ -202,8 +192,6 @@ class Photo implements \Stringable
      * Sets description.
      *
      * @param string|null $description Description
-     *
-     * @return static
      */
     public function setDescription(?string $description): static
     {
@@ -226,8 +214,6 @@ class Photo implements \Stringable
      * Sets creation date.
      *
      * @param \DateTimeImmutable|null $createdAt Creation date
-     *
-     * @return static
      */
     public function setCreatedAt(?\DateTimeImmutable $createdAt): static
     {

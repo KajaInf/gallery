@@ -31,6 +31,7 @@ class CommentType extends AbstractType
             ])
         ;
     }
+
     /**
      * Configures comment form options.
      *
