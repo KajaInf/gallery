@@ -27,10 +27,10 @@ class CommentType extends AbstractType
         $builder
             ->add('content', null, [
                 'label' => 'label.content',
+                'empty_data' => '',
             ])
         ;
     }
-
     /**
      * Configures comment form options.
      *
