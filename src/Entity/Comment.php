@@ -69,6 +69,8 @@ class Comment
      * Sets nickname.
      *
      * @param string $nick Nickname
+     *
+     * @return $this
      */
     public function setNick(string $nick): static
     {
@@ -91,6 +93,8 @@ class Comment
      * Sets email.
      *
      * @param string $email Email
+     *
+     * @return $this
      */
     public function setEmail(string $email): static
     {
@@ -113,6 +117,8 @@ class Comment
      * Sets content.
      *
      * @param string $content Content
+     *
+     * @return $this
      */
     public function setContent(string $content): static
     {
@@ -135,6 +141,8 @@ class Comment
      * Sets creation date.
      *
      * @param \DateTimeImmutable $createdAt Creation date
+     *
+     * @return $this
      */
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
@@ -157,6 +165,8 @@ class Comment
      * Sets photo.
      *
      * @param Photo|null $photo Photo
+     *
+     * @return $this
      */
     public function setPhoto(?Photo $photo): static
     {

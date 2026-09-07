@@ -50,6 +50,8 @@ class Gallery
      * Sets title.
      *
      * @param string $title Gallery title
+     *
+     * @return $this
      */
     public function setTitle(string $title): static
     {

@@ -68,6 +68,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Sets email.
      *
      * @param string $email Email
+     *
+     * @return $this
      */
     public function setEmail(string $email): static
     {
@@ -105,6 +107,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Sets user roles.
      *
      * @param list<string> $roles User roles
+     *
+     * @return $this
      */
     public function setRoles(array $roles): static
     {
@@ -127,6 +131,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Sets hashed password.
      *
      * @param string $password Hashed password
+     *
+     * @return $this
      */
     public function setPassword(string $password): static
     {
