@@ -39,33 +39,6 @@ final class CommentController extends AbstractController
     }
 
     /**
-     * New action.
-     *
-     * @param Request                 $request        HTTP request
-     * @param CommentServiceInterface $commentService Comment service
-     *
-     * @return Response HTTP response
-     */
-    #[Route('/new', name: 'app_comment_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CommentServiceInterface $commentService): Response
-    {
-        $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $commentService->save($comment);
-
-            return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('comment/new.html.twig', [
-            'comment' => $comment,
-            'form' => $form,
-        ]);
-    }
-
-    /**
      * Show action.
      *
      * @param Comment $comment Comment entity
