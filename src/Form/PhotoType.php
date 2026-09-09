@@ -32,6 +32,7 @@ class PhotoType extends AbstractType
         $builder
             ->add('title', null, [
                 'label' => 'photo.title',
+                'required' => true,
                 'empty_data' => '',
             ])
         ->add('description', null, [
