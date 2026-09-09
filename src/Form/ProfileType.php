@@ -27,6 +27,7 @@ class ProfileType extends AbstractType
         $builder
         ->add('email', null, [
             'label' => 'label.email',
+            'empty_data' => '',
         ])
         ;
     }

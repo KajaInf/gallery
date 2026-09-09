@@ -30,6 +30,7 @@ class UserCreateType extends AbstractType
         $builder
             ->add('email', null, [
                 'label' => 'label.email',
+                'empty_data' => '',
             ])
         ->add('roles', ChoiceType::class, [
             'label' => 'label.roles',
